@@ -1,7 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-const routes: Routes = [];
+import { SplashComponent } from './splash/splash.component';
+
+const routes: Routes = [
+  { path: '', redirectTo: '/splash', pathMatch: 'full' },
+  { path: 'splash', component: SplashComponent}
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

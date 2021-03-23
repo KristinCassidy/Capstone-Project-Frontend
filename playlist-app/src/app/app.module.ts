@@ -5,12 +5,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SplashComponent } from './splash/splash.component';
 import { HeadbarComponent } from './headbar/headbar.component';
+import { SidebarComponent } from './sidebar/sidebar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SplashComponent,
-    HeadbarComponent
+    HeadbarComponent,
+    SidebarComponent
   ],
   imports: [
     BrowserModule,
