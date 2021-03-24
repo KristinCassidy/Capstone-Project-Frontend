@@ -1,0 +1,9 @@
+.sidebar {
+    display: flex;
+    position: absolute;
+    background-color: rgba(100, 100, 100, 0.6);
+    width: 70px;
+    height: 100%;
+    z-index: 2;
+
+}
