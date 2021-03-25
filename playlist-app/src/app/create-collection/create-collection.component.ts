@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-create-collection',
@@ -12,4 +13,7 @@ export class CreateCollectionComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  onSubmit() {
+    console.log('Submitted!')
+  }
 }
