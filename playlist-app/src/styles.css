@@ -1,4 +1,9 @@
-/* You can add global styles to this file, and also import other style files */
+@import "~bootstrap-icons/font/bootstrap-icons.css";
+@font-face {
+    font-family: mainFont;
+    src: url(/assets/Cicle/Cicle_Semi.ttf);
+}
 body {
     background-image: url(/assets/splash-background.png);
+    font-family: mainFont;
 }

@@ -6,13 +6,15 @@ import { AppComponent } from './app.component';
 import { SplashComponent } from './splash/splash.component';
 import { HeadbarComponent } from './headbar/headbar.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
+import { CreateCollectionComponent } from './create-collection/create-collection.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SplashComponent,
     HeadbarComponent,
-    SidebarComponent
+    SidebarComponent,
+    CreateCollectionComponent
   ],
   imports: [
     BrowserModule,
