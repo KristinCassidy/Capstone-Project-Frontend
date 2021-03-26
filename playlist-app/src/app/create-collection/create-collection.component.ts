@@ -13,7 +13,8 @@ export class CreateCollectionComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onSubmit() {
-    console.log('Submitted!')
+  onSubmit(form: NgForm) {
+    console.log(form.value)
+    form.reset();
   }
 }
