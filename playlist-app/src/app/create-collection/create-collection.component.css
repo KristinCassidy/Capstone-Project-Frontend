@@ -1,3 +1,23 @@
-.form-pad {
-    padding-left: 100px;
+.form-page {
+    background-color: rgb(246, 246, 246);
+    display: flex;
+    position: absolute;
+    bottom: 0;
+    top: 50px;
+    right: 0;
+    left: 70px;
+    z-index: -1;
+    padding: 2em;
+}
+
+/* input.ng-invalid.ng-touched {
+	border: 1px solid red;
+} */
+
+form {
+    padding: 2em;
+}
+
+h4 {
+    font-family: Arial, Helvetica, sans-serif;
 }

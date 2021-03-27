@@ -1,22 +1,37 @@
-<div class="form-pad">
-    <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+<div class="form-page">
+    <div>
+        <h4>Create Playlist</h4>
+        <ol>
+            <li>Enter Title (this may be changed later)</li>
+        </ol>
+    </div>
+    <form [formGroup]="createPlaylist" (ngSubmit)="onSubmit()">
         <div class="form-group">
             <label>Playlist name: 
                 <input 
                     class="form-control" 
                     type="text" 
                     name="playlistName"
-                    ngModel/>
+                    value="New Playlist"
+                    [ngModel]="defaultTitle"
+                    required
+                    #playlistName="ngModel"/>
+                    <span class="help-block" *ngIf="!playlistName.valid && playlistName.touched">
+                        Please enter a Title!</span>
             </label>
             <br>
-            <label>Genre: 
+            <!-- <label>Genre: 
                 <input 
                     class="form-control" 
                     type="text" 
                     name="genreName"
                     ngModel/>
             </label>
-            <br>
+            <br> -->
+            <button 
+                class="btn btn-default" 
+                type="button"
+                (click)='addTag()'>Add Tag</button>
             <label>Tag: 
                 <input 
                     class="form-control" 
@@ -35,6 +50,7 @@
             <br>
             <button 
                 type="submit">Create</button>
+            
         </div>
     </form>
 </div>
