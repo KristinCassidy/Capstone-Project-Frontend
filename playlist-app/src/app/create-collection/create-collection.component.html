@@ -5,52 +5,41 @@
             <li>Enter Title (this may be changed later)</li>
         </ol>
     </div>
-    <form [formGroup]="createPlaylist" (ngSubmit)="onSubmit()">
-        <div class="form-group">
-            <label>Playlist name: 
-                <input 
-                    class="form-control" 
-                    type="text" 
-                    name="playlistName"
-                    value="New Playlist"
-                    [ngModel]="defaultTitle"
-                    required
-                    #playlistName="ngModel"/>
-                    <span class="help-block" *ngIf="!playlistName.valid && playlistName.touched">
-                        Please enter a Title!</span>
-            </label>
-            <br>
-            <!-- <label>Genre: 
-                <input 
-                    class="form-control" 
-                    type="text" 
-                    name="genreName"
-                    ngModel/>
-            </label>
-            <br> -->
-            <button 
-                class="btn btn-default" 
-                type="button"
-                (click)='addTag()'>Add Tag</button>
-            <label>Tag: 
-                <input 
-                    class="form-control" 
-                    type="text" 
-                    name="tagName"
-                    ngModel/>
-            </label>
-            <br>
-            <label for="quote">Quote:
-                <textarea 
-                    name="quote" 
-                    class="form-control"  
-                    rows="3"
-                    ngModel></textarea>
-            </label>
-            <br>
-            <button 
-                type="submit">Create</button>
-            
+
+    <form [formGroup]="createPlaylistForm" (ngSubmit)="onSubmit()">
+        <div formGroupName="playlistData">
+            <div class="form-group">
+                <label for="title">Title: </label>
+                    <input 
+                        type="text" 
+                        id="title"
+                        formControlName="title"
+                        value="New Playlist"
+                        class="form-control"/>
+                        <span 
+                            *ngIf="!createPlaylistForm.get('playlistData.title').valid && 
+                            createPlaylistForm.get('playlistData.title').touched"
+                            class="help-block">Please enter a Title!</span>
+           
+                <div formArrayName="tags">
+                    <h5>Tags:</h5>
+                    <button type="button" (click)='onAddTag()'>Add Tag</button>
+                    <div
+                        class="form-group" *ngFor="let tagControl of getTags(); let i = index">
+                     
+                        <input type="text" class="form-control" [formControlName]="i">
+                    </div>
+                </div>     
+            </div>
+                <div class="form-group">
+                    <label for="quote">Quote:</label>
+                        <textarea 
+                            formControlName="quote"
+                            id="quote"
+                            class="form-control"  
+                            rows="3"></textarea>
+                </div>         
+            <button type="submit">Create</button>
         </div>
     </form>
 </div>

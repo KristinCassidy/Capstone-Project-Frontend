@@ -1,31 +1,49 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormArray, FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormArray, FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'app-create-collection',
-  templateUrl: './create-collection.component.html',
-  styleUrls: ['./create-collection.component.css']
+  	selector: 'app-create-collection',
+ 	templateUrl: './create-collection.component.html',
+    styleUrls: ['./create-collection.component.css']
 })
+
 export class CreateCollectionComponent implements OnInit {
-  @ViewChild('f') form: NgForm;
-  defaultTitle: string = 'New Playlist';
-  tags: Array<string>;
-  constructor() { }
+	createPlaylistForm: FormGroup;
+  
+  	constructor() { }
 
-  ngOnInit() {
-    this.createPlaylistForm = new FormGroup({
-      'playlistData': new FormGroup({
-        'playlistTitle': new FormControl('New Playlist', Validators.required),
-      })
-    })
-  }
+  	ngOnInit() {
+		this.createPlaylistForm = new FormGroup({
+			playlistData: new FormGroup ({
+				'title': new FormControl('New Playlist', Validators.required),
+				'tags': new FormArray([])
+			}),
+			playlistMedia: new FormGroup ({
+				'quote': new FormControl(null),
+			})	
+	 	});
 
-  onSubmit() {
-    console.log(form.value)
-    form.reset();
-    
-    addTag() {
-      this.form.push('tags');
-    }
-  }
+		this.createPlaylistForm.patchValue({
+			'playlistData': {
+				'title': 'New Playlist'
+			}
+		});
+		this.getTags();
+	}
+
+	onAddTag() {
+		const control = new FormControl(null);
+		(<FormArray>this.createPlaylistForm.get('playlistData.tags')).push(control);
+	}
+
+	getTags() {
+		// return(<FormArray>this.createPlaylistForm.get('tags')).controls;
+		return (this.createPlaylistForm.get('playlistData.tags') as FormArray).controls;
+	}
+
+	onSubmit() {
+		console.log(this.createPlaylistForm.value);
+		this.createPlaylistForm.reset();
+  	}
+  
 }
