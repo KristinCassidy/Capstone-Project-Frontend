@@ -1,45 +1,67 @@
 <div class="form-page">
-    <div>
+   
+    <div class="subheader">
         <h4>Create Playlist</h4>
+            
         <ol>
             <li>Enter Title (this may be changed later)</li>
         </ol>
     </div>
-
-    <form [formGroup]="createPlaylistForm" (ngSubmit)="onSubmit()">
-        <div formGroupName="playlistData">
-            <div class="form-group">
-                <label for="title">Title: </label>
-                    <input 
-                        type="text" 
-                        id="title"
-                        formControlName="title"
-                        value="New Playlist"
-                        class="form-control"/>
-                        <span 
-                            *ngIf="!createPlaylistForm.get('playlistData.title').valid && 
-                            createPlaylistForm.get('playlistData.title').touched"
-                            class="help-block">Please enter a Title!</span>
-           
-                <div formArrayName="tags">
-                    <h5>Tags:</h5>
-                    <button type="button" (click)='onAddTag()'>Add Tag</button>
-                    <div
-                        class="form-group" *ngFor="let tagControl of getTags(); let i = index">
-                     
-                        <input type="text" class="form-control" [formControlName]="i">
-                    </div>
-                </div>     
-            </div>
+    
+    <div class="pl-form">
+        <form [formGroup]="createPlaylistForm" (ngSubmit)="onSubmit()">
+            <div class="row" formGroupName="playlistData">
+                
                 <div class="form-group">
-                    <label for="quote">Quote:</label>
-                        <textarea 
-                            formControlName="quote"
-                            id="quote"
-                            class="form-control"  
-                            rows="3"></textarea>
-                </div>         
-            <button type="submit">Create</button>
-        </div>
-    </form>
+                    <div class="col-xs-12">
+                    <label for="title">Title: </label>
+                        <input 
+                            type="text" 
+                            id="title"
+                            formControlName="title"
+                            value="New Playlist"
+                            class="form-control"/>
+                            <span 
+                                *ngIf="!createPlaylistForm.get('playlistData.title').valid && 
+                                createPlaylistForm.get('playlistData.title').touched"
+                                class="help-block">Please enter a Title!</span>
+                            </div>
+                    <div class="col-xs-12" formArrayName="tags">
+                        <h5>Tags:</h5>
+                        <input 
+                            type="text" 
+                            class="form-control">
+                            <!-- [formControlName]="i" -->
+                    </div>
+                            <div class="col-xs-4">
+                                <button 
+                                    class="app-control" 
+                                    type="button" 
+                                    (click)='onAddTag()'>
+                                        <img class="plus" src="assets/add.png" alt="add tag">
+                                </button>
+                            
+                        <!-- <div
+                            class="form-group" > -->
+                            <!-- *ngFor="let tagControl of controls; let i = index" -->
+                        <!-- </div> -->
+                    </div>   
+
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-xs-12">
+                        <label for="description">Description:</label>
+                    </div>
+                            <textarea 
+                                formControlName="quote"
+                                id="quote"
+                                class="form-control"  
+                                rows="3"></textarea>
+                    </div>  
+                </div>       
+                <button type="submit">CREATE</button>
+            </div>
+        </form>
+    </div>
 </div>

@@ -9,7 +9,8 @@ import { FormArray, FormGroup, FormControl, Validators } from '@angular/forms';
 
 export class CreateCollectionComponent implements OnInit {
 	createPlaylistForm: FormGroup;
-  
+    controls: [];
+	
   	constructor() { }
 
   	ngOnInit() {
@@ -31,7 +32,7 @@ export class CreateCollectionComponent implements OnInit {
 	}
 
 	onAddTag() {
-		const control = new FormControl(null);
+		const control = new FormControl('');
 		(<FormArray>this.createPlaylistForm.get('playlistData.tags')).push(control);
 	}
 

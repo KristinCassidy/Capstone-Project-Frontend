@@ -24,10 +24,11 @@ export class SongItem extends PlaylistItem {
 
     constructor(id: number, url: string) {
         super(id)   
+        this.url = url;
     }
 }
 
-export class imageItem extends PlaylistItem {
+export class ImageItem extends PlaylistItem {
     imagePath: string;
 
     constructor(id: number, imagePath: string) {
@@ -36,12 +37,11 @@ export class imageItem extends PlaylistItem {
     }
 }
 
-export class videoItem extends PlaylistItem {
+export class VideoItem extends PlaylistItem {
     url: string;
 
     constructor(id: number, url: string) {
         super(id)
-        this.id = id;
         this.url = url;
     } 
 }

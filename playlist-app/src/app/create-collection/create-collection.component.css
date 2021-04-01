@@ -8,6 +8,7 @@
     left: 70px;
     z-index: -1;
     padding: 2em;
+    flex-flow: column;
 }
 
 /* input.ng-invalid.ng-touched {
@@ -18,3 +19,46 @@ form {
     padding: 2em;
 }
 
+.subheader {
+    display: flexbox;
+}
+
+.pl-form {
+    display: flexbox;
+    padding: 0 100px;
+}
+
+input, textarea {
+     /* box-shadow: none; */
+    border: none;
+    display: inline-flexbox;
+}
+
+.plus {
+    width: 30px;
+    /* border: solid 1px; */
+    border-radius: 200px;
+    background-color: rgba(80, 80, 80, 0.386);
+    padding:5px;
+}
+
+.app-control {
+    display: flexbox;
+    vertical-align: middle;
+    border-radius: 200px;
+    width: 30px;
+    height: 30px;
+    /* margin-left: 17px; */
+    border: none;
+    /* box-shadow: -3px 3px; */
+    background-color: white;
+    position: relative;
+    
+
+}
+
+.tags {
+    /* display: flex; */
+    /* align-content:space-between; */
+    
+}
