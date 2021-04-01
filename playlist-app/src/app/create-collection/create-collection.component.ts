@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormArray, FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormArray, FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   	selector: 'app-create-collection',
@@ -28,7 +28,6 @@ export class CreateCollectionComponent implements OnInit {
 				'title': 'New Playlist'
 			}
 		});
-		this.getTags();
 	}
 
 	onAddTag() {
@@ -37,8 +36,8 @@ export class CreateCollectionComponent implements OnInit {
 	}
 
 	getTags() {
-		// return(<FormArray>this.createPlaylistForm.get('tags')).controls;
-		return (this.createPlaylistForm.get('playlistData.tags') as FormArray).controls;
+		return(<FormArray>this.createPlaylistForm.get('tags')).controls;
+		// return (this.createPlaylistForm.get('playlistData.tags')).controls;
 	}
 
 	onSubmit() {
