@@ -15,9 +15,9 @@
 	border: 1px solid red;
 } */
 
-form {
+/* form {
     padding: 2em;
-}
+} */
 
 .subheader {
     display: flexbox;
@@ -25,8 +25,9 @@ form {
 
 .pl-form {
     display: flexbox;
-    padding: 0 100px;
+    padding: 2em 100px 4em 100px;
     max-width: 620px;
+    outline:white solid 1px;
 }
 
 input, textarea {
@@ -50,28 +51,25 @@ input, textarea {
     border-radius: 200px;
     width: 30px;
     height: 30px;
-    /* margin-left: 17px; */
     border: none;
     /* box-shadow: -3px 3px; */
     background-color: none;
     position: relative;
-
-
 }
 
 .tags {
     display: flex;
     position: relative;
+    align-items: center;
     /* padding-bottom: 15px; */
     /* align-content:space-between; */
     
 }
 
-.col-sm-1 {
-    vertical-align:middle;
+.col-sm-2 {
     display: flexbox;
     position: relative;
-    top: 35px;
+    top: 37px;
 }
 
 .create-btn {
@@ -92,4 +90,10 @@ input, textarea {
 
 .desc {
     padding-top: 13px;
+}
+
+textarea {
+    min-height: 3em;
+    min-width: 100%;
+    max-width: 100%;
 }
