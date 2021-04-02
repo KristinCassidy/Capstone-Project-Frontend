@@ -21,6 +21,8 @@
 
 .subheader {
     display: flexbox;
+    color: rgb(147, 147, 147);
+    letter-spacing: 1px;
 }
 
 .pl-form {

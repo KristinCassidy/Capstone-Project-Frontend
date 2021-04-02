@@ -37,7 +37,8 @@ img {
     margin-top: 10px;
     border-radius: 200px;
     right: 1px;
-    border: 2px solid rgba(39, 39, 39, 0.568);
+    border: 2px solid rgb(85, 85, 85);
+    opacity: 0.8;
 
 }
 

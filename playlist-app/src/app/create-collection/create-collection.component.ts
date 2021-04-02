@@ -4,7 +4,8 @@ import { FormArray, FormGroup, FormControl, Validators } from '@angular/forms';
 @Component({
   	selector: 'app-create-collection',
  	templateUrl: './create-collection.component.html',
-    styleUrls: ['./create-collection.component.css']
+    styleUrls: ['./create-collection.component.css'],
+	host: {'class': 'create-pl'}
 })
 
 export class CreateCollectionComponent implements OnInit {

@@ -1,0 +1,23 @@
+.form-page {
+    background-color: rgb(246, 246, 246);
+    display: flex;
+    position: absolute;
+    bottom: 0;
+    top: 50px;
+    right: 0;
+    left: 70px;
+    z-index: -1;
+    padding: 2em;
+    flex-flow: column;
+}
+
+.subheader {
+    display: flexbox;
+    color: rgb(147, 147, 147);
+    letter-spacing: 1px;
+}
+
+.create-pl {
+    /* display: flex; */
+    position: relative;
+}
