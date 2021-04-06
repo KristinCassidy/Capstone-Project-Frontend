@@ -1,12 +1,7 @@
-<!-- <div class="form-page"> -->
-   <div class="container-fluid">
-    <!-- <div class="subheader">
-        <h4>Create Playlist</h4>     
-        <ol>
-            <li>Enter Title (this may be changed later)</li>
-        </ol>
-    </div> -->
-    
+
+<div class="container-fluid">
+  
+    <a routerLink="/create-playlist/core"><p>next</p></a>
     <div class="pl-form">
         <form [formGroup]="createPlaylistForm" (ngSubmit)="onSubmit()">
             <div  formGroupName="playlistData">

@@ -1,0 +1,31 @@
+.core-box {
+    display: flex;
+    justify-content:space-around;
+    align-content: space-around;
+}
+
+.core-item {
+    display: flex;
+    flex-direction: row;
+    background-color: rgb(255, 255, 255);
+    border-radius: 10px;
+    border: .2px solid rgba(112, 112, 112, 0.37);
+    width: 160px;
+    height: 160\px;
+    box-shadow: -3px 3px 4px rgba(0, 0, 0, 0.16);
+}
+
+img {
+    display: flexbox;
+    position: relative;
+    border-radius: 200px;;
+    width: 50px;
+    margin: auto;
+    opacity: .8;
+
+}
+
+.row {
+    padding: 20px 0;
+}
+

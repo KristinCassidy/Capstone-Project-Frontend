@@ -12,6 +12,8 @@ import { CreateCollectionComponent } from './create-collection/create-collection
 import { AddCoreComponent } from './add-core/add-core.component';
 import { CreatePlaylistComponent } from './create-playlist/create-playlist.component';
 import { PlaylistService } from './playlist.service';
+import { AddMediaModalComponent } from './add-media-modal/add-media-modal.component';
+import { AddMoreMediaComponent } from './add-more-media/add-more-media.component';
 
 
 @NgModule({
@@ -22,7 +24,9 @@ import { PlaylistService } from './playlist.service';
     SidebarComponent,
     CreateCollectionComponent,
     AddCoreComponent,
-    CreatePlaylistComponent
+    CreatePlaylistComponent,
+    AddMediaModalComponent,
+    AddMoreMediaComponent
   ],
   imports: [
     BrowserModule,
