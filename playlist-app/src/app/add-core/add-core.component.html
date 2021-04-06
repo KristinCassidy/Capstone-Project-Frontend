@@ -6,12 +6,11 @@
             <li>Enter Title (this may be changed later)</li>
         </ol>
     </div> -->
-    
+    <app-add-media-menu *ngIf="selected == true" [message]="addMedia"></app-add-media-menu>
     <div class="core-box"> 
-        <a class="add" routerLink="/create-playlist/add-more-media">
-            
+        <a class="add" (click)="onAddMedia();">   
             <div class="core-item">
-                <img src="assets/plus-circle-outline.png" alt="add core">
+                <img [ngStyle]="{ transform: selected == true ? 'rotate(-135deg)': 'none'}" src="assets/plus-circle-outline.png" alt="add core">
             </div>
         </a>
         

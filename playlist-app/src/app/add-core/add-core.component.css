@@ -1,6 +1,7 @@
 .core-box {
     display: flex;
     justify-content: center;
+    
     /* border: solid; */
 }
 
@@ -14,6 +15,10 @@
     box-shadow: -3px 3px 4px rgba(0, 0, 0, 0.16);
 }
 
+/* img:active, img: {
+    transform: rotate(45deg);
+} */
+
 img {
     display: flexbox;
     position: relative;
@@ -21,6 +26,9 @@ img {
     width: 50px;
     margin: auto;
     opacity: .8;
+    transition: all .5s ease-in-out;
+    z-index: 100;
+    cursor: pointer;
 
 }
 
@@ -48,5 +56,5 @@ img {
 }
 
 .media-menu {
-    transform: rotate(90)
+    transform: rotate(45deg);
 }

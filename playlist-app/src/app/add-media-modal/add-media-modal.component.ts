@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-add-media-modal',
@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./add-media-modal.component.css']
 })
 export class AddMediaModalComponent implements OnInit {
-
+  @Input() message: string;
   constructor() { }
 
   ngOnInit(): void {

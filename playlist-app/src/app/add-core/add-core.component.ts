@@ -6,10 +6,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./add-core.component.css']
 })
 export class AddCoreComponent implements OnInit {
+  selected: boolean = false;
+  addMedia: string = "Add Media";
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  onAddMedia() {
+    this.selected = !this.selected;
+  }
 }
