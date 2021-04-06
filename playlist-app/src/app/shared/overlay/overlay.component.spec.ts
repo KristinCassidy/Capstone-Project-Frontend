@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AddMediaMenuComponent } from './add-media-menu.component';
+import { OverlayComponent } from './overlay.component';
 
-describe('AddMediaMenuComponent', () => {
-  let component: AddMediaMenuComponent;
-  let fixture: ComponentFixture<AddMediaMenuComponent>;
+describe('OverlayComponent', () => {
+  let component: OverlayComponent;
+  let fixture: ComponentFixture<OverlayComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AddMediaMenuComponent ]
+      declarations: [ OverlayComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AddMediaMenuComponent);
+    fixture = TestBed.createComponent(OverlayComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

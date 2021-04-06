@@ -15,7 +15,7 @@ import { CreatePlaylistComponent } from './create-playlist/create-playlist.compo
 import { PlaylistService } from './playlist.service';
 import { AddMediaModalComponent } from './add-media-modal/add-media-modal.component';
 import { AddMoreMediaComponent } from './add-more-media/add-more-media.component';
-import { AddMediaMenuComponent } from './add-media-menu/add-media-menu.component';
+import { OverlayComponent } from './shared/overlay/overlay.component';
 
 
 @NgModule({
@@ -29,7 +29,7 @@ import { AddMediaMenuComponent } from './add-media-menu/add-media-menu.component
     CreatePlaylistComponent,
     AddMediaModalComponent,
     AddMoreMediaComponent,
-    AddMediaMenuComponent
+    OverlayComponent
   ],
   imports: [
     BrowserModule,

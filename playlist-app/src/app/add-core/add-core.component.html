@@ -1,19 +1,23 @@
 
 <div class="container-fluid">
-    <!-- <div class="subheader">
-        <h4>Create Playlist</h4>     
-        <ol>
-            <li>Enter Title (this may be changed later)</li>
-        </ol>
-    </div> -->
-    <app-add-media-menu *ngIf="selected == true" [message]="addMedia"></app-add-media-menu>
+    <app-overlay *ngIf="selected == true"></app-overlay>
     <div class="core-box"> 
-        <a class="add" (click)="onAddMedia();">   
+        <a  class="add" (click)="onSelected();onAnimate()">   
             <div class="core-item">
-                <img [ngStyle]="{ transform: selected == true ? 'rotate(-135deg)': 'none'}" src="assets/plus-circle-outline.png" alt="add core">
+                <img  [@coreState]="state" src="assets/plus-circle-outline.png" alt="add core">
             </div>
         </a>
-        
     </div>
-    
+    <div class='i-video' [@iconState]="state">
+        <a><i class="bi bi-camera-reels"></i></a>
+    </div>
+    <div class='i-image' [@iconState]="state">
+        <a><i class="bi bi-image"></i></a>
+    </div>
+    <div class='i-song' [@iconState]="state">
+        <a><i class="bi bi-music-note-beamed"></i></a>
+    </div>
+    <div class='i-quote' [@iconState]="state">
+        <a href=""><i class="bi bi-textarea-t"></i></a>
+    </div>
 </div>

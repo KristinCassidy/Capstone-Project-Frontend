@@ -58,3 +58,41 @@ img {
 .media-menu {
     transform: rotate(45deg);
 }
+
+i {
+    color: rgb(247, 247, 247);
+    font-size: 30px;
+    padding: 5px; 
+}
+
+.i-video {
+    position: fixed;
+    width: 50px;
+    height: 50px;
+    left: 500px;
+    top: 350px;
+}
+
+.i-image {
+    position: fixed;
+    width: 50px;
+    height: 50px;
+    left: 500px;
+    top: 400px;
+}
+
+.i-song {
+    position: fixed;
+    width: 50px;
+    height: 50px;
+    left: 500px;
+    top: 450px;
+}
+
+.i-quote {
+    position: fixed;
+    width: 50px;
+    height: 50px;
+    left: 500px;
+    top: 500px;
+}
