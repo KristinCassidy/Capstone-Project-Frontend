@@ -1,10 +1,9 @@
 
 <div class="container-fluid">
   
-    <a routerLink="/create-playlist/core"><p>next</p></a>
     <div class="pl-form">
         <form [formGroup]="createPlaylistForm" (ngSubmit)="onSubmit()">
-            <div  formGroupName="playlistData">
+            <div formGroupName="playlistData">
                 <div class="row">
                     <div class="col-md-12">
                         <label for="title">Title: </label>
@@ -17,44 +16,54 @@
                                 <span 
                                     *ngIf="!createPlaylistForm.get('playlistData.title').valid && 
                                     createPlaylistForm.get('playlistData.title').touched"
-                                    class="help-block">Please enter a Title!</span>
+                                    class="help-block">Please enter a Title!
+                                </span>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-xs-8" formArrayName="tags">
+                <div class="row" formArrayName="tags">
+
+                    <div class="col-xs-8">
                         <h5>Tags:</h5>
-                        <input 
-                            type="text" 
-                            class="form-control">  
+                     
+                            <!-- <span *ngFor="let tagControl of getControls(); let i = index">
+                                <input 
+                                    class="form-control"
+                                    type="text"
+                                    [formControlName]="i">
+                            </span> -->
+
                     </div>
-                    <div class="col-sm-2">
-                        <div 
-                            class="app-control" 
-                            (click)='onAddTag()'>
-                                <img class="plus" src="assets/add.png" alt="add tag">
-                        </div>
-                    </div>
+                        <!-- <div class="col-sm-2"> -->
+                            <!-- <div 
+                                class="app-control" 
+                                type="button"
+                                (click)='onAddTag()'>
+                                    <img class="plus" src="assets/add.png" alt="add tag">
+                            </div> -->
+                        <!-- </div> -->
+                        <app-tag-form></app-tag-form>
                 </div>
 
-                <div class="row">
-                        <div class="col-xs-12 desc">
-                        <label for="description">Description:</label>
-                    
-                            <textarea 
-                                formControlName="quote"
-                                id="quote"
-                                class="form-control"  
-                                rows="2"></textarea>
-                        </div>
-                        
-                    </div>  
                 
-                <div class="create-btn">
-                    <button class="btn" type="submit">CREATE</button>
-                </div>
+                <div class="row">
+                    <div class="col-xs-12 desc">
+                        <label for="description">Description:</label>
+                            <textarea 
+                                formControlName="desc"
+                                id="desc"
+                                class="form-control"  
+                                rows="2">
+                            </textarea>
+                    </div>       
+                </div>  
+                <!-- <a routerLink="/create-playlist/core"> -->
+                    <div class="create-btn">
+                        <button class="btn" type="submit">CREATE</button>
+                    </div>
+                <!-- </a> -->
             </div>
         </form>
         
     </div>
-
+    
 </div>

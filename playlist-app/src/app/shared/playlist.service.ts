@@ -1,7 +1,13 @@
+import { HttpClient } from "@angular/common/http";
+
 import { Playlist } from './playlist.model';
 import { QuoteItem, SongItem, ImageItem, VideoItem} from './playlist-item.model';
+import { Injectable } from "@angular/core";
 
+@Injectable({providedIn: 'root'})
 export class PlaylistService {
+
+    constructor(public http: HttpClient){}
 
     public playlists: Playlist[] = [
         new Playlist('Test Playlist', 1, 'test description', [
@@ -11,4 +17,17 @@ export class PlaylistService {
             new VideoItem(4,'https://youtu.be/WDlZ_SXx5gA')
         ]),
     ]
+   
+    postPlaylist() {}
+
+    getPlaylist() {}
 }
+
+
+
+
+
+
+   
+
+

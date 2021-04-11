@@ -1,0 +1,32 @@
+.app-control {
+    display: flexbox;
+    vertical-align: middle;
+    border-radius: 200px;
+    width: 30px;
+    height: 30px;
+    border: none;
+    /* box-shadow: -3px 3px; */
+    background-color: none;
+    position: relative;
+}
+
+.plus {
+    width: 30px;
+    /* border: solid 1px; */
+    border-radius: 200px;
+    background-color: rgba(80, 80, 80, 0.386);
+    padding:5px;
+    opacity: 0.8;
+    cursor: pointer;
+    
+}
+
+.plus:hover {
+    opacity: 1;
+}
+
+input, textarea {
+    /* box-shadow: none; */
+   border: none;
+   display: flexbox;
+}

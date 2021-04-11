@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AddCoreComponent } from './add-core.component';
+import { TagFormComponent } from './tag-form.component';
 
-describe('AddCoreComponent', () => {
-  let component: AddCoreComponent;
-  let fixture: ComponentFixture<AddCoreComponent>;
+describe('TagFormComponent', () => {
+  let component: TagFormComponent;
+  let fixture: ComponentFixture<TagFormComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AddCoreComponent ]
+      declarations: [ TagFormComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AddCoreComponent);
+    fixture = TestBed.createComponent(TagFormComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

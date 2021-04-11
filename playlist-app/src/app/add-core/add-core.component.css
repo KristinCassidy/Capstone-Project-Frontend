@@ -29,34 +29,6 @@ img {
     transition: all .5s ease-in-out;
     z-index: 100;
     cursor: pointer;
-
-}
-
-.subheader {
-    display: flexbox;
-    color: rgb(147, 147, 147);
-    letter-spacing: 1px;
-}
-
-.edit-icons {
-    display:flexbox;
-    position: relative;
-}
-
-#addModal {
-    background-color: rgba(0, 0, 0, 0.7);
-    /* animation-name: fade; */
-    transition: all 0.3s;
-    opacity: 0.4;
-
-}
-
-.modal-content {
-    background-color: black;
-}
-
-.media-menu {
-    transform: rotate(45deg);
 }
 
 i {
