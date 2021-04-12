@@ -6,6 +6,7 @@ import { CreateCollectionComponent } from './create-playlist/create-collection/c
 import { AddCoreComponent } from './create-playlist/add-core/add-core.component';
 import { CreatePlaylistComponent } from './create-playlist/create-playlist.component';
 import { AddMoreMediaComponent } from './create-playlist/add-more-media/add-more-media.component';
+import { ViewPlaylistComponent } from './view-playlist/view-playlist.component';
 
 
 const routes: Routes = [
@@ -14,10 +15,11 @@ const routes: Routes = [
   { path: 'create-playlist', component: CreatePlaylistComponent, children: [
     { path: '', component: CreateCollectionComponent, pathMatch: 'full' },
     { path: 'core', component: AddCoreComponent},
-  
-    { path: 'add-more-media', component: AddMoreMediaComponent}
+    { path: 'add-media', component: AddMoreMediaComponent},
+    { path: 'view', component: ViewPlaylistComponent}
   ]},
   // { path: 'core', component: AddCoreComponent}
+  { path: 'view-playlist', component: ViewPlaylistComponent}
 ];
 
 @NgModule({

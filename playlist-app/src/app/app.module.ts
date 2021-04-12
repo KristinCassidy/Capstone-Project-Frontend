@@ -19,6 +19,7 @@ import { PlaylistService } from './shared/playlist.service';
 import { TagFormComponent } from './create-playlist/create-collection/tag-form/tag-form.component';
 import { TagService } from './create-playlist/create-collection/tag-form/tag.service';
 import { AddItemComponent } from './create-playlist/add-item/add-item.component';
+import { ViewPlaylistComponent } from './view-playlist/view-playlist.component';
 
 
 @NgModule({
@@ -34,6 +35,7 @@ import { AddItemComponent } from './create-playlist/add-item/add-item.component'
     OverlayComponent,
     TagFormComponent,
     AddItemComponent,
+    ViewPlaylistComponent,
   ],
   imports: [
     BrowserModule,

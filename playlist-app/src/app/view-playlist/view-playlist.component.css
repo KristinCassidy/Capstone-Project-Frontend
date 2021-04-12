@@ -1,0 +1,34 @@
+.pl-page {
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    position: absolute;
+    bottom: 0;
+    top: 50px;
+    right: 0;
+    left: 70px;
+    z-index: -1;
+    padding: 2em;
+    flex-flow: column;
+}
+
+.subheader {
+    display: flexbox;
+    color: rgb(147, 147, 147);
+    letter-spacing: 1px;
+}
+
+.single-view {
+    display: flex;
+    justify-content: space-evenly;
+    border: solid;
+    margin: 100px 0;
+}
+
+.media-item {
+    display: flexbox;
+
+    width: 15vw;
+    height: 15vw;
+    border: solid;
+    margin: 10px;
+}
