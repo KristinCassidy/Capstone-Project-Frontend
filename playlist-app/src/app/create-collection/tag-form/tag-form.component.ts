@@ -11,6 +11,7 @@ import { TagService } from './tag.service';
 })
 export class TagFormComponent implements OnInit {
   tags: Tag[];
+  tag;
 
   constructor(private tagService: TagService) { }
 
@@ -18,8 +19,11 @@ export class TagFormComponent implements OnInit {
     this.tags = this.tagService.getTags();
   }
 
-  onAddTag(){
-    
+  onAddTag(tag){
+    this.tagService.addTag(tag);
+  }
+  onDelete(index: number) {
+    this.tagService.deleteTag(index);
   }
 
 }

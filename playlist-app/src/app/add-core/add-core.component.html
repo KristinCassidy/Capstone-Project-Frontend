@@ -9,21 +9,25 @@
         <a  class="add" (click)="onSelected(); onAnimate()">   
             <div class="core-item">
                 <img  [@coreState]="state" src="assets/plus-circle-outline.png" alt="add core">
+                <div class="i-menu">
+                    <div 
+                        class='i-video' 
+                        [@iconState]="state">
+                        <a><i class="bi bi-camera-reels"></i></a>
+                    </div>
+                    <div class='i-image' [@iconState]="state">
+                        <a><i class="bi bi-image"></i></a>
+                    </div>
+                    <div class='i-song' [@iconState]="state">
+                        <a><i class="bi bi-music-note-beamed"></i></a>
+                    </div>
+                    <div class='i-quote' [@iconState]="state">
+                        <a href=""><i class="bi bi-textarea-t"></i></a>
+                    </div>
+                </div>
             </div>
         </a>
+
     </div>
-    <div 
-        class='i-video' 
-        [@iconState]="state">
-        <a><i class="bi bi-camera-reels"></i></a>
-    </div>
-    <div class='i-image' [@iconState]="state">
-        <a><i class="bi bi-image"></i></a>
-    </div>
-    <div class='i-song' [@iconState]="state">
-        <a><i class="bi bi-music-note-beamed"></i></a>
-    </div>
-    <div class='i-quote' [@iconState]="state">
-        <a href=""><i class="bi bi-textarea-t"></i></a>
-    </div>
+
 </div>

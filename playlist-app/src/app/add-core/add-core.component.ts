@@ -9,30 +9,30 @@ import { Component, OnInit } from '@angular/core';
 		trigger('iconState', [
 			state('normal', style({
 				opacity: 0.3,
-				transform:'translateX(0px) translateY(0px)',
+				transform:'translateX(-50px) translateY(50px)',
 				'z-index': -1
 			})),
 			state('selected', style({
 				opacity: 1,
-				transform:'translateX(200px) translateY(-160px)',
+				transform:'translateX(10px) translateY(0px)',
 				'z-index': 100
 			})),
 			transition('normal <=> selected', [
 				animate(1000, keyframes([
 					style({
-						transform: 'translateX(0) translateY(0)',
+						transform: 'translateX(-50px) translateY(50px)',
 						opacity: 0,
 						'z-index': -1,
 						offset: 0
 					}),
 					style({
-						transform: 'translateX(200px) translateY(0)',
+						transform: 'translateX(0px) translateY(50px)',
 						opacity: 0.2,
 						'z-index': -1,
 						offset: 0.3
 					}),
 					style({
-						transform: 'translateX(200px) translateY(-160px)',
+						transform: 'translateX(10px) translateY(0px)',
 						opacity: 1,
 						'z-index': 100,
 						offset: 1

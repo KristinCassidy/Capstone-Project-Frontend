@@ -11,7 +11,7 @@
             <div 
                 class="app-control" 
                 type="button"
-                (click)='onAddTag()'>
+                (click)='onAddTag(tag)'>
                     <img class="plus" src="assets/add.png" alt="add tag">
             </div>
         </div>
@@ -19,6 +19,7 @@
         <a *ngFor="let tag of tags; let i = index">
             <span class="badge bg-secondary">
                 {{ tag.name }}
+                <i class="bi bi-x-circle"></i>
             </span>
         </a>
     </div>
