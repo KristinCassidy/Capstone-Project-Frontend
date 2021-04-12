@@ -1,5 +1,5 @@
 
-import { Tag } from '../../shared/tag.model';
+import { Tag } from '../../../shared/tag.model';
 
 export class TagService {
     private tags: Tag[] = [

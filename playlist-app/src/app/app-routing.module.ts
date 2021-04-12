@@ -2,10 +2,10 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { SplashComponent } from './splash/splash.component';
-import { CreateCollectionComponent } from './create-collection/create-collection.component';
-import { AddCoreComponent } from './add-core/add-core.component';
+import { CreateCollectionComponent } from './create-playlist/create-collection/create-collection.component';
+import { AddCoreComponent } from './create-playlist/add-core/add-core.component';
 import { CreatePlaylistComponent } from './create-playlist/create-playlist.component';
-import { AddMoreMediaComponent } from './add-more-media/add-more-media.component';
+import { AddMoreMediaComponent } from './create-playlist/add-more-media/add-more-media.component';
 
 
 const routes: Routes = [

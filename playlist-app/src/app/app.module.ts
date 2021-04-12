@@ -9,16 +9,16 @@ import { AppComponent } from './app.component';
 import { SplashComponent } from './splash/splash.component';
 import { HeadbarComponent } from './headbar/headbar.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
-import { CreateCollectionComponent } from './create-collection/create-collection.component';
-import { AddCoreComponent } from './add-core/add-core.component';
+import { CreateCollectionComponent } from './create-playlist/create-collection/create-collection.component';
+import { AddCoreComponent } from './create-playlist/add-core/add-core.component';
 import { CreatePlaylistComponent } from './create-playlist/create-playlist.component';
 
-import { AddMoreMediaComponent } from './add-more-media/add-more-media.component';
+import { AddMoreMediaComponent } from './create-playlist/add-more-media/add-more-media.component';
 import { OverlayComponent } from './shared/overlay/overlay.component';
 import { PlaylistService } from './shared/playlist.service';
-import { TagFormComponent } from './create-collection/tag-form/tag-form.component';
-import { TagService } from './create-collection/tag-form/tag.service';
-import { AddItemComponent } from './add-item/add-item.component';
+import { TagFormComponent } from './create-playlist/create-collection/tag-form/tag-form.component';
+import { TagService } from './create-playlist/create-collection/tag-form/tag.service';
+import { AddItemComponent } from './create-playlist/add-item/add-item.component';
 
 
 @NgModule({
