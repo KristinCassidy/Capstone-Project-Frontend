@@ -1,0 +1,78 @@
+.core-box {
+    display: flex;
+    justify-content: center;
+    
+    /* border: solid; */
+}
+
+.core-item {
+    display: flex;
+    background-color: rgb(255, 255, 255);
+    border-radius: 10px;
+    border: .2px solid rgba(112, 112, 112, 0.37);
+    width: 200px;
+    height: 200px;
+    box-shadow: -3px 3px 4px rgba(0, 0, 0, 0.16);
+}
+
+/* img:active, img: {
+    transform: rotate(45deg);
+} */
+
+img {
+    display: flexbox;
+    position: relative;
+    border-radius: 200px;;
+    width: 50px;
+    margin: auto;
+    opacity: .8;
+    transition: all .5s ease-in-out;
+    z-index: 100;
+    cursor: pointer;
+}
+
+i {
+    color: rgb(247, 247, 247);
+    font-size: 30px;
+    padding: 5px; 
+}
+
+.i-video {
+    position: absolute;
+    /* right: 100px; */
+
+    /* width: 50px;
+    height: 50px;
+    left: 500px; */
+    /* top: 100px; */
+}
+
+.i-image {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    top: 150px;
+}
+
+.i-song {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    top: 100px;
+}
+
+.i-quote {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    top: 50px;
+}
+
+.i-menu {
+    display: flex;
+    /* justify-content:left; */
+    position: relative;
+    left: 50px;
+    
+
+}

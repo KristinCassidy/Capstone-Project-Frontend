@@ -1,13 +1,7 @@
-
 <div class="container-fluid">
-    <div>
-        <!-- {{ playlistData.title }} -->
-        <!-- <h3>Title</h3> -->
-        
-    </div>
-    <app-overlay *ngIf="selected == true"></app-overlay>
+<app-overlay *ngIf="selected == true"></app-overlay>
     <div class="core-box"> 
-      
+    
         <a  class="add" (click)="onSelected(); onAnimate()">   
             <div class="core-item">
                 <img  [@coreState]="state" src="assets/plus-circle-outline.png" alt="add core">
@@ -28,6 +22,4 @@
             </div>
         </a>
     </div>
-
 </div>
-<a routerLink="../add-more-media"><button>next</button></a>

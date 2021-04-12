@@ -18,6 +18,7 @@ import { OverlayComponent } from './shared/overlay/overlay.component';
 import { PlaylistService } from './shared/playlist.service';
 import { TagFormComponent } from './create-collection/tag-form/tag-form.component';
 import { TagService } from './create-collection/tag-form/tag.service';
+import { AddItemComponent } from './add-item/add-item.component';
 
 
 @NgModule({
@@ -32,6 +33,7 @@ import { TagService } from './create-collection/tag-form/tag.service';
     AddMoreMediaComponent,
     OverlayComponent,
     TagFormComponent,
+    AddItemComponent,
   ],
   imports: [
     BrowserModule,

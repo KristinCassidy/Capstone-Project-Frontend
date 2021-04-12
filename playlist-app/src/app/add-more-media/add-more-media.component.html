@@ -1,54 +1,27 @@
 <div class="container-fluid">
-   <div class="container">
-    <div class="row">
-    <!-- <div class="col-xs-1"></div> -->
-        <div class="col-xs-4">
-            <div class="core-box"> 
-                <a class="add" routerLink="/"> 
-                    <div class="core-item">
-                        <img src="assets/plus-circle-outline.png" alt="add core">
-                    </div>
-                </a>
+    <app-overlay *ngIf="selected == true"></app-overlay>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-4">
+                <app-add-item></app-add-item>
             </div>
-       </div>
-       <div class="col-xs-4"></div>
-       <div class="col-xs-4">
-            <div class="core-box"> 
-                <a class="add" routerLink="/"> 
-                    <div class="core-item">
-                        <img src="assets/plus-circle-outline.png" alt="add core">
-                    </div>
-                </a>
+            <div class="col-xs-4"></div>
+            <div class="col-xs-4">
+                <app-add-item></app-add-item>
             </div>
         </div>
-        <!-- <div class="col-xs-1"></div> -->
-    </div>
-    <div class="row">
-        <app-add-core></app-add-core>
-    </div>
-    <div class="row">
-        <!-- <div class="col-xs-1"></div> -->
-        <div class="col-xs-4">
-            <div class="core-box"> 
-                <a class="add" routerLink="/"> 
-                    <div class="core-item">
-                        <img src="assets/plus-circle-outline.png" alt="add core">
-                    </div>
-                </a>
+        <div class="row">
+            <app-add-core></app-add-core>
+        </div>
+        <div class="row">
+            <div class="col-xs-4">
+                <app-add-item></app-add-item>
             </div>
-       </div>
-       <div class="col-xs-4"></div>
-       <div class="col-xs-4">
-            <div class="core-box"> 
-                <a class="add" routerLink="/"> 
-                    <div class="core-item">
-                        <img src="assets/plus-circle-outline.png" alt="add core">
-                    </div>
-                </a>
+            <div class="col-xs-4"></div>
+            <div class="col-xs-4">
+                <app-add-item></app-add-item>
             </div>
         </div>
-        <!-- <div class="col-xs-1"></div> -->
-    </div>
    </div>
 </div>
 
