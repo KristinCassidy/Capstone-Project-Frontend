@@ -1,10 +1,10 @@
-.core-box {
+/* .core-box {
     display: flex;
     justify-content:space-around;
     align-content: space-around;
-}
+} */
 
-.core-item {
+/* .core-item {
     display: flex;
     flex-direction: row;
     background-color: rgb(255, 255, 255);
@@ -13,20 +13,19 @@
     width: 160px;
     height: 160px;
     box-shadow: -3px 3px 4px rgba(0, 0, 0, 0.16);
-}
+} */
 
-img {
+/* img {
     display: flexbox;
     position: relative;
     border-radius: 200px;;
     width: 50px;
     margin: auto;
     opacity: .8;
-
-}
+} */
 
 .row {
-    padding: 20px 0;
+    padding: 10px 0;
 }
 
 .container {
