@@ -37,7 +37,7 @@ export class TagFormComponent implements OnInit, OnDestroy {
     const value = form.value;
     const newTag = new Tag(null, value.tagName);
     this.tagService.addTag(newTag);
-    console.log(newTag)
+    form.reset();
   }
 
   onDelete(index: number) {

@@ -69,6 +69,7 @@ input, textarea {
     display: flex;
     position: relative;
     align-items: center;
+    padding-top: 13px;
     /* padding-bottom: 15px; */
     /* align-content:space-between; */
     

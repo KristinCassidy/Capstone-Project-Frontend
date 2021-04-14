@@ -32,7 +32,7 @@
         <a *ngFor="let tag of tags; let i = index">
             <span class="badge bg-secondary">
                 {{ tag.name }}
-                <i class="bi bi-x-circle"></i>
+                <i (click)="onDelete(i)" class="bi bi-x-circle"></i>
             </span>
         </a>
     </div>

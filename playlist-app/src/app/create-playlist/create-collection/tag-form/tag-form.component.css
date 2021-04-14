@@ -1,6 +1,6 @@
 .app-control {
     display: flexbox;
-    vertical-align: middle;
+    /* vertical-align: middle; */
     border-radius: 200px;
     width: 30px;
     height: 30px;
@@ -8,6 +8,7 @@
     /* box-shadow: -3px 3px; */
     background-color: none;
     position: relative;
+    top: 26px;
 }
 
 .plus {
@@ -18,7 +19,6 @@
     padding:5px;
     opacity: 0.8;
     cursor: pointer;
-    
 }
 
 .plus:hover {
@@ -31,7 +31,10 @@ input, textarea {
    display: flexbox;
 }
 
-/* i {
-    color:
-    
-} */
+.badge {
+    margin: 2px;
+}
+
+i {
+    cursor: pointer;
+}

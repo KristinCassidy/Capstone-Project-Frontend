@@ -3,6 +3,7 @@ import { Tag } from '../../../shared/tag.model';
 
 export class TagService {
     tagChanged = new Subject<Tag[]>();
+    removeTag = new Subject<number>();
     private tags: Tag[] = [
         new Tag(0, 'music'),
         new Tag(1, 'art')
@@ -20,6 +21,7 @@ export class TagService {
 
     deleteTag(index: number) {
         this.tags.splice(index, 1);
+        this.tagChanged.next(this.tags.slice());
     }
 
 
