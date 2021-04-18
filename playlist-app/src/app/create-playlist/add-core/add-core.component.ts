@@ -1,5 +1,5 @@
 import { animate, keyframes, state, style, transition, trigger } from '@angular/animations';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   	selector: 'app-add-core',
@@ -15,7 +15,7 @@ import { Component, OnInit } from '@angular/core';
 			state('selected', style({
 				opacity: 1,
 				transform:'translateX(10px) translateY(0px)',
-				'z-index': 100
+				'z-index': 60
 			})),
 			transition('normal <=> selected', [
 				animate(1000, keyframes([
@@ -34,7 +34,7 @@ import { Component, OnInit } from '@angular/core';
 					style({
 						transform: 'translateX(10px) translateY(0px)',
 						opacity: 1,
-						'z-index': 100,
+						'z-index': 60,
 						offset: 1
 					}),
 
@@ -44,21 +44,25 @@ import { Component, OnInit } from '@angular/core';
 		trigger('coreState', [
 			state('normal', style({
 			  	transform:'rotate(0deg)',
-			  	'z-index': 100
+			  	'z-index': 60
 			})),
 			state('selected', style({
 			  	opacity: 1,
 			 	transform:'rotate(-45deg)',
-			  	'z-index': 100
+			  	'z-index': 60
 			})),
 			transition('normal => selected', animate(1000))
 		])
-	]
-  	
+	]	
 })
+
 export class AddCoreComponent implements OnInit {
   selected: boolean = false;
   state: string = "normal";
+
+  videoMenu: boolean = false;
+  @Input() showModal: boolean = false;
+  uploadType: string;
 
   constructor() { }
 
@@ -72,6 +76,8 @@ export class AddCoreComponent implements OnInit {
   onSelected() {
 	this.selected = !this.selected;
   }
-
+  onModalMenu() {
+	  this.showModal = null;
+  }
 
 }

@@ -16,7 +16,7 @@ export class CreateCollectionComponent implements OnInit {
 		this.createPlaylistForm = new FormGroup({
 			playlistData: new FormGroup ({
 				'title': new FormControl('New Playlist', Validators.required),
-				'tags': new FormArray([new FormControl(null, Validators.required)]),
+				// 'tags': new FormArray([new FormControl(null, Validators.required)]),
 				'desc': new FormControl(null)
 			}),
 			// playlistMedia: new FormGroup ({
@@ -31,15 +31,15 @@ export class CreateCollectionComponent implements OnInit {
 		});
 	}
 
-	onAddTag() {
-		const tagControl = new FormControl(null, Validators.required);
-		(<FormArray>this.createPlaylistForm.get('playlistData.tags')).push(tagControl);
-	}
+	// onAddTag() {
+	// 	const tagControl = new FormControl(null, Validators.required);
+	// 	(<FormArray>this.createPlaylistForm.get('playlistData.tags')).push(tagControl);
+	// }
 
-	getControls() {
-		return (<FormArray>this.createPlaylistForm.get('playlistData.tags')).controls;
+	// getControls() {
+		// return (<FormArray>this.createPlaylistForm.get('playlistData.tags')).controls;
 		// (this.createPlaylistForm.get('playlistData.tags')as FormArray).controls;
-	}
+	// }
 
 	onSubmit() {
 		console.log(this.createPlaylistForm.value);

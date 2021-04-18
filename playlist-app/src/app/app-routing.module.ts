@@ -7,6 +7,10 @@ import { AddCoreComponent } from './create-playlist/add-core/add-core.component'
 import { CreatePlaylistComponent } from './create-playlist/create-playlist.component';
 import { AddMoreMediaComponent } from './create-playlist/add-more-media/add-more-media.component';
 import { ViewPlaylistComponent } from './view-playlist/view-playlist.component';
+import { AddQuoteComponent } from './shared/modal/add-quote/add-quote.component';
+import { AddVideoComponent } from './shared/modal/add-video/add-video.component';
+import { AddSongComponent } from './shared/modal/add-song/add-song.component';
+import { AddImageComponent } from './shared/modal/add-image/add-image.component';
 
 
 const routes: Routes = [
@@ -14,7 +18,13 @@ const routes: Routes = [
   { path: 'splash', component: SplashComponent},
   { path: 'create-playlist', component: CreatePlaylistComponent, children: [
     { path: '', component: CreateCollectionComponent, pathMatch: 'full' },
-    { path: 'core', component: AddCoreComponent},
+    { path: 'core', component: AddCoreComponent, children: [
+      { path: 'video', component: AddVideoComponent},
+      { path: 'quote', component: AddQuoteComponent },
+      { path: 'song', component: AddSongComponent},
+      { path: 'image', component: AddImageComponent},
+      // { path: 'video', component: }
+    ]},
     { path: 'add-media', component: AddMoreMediaComponent},
     { path: 'view', component: ViewPlaylistComponent}
   ]},

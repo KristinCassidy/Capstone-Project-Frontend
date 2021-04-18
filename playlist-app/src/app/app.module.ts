@@ -20,6 +20,11 @@ import { TagFormComponent } from './create-playlist/create-collection/tag-form/t
 import { TagService } from './create-playlist/create-collection/tag-form/tag.service';
 import { AddItemComponent } from './create-playlist/add-item/add-item.component';
 import { ViewPlaylistComponent } from './view-playlist/view-playlist.component';
+import { ModalComponent } from './shared/modal/modal.component';
+import { AddQuoteComponent } from './shared/modal/add-quote/add-quote.component';
+import { AddVideoComponent } from './shared/modal/add-video/add-video.component';
+import { AddImageComponent } from './shared/modal/add-image/add-image.component';
+import { AddSongComponent } from './shared/modal/add-song/add-song.component';
 
 
 @NgModule({
@@ -36,6 +41,11 @@ import { ViewPlaylistComponent } from './view-playlist/view-playlist.component';
     TagFormComponent,
     AddItemComponent,
     ViewPlaylistComponent,
+    ModalComponent,
+    AddQuoteComponent,
+    AddVideoComponent,
+    AddImageComponent,
+    AddSongComponent,
   ],
   imports: [
     BrowserModule,
