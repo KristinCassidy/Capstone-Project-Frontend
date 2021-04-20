@@ -8,9 +8,20 @@
     z-index: 50;
 }
 
+/* .modal-page {
+    position: fixed;
+    display: flex;
+    z-index: 100;
+    background: rgba(128, 255, 0, 0.981);
+    align-content: flex-start;
+    justify-content: center;
+} */
+
+
 .modal-box {
-    position: absolute;
-    /* display: flex; */
+    position: fixed;
+    display: flexbox;
+
     /* top: 20vh; */
     /* left: 30vw; */
     width: 40vw;

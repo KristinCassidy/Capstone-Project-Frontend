@@ -1,0 +1,45 @@
+
+<div class="container-fluid">
+    <div class="tags-page">
+        <app-tag-form></app-tag-form>
+        <div class="row">
+            <div class="col-xs-12">
+                <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+                    <div class="row">
+                        <div class="col-xs-8 form-group">
+                            <label for="tag">Tags:</label>
+                            <input 
+                                type="text"
+                                id="tag"
+                                class="form-control"
+                                name="tagName"
+                                ngModel
+                                required>
+                        </div>
+                        <div class="col-sm-2">
+                            <button 
+                                class="app-control" 
+                                type="submit"
+                                [disabled]="!f.valid"
+                                >
+                                    <img class="plus" src="assets/add.png" alt="add tag">
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        <hr >
+        <!-- <button>Add Tags to Library</button> -->
+        <hr>
+            <div>
+                <span 
+                    class="badge badge-dark"
+                    *ngFor="let tag of tags; let i = index"
+                    (click)="onEditTag(i)">
+                    <!-- <h6>{{ keyword | uppercase }}</h6> -->
+                    <h5 >{{ tag.name }}</h5>
+                </span>
+            </div>
+    </div>
+</div>
+

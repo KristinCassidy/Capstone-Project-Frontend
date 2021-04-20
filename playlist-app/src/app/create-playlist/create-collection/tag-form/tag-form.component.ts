@@ -16,6 +16,9 @@ export class TagFormComponent implements OnInit, OnDestroy {
   private tagChangedSub: Subscription;
   tag;
 
+  subscription: Subscription;
+  editMode = false;
+
   constructor(private tagService: TagService) { }
 
   ngOnInit(): void {
@@ -26,6 +29,12 @@ export class TagFormComponent implements OnInit, OnDestroy {
           this.tags = tags;
         }
       );
+    this.subscription = this.tagService.startedEditing
+        .subscribe(
+          (index: number) => {
+            this.editMode = true;
+          }
+        )
   }
 
   ngOnDestroy(): void {
@@ -42,6 +51,16 @@ export class TagFormComponent implements OnInit, OnDestroy {
 
   onDelete(index: number) {
     this.tagService.deleteTag(index);
+  }
+
+  pushToLibrary() {
+    const newTags = this.tagService.getTags();
+    newTags.forEach(
+      (tag: Tag ) => {
+        this.tagService.addToTagLibrary(tag);
+      }
+    )
+    
   }
 
 }

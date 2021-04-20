@@ -1,5 +1,10 @@
 <div class="container-fluid">
-    <app-overlay *ngIf="selected == true"></app-overlay>
+    <div>
+        <!-- {{ playlistData.title }} -->
+        <!-- <h3>Title</h3> -->
+    </div>
+    <app-overlay *ngIf="selected"></app-overlay>
+    <app-modal *ngIf="showModal" (close)="onModalMenu()"></app-modal>
     <div class="container">
         <div class="row">
             <div class="col-xs-4">

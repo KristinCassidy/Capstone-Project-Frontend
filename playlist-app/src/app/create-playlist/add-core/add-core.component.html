@@ -15,19 +15,19 @@
                 <div class="i-menu">
 
                     <div class='i-video' [@iconState]="state">
-                        <a routerLink="video"><i class="bi bi-camera-reels"
+                        <a routerLink="/video"><i class="bi bi-camera-reels"
                             (click)="uploadType = 'video'; showModal = true"></i></a>
                     </div>
                     <div class='i-image' [@iconState]="state">
-                        <a routerLink="image"> <i class="bi bi-image"
+                        <a routerLink="/image"> <i class="bi bi-image"
                             (click)="uploadType = 'image'; showModal = true"></i></a>
                     </div>
                     <div class='i-song' [@iconState]="state">
-                        <a routerLink="song"><i class="bi bi-music-note-beamed"
+                        <a routerLink="/song"><i class="bi bi-music-note-beamed"
                             (click)="uploadType = 'song'; showModal = true"></i></a>
                     </div>
                     <div class='i-quote' [@iconState]="state">
-                        <a routerLink="quote"><i class="bi bi-textarea-t"
+                        <a routerLink="/quote"><i class="bi bi-textarea-t"
                             (click)="uploadType = 'quote'; showModal = true"></i></a>
                     </div>
                 </div>

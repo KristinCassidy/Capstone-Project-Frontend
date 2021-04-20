@@ -27,14 +27,15 @@ img {
     margin: auto;
     opacity: .8;
     transition: all .5s ease-in-out;
-    z-index: 100;
+    z-index: 60;
     cursor: pointer;
 }
 
 i {
     color: rgb(247, 247, 247);
     font-size: 25px;
-    padding: 5px; 
+    padding: 5px;
+    cursor: pointer;
 }
 
 .i-video {

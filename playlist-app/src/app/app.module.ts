@@ -25,6 +25,7 @@ import { AddQuoteComponent } from './shared/modal/add-quote/add-quote.component'
 import { AddVideoComponent } from './shared/modal/add-video/add-video.component';
 import { AddImageComponent } from './shared/modal/add-image/add-image.component';
 import { AddSongComponent } from './shared/modal/add-song/add-song.component';
+import { TagLibraryComponent } from './create-playlist/create-collection/tag-library/tag-library.component';
 
 
 @NgModule({
@@ -46,6 +47,7 @@ import { AddSongComponent } from './shared/modal/add-song/add-song.component';
     AddVideoComponent,
     AddImageComponent,
     AddSongComponent,
+    TagLibraryComponent,
   ],
   imports: [
     BrowserModule,
