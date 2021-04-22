@@ -3,7 +3,7 @@
   
     <div class="pl-form">
         <form [formGroup]="createPlaylistForm" (ngSubmit)="onSubmit()">
-            <div formGroupName="playlistData">
+            
                 <div class="row">
                     <div class="col-md-12">
                         <label for="title">Title: </label>
@@ -14,33 +14,13 @@
                                 value="New Playlist"
                                 class="form-control"/>
                                 <span 
-                                    *ngIf="!createPlaylistForm.get('playlistData.title').valid && 
-                                    createPlaylistForm.get('playlistData.title').touched"
+                                    *ngIf="!createPlaylistForm.get('title').valid && 
+                                    createPlaylistForm.get('title').touched"
                                     class="help-block">Please enter a Title!
                                 </span>
                     </div>
                 </div>
                 <div class="row tags">
-                    <!-- formArrayName="tags" -->
-                    <!-- <div class="col-xs-8"> -->
-                        <!-- <h5>Tags:</h5> -->
-                     
-                            <!-- <span *ngFor="let tagControl of getControls(); let i = index">
-                                <input 
-                                    class="form-control"
-                                    type="text"
-                                    [formControlName]="i">
-                            </span> -->
-
-                    <!-- </div> -->
-                        <!-- <div class="col-sm-2"> -->
-                            <!-- <div 
-                                class="app-control" 
-                                type="button"
-                                (click)='onAddTag()'>
-                                    <img class="plus" src="assets/add.png" alt="add tag">
-                            </div> -->
-                        <!-- </div> -->
                         <app-tag-form></app-tag-form>
                 </div>
 
@@ -58,9 +38,15 @@
                 </div>  
 
                     <div class="create-btn">
-                        <button class="btn" type="submit">CREATE</button>
+                        <button 
+                            class="btn" 
+                            type="submit"
+                            [disabled]="!createPlaylistForm.valid"
+                            >CREATE</button>
                     </div>
-            </div>
+                     
+            
+           
         </form>
         
     </div>

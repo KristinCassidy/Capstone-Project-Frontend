@@ -12,6 +12,8 @@ import { AddVideoComponent } from './shared/modal/add-video/add-video.component'
 import { AddSongComponent } from './shared/modal/add-song/add-song.component';
 import { AddImageComponent } from './shared/modal/add-image/add-image.component';
 import { TagLibraryComponent } from './create-playlist/create-collection/tag-library/tag-library.component';
+import { ModalComponent } from './shared/modal/modal.component';
+
 
 
 const routes: Routes = [
@@ -24,18 +26,10 @@ const routes: Routes = [
       { path: 'quote', component: AddQuoteComponent },
       { path: 'song', component: AddSongComponent},
       { path: 'image', component: AddImageComponent},
-      // { path: 'video', component: }
     ]},
     { path: 'add-media', component: AddMoreMediaComponent},
-    // children: [
-    //   { path: 'video', component: AddVideoComponent},
-    //   { path: 'quote', component: AddQuoteComponent },
-    //   { path: 'song', component: AddSongComponent},
-    //   { path: 'image', component: AddImageComponent},
-    // ]},
     { path: 'view', component: ViewPlaylistComponent}
   ]},
-  // { path: 'core', component: AddCoreComponent}
   { path: 'view-playlist', component: ViewPlaylistComponent},
   { path: 'tag-library', component: TagLibraryComponent},
 ];

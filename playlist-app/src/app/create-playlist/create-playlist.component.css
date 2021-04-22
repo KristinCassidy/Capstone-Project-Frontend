@@ -21,6 +21,7 @@
     /* display: flex; */
     position: relative;
     margin: 50px;   
+    /* outline:solid black; */
 }
 
 #overlay {

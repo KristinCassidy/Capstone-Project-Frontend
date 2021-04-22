@@ -5,3 +5,16 @@ h4 {
 form {
     margin: 15px;
 }
+
+img {
+   filter: invert(1);
+   padding: 13px 25px;
+}
+
+.preview {
+    /* border: solid; */
+    background-color: rgb(240, 240, 240);
+    /* width: 100%; */
+    margin: 10px 10px 25px 10px;
+    /* height: 200px; */
+}

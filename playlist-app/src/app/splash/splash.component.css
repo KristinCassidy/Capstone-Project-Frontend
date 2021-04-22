@@ -1,0 +1,34 @@
+.splash-page {
+    /* background-color:rgb(255, 255, 255); */
+    display: flex;
+    position: absolute;
+    bottom: 0;
+    top: 50px;
+    right: 0;
+    left: 70px;
+    z-index: -1;
+    padding: 2em;
+    flex-flow: column;
+    text-align: center;
+}
+
+.pl-form {
+    position: relative;
+    background-color: whitesmoke;
+    display: flexbox;
+    padding: 2em 100px 4em 100px;
+    /* max-width: 620px; */
+    /* outline:white solid 1px; */
+    margin-top: 100px;
+   
+}
+
+.btn {
+    margin: 5px;
+    background: white;
+    box-shadow:  -1px 2px 4px rgba(89, 89, 89, 0.618);
+    color: rgb(94, 94, 94);
+    border-radius: unset;
+    border: unset;
+}
+

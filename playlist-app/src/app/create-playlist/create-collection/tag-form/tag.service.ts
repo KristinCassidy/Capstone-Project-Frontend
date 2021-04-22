@@ -31,7 +31,7 @@ export class TagService {
 	addTag(tag: Tag) {
 		this.tags.push(tag);
 		this.tagChanged.next(this.tags.slice());
-		console.log(this.tags)
+		// console.log(this.tags)
 	}
 
 	deleteTag(index: number) {
@@ -42,6 +42,14 @@ export class TagService {
 	// TAG LIBRARY
 	addToTagLibrary(newTag: Tag) {
 		this.tagLibrary.push(newTag);
+		this.tagsChanged.next(this.tagLibrary.slice());
+		// console.log(this.tagLibrary)
+	}
+
+	addTagsToLibrary(newTags: Tag[]) {
+		newTags.forEach( newTag =>
+			(this.tagLibrary.push(newTag))
+		);
 		this.tagsChanged.next(this.tagLibrary.slice());
 		console.log(this.tagLibrary)
 	}

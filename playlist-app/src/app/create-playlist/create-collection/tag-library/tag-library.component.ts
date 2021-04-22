@@ -37,6 +37,7 @@ export class TagLibraryComponent implements OnInit {
 		// this.tags.push(this.tagService.getTags())
 		const value = form.value;
 		const newTag = new Tag(null, value.tagName);
+		// add logic to parse the tag library for duplicate tags
 		this.tagService.addToTagLibrary(newTag);
 		form.reset();
 	}

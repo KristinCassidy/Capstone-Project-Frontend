@@ -8,9 +8,10 @@ export class Playlist {
     public description: string;
     public playlistItems: PlaylistItem[];
 
-    constructor(title: string, id: number, desc: string, playlistItems: PlaylistItem[]) {
+    constructor(title: string, id: number, tags:Tag[], desc: string, playlistItems: PlaylistItem[]) {
         this.title = title;
         this.id = id;
+        this.tags = tags;
         this.description = desc;
         this.playlistItems = playlistItems;
     }

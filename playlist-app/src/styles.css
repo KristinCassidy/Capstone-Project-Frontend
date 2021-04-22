@@ -3,6 +3,18 @@
     font-family: mainFont;
     src: url(/assets/Cicle/Cicle_Semi.ttf);
 }
+
 body {
     background-image: url(/assets/splash-background.png);
 }
+
+
+/* input, textarea {
+
+   border: none;
+   display: flexbox;
+}
+
+input.ng-invalid.ng-touched {
+	border: 1px solid rgb(21, 255, 0);
+} */
