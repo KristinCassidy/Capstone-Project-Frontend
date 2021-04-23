@@ -2,24 +2,32 @@
     <div class="subheader">
         <h4>Create Playlist</h4>     
         <ol>
-            <li>Enter Title (this may be changed later)</li>
-            <li>Add Core media</li>
-            <li>Fill playlist with media!</li>
+            <li role="presentation" routerLinkActive="active">
+                <a routerLink="/create-playlist">Enter Title (this may be changed later)</a>
+            </li>
+            <li role="presentation" routerLinkActive="active">
+                <a routerLink="/create-playlist/core">Add Core media</a>
+            </li>
+            <li role="presentation" routerLinkActive="active">
+                <a routerLink="/create-playlist/add-media">Fill playlist with media!</a>
+            </li>
         </ol>
     </div>
     <div class="create-pl">
-        <div *ngIf="mode != 'dataForm'">
+        <div>
+        <!-- <div *ngIf="mode != 'dataForm'"> -->
             <div>
-                <h3>Title</h3>
-                <p>Description</p>
+                <h3>{{ title }}</h3>
+                <p>{{ description }}</p>
             </div>
-            <div>
-                <h5>Tags</h5>
-                <!-- <h5 *ngFor="tag of tags">{{tag.name}}</h5> -->
-            </div>
+            <span class="badge bg-secondary" *ngFor="let tag of tags">
+                {{ tag.name }}
+            </span>
             
         </div>
+        <div>
             <router-outlet></router-outlet>
+        </div>    
     </div>
 </div>
 

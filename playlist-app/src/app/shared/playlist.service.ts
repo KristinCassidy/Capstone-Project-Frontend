@@ -3,16 +3,18 @@ import { Injectable } from "@angular/core";
 import { Subject } from 'rxjs';
 
 import { Playlist } from './playlist.model';
-import { PlaylistItem } from './playlist-item.model';
-import { QuoteItem, SongItem, ImageItem, VideoItem} from './playlist-item.model';
+import { QuoteItem, SongItem, ImageItem, VideoItem, PlaylistItem} from './playlist-item.model';
 
 
 @Injectable({providedIn: 'root'})
 export class PlaylistService {
 	playlistPostUrl: string;
+	currentPlaylist: Playlist;
+	coreItem: PlaylistItem;
+	public playlistCreated = new Subject<Playlist>();
+	public coreAdded = new Subject<PlaylistItem>();
 
-
-	constructor(public http: HttpClient){}
+	constructor(public http: HttpClient) {}
 
 	public playlists: Playlist[] = [
 		new Playlist('Test Playlist', 1, [],'test description', [
@@ -26,35 +28,55 @@ export class PlaylistService {
 	createPlaylist() {
 		const newPlaylist = new Playlist('title', null, [], 'description', [null, null, null, null]);
 		this.playlists.push(newPlaylist);
-		console.log(this.playlists);
+
+		this.currentPlaylist = newPlaylist;
+		this.playlistCreated.next(this.currentPlaylist);
+		console.log(this.currentPlaylist);
+	}
+
+	addCoreToPlaylist(item: PlaylistItem) {
+		this.currentPlaylist.playlistItems.push(item);
 	}
 
 	addItemToPlaylist() {
-		const media: [] = [];
+		
+		// const media: [] = [];
 		// media.push(item)
 
 		//add media to playlist. Add to an array based on index
 	}
 
 	submitPlaylist() {
-		//save playlist[post to backend], add to playlistgallery, (save as draft option?),
+		//, add to playlistgallery, (save as draft option?),
+		//postPlaylist() {}
 	}
 
-	postPlaylist() {}
+	postPlaylist() {
+		//save playlist[post to backend]
+	}
 
-	getPlaylist() {}
+	getPlaylists() {
+		
+	}
 
-	onCreatePlaylist(postData: Playlist) {
+	getPlaylist() {
+		if (this.currentPlaylist !== null) {
+			return this.currentPlaylist;
+		}
+		
+	}
+
+	// onCreatePlaylist(postData: Playlist) {
 		//send Http request
 		//post to backend
 		//get playlist id
-		this.http.post('this.playlistPostUrl', postData
-		).subscribe(responseData => {
-			console.log(responseData)
-		})
+		// this.http.post('this.playlistPostUrl', postData
+		// ).subscribe(responseData => {
+		// 	console.log(responseData)
+		// })
 		
-		console.log(postData);
-	}
+		// console.log(postData);
+	// }
 }
 
 

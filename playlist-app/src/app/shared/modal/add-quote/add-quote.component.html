@@ -1,20 +1,25 @@
 <div class="container-fluid">
     <h4>{{ menuHeader }}</h4>
     <!-- <br> -->
-    <form>
-        <div class="row">
-            <div class="col-xs-12">
-                <div class="form-group">
-                    <label for="song">Enter Quote</label>
-                        <input 
-                            type="text"
-                            class="form-control">
-                            <textarea name="quote" id="" cols="30" rows="10"></textarea>
+    <div class="container-fluid form-box">
+        <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="form-group">
+                        <textarea 
+                            name="quote" 
+                            rows="10"
+                            class="form-control"
+                            ngModel>
+                        </textarea>
+                    </div>
+                    <button 
+                        class="btn pull-right" 
+                        type="submit"> Save 
+                    </button>
                     
                 </div>
-                <button type="submit"> Save </button>
-                
             </div>
-        </div>
-    </form>
+        </form>
+    </div>
 </div>

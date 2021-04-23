@@ -30,7 +30,6 @@ export class TagLibraryComponent implements OnInit {
 
 	onSubmit(form: NgForm) {
 		this.onAddToLibrary(form);
-
 	}
 
 	onAddToLibrary(form: NgForm) {

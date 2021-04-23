@@ -1,6 +1,8 @@
 import { animate, keyframes, state, style, transition, trigger } from '@angular/animations';
 import { Component, Input, OnInit } from '@angular/core';
 
+import { PlaylistService } from '../../shared/playlist.service';
+
 @Component({
   	selector: 'app-add-core',
   	templateUrl: './add-core.component.html',
@@ -60,13 +62,13 @@ export class AddCoreComponent implements OnInit {
   selected: boolean = false;
   state: string = "normal";
 
-  videoMenu: boolean = false;
   @Input() showModal: boolean = false;
   uploadType: string;
 
-  constructor() { }
+  constructor(private playlistService: PlaylistService) { }
 
   ngOnInit(): void {
+	  this.playlistService.getPlaylist();
   }
 
   onAnimate() {
@@ -76,6 +78,7 @@ export class AddCoreComponent implements OnInit {
   onSelected() {
 	this.selected = !this.selected;
   }
+  
   onModalMenu() {
 	  this.showModal = null;
   }

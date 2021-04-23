@@ -9,12 +9,8 @@ body {
 }
 
 
-/* input, textarea {
 
-   border: none;
-   display: flexbox;
-}
 
 input.ng-invalid.ng-touched {
 	border: 1px solid rgb(21, 255, 0);
-} */
+}
