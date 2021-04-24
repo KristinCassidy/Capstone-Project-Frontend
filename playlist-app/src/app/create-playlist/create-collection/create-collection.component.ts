@@ -4,7 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 
 import { Playlist } from 'src/app/shared/playlist.model';
 import { TagService } from './tag-form/tag.service';
-import { PlaylistService } from '../../shared/playlist.service';
+import { PlaylistService } from '../playlist.service';
 
 
 @Component({
@@ -32,6 +32,7 @@ export class CreateCollectionComponent implements OnInit {
 				'title': 'New Playlist'
 				// if 'New Playlist' has already been UseED, it should add +1 to the end
 		});
+		this.playlistService.fetchPlaylists();
 	}
 
 	onSubmit() {
@@ -49,6 +50,7 @@ export class CreateCollectionComponent implements OnInit {
 		const newPlayList = new Playlist( value.title, null, tags, value.desc, null);
 		this.currentPlaylist = newPlayList;
 		this.playlistService.playlistCreated.next(newPlayList);
+		this.playlistService.postPlaylist(newPlayList);
 		  console.log(newPlayList);
 	  }
 }

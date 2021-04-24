@@ -8,7 +8,7 @@ import { Component, Input, OnInit, Output, EventEmitter} from '@angular/core';
 })
 export class ModalComponent implements OnInit {
   // @Input() menuType: string;
-  @Input() uploadType: string;
+  // @Input() uploadType: string;
   @Output() showModal: boolean;
   @Output() close = new EventEmitter<void>();
 

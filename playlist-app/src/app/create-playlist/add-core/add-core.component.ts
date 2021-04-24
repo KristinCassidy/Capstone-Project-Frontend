@@ -1,7 +1,7 @@
 import { animate, keyframes, state, style, transition, trigger } from '@angular/animations';
 import { Component, Input, OnInit } from '@angular/core';
 
-import { PlaylistService } from '../../shared/playlist.service';
+import { PlaylistService } from '../playlist.service';
 
 @Component({
   	selector: 'app-add-core',

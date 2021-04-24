@@ -10,12 +10,14 @@
                             name="quote" 
                             rows="10"
                             class="form-control"
-                            ngModel>
+                            ngModel
+                            required>
                         </textarea>
                     </div>
                     <button 
                         class="btn pull-right" 
-                        type="submit"> Save 
+                        type="submit"
+                        [disabled]="!f.valid"> Save 
                     </button>
                     
                 </div>

@@ -1,0 +1,63 @@
+<div class="gallery-page">
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header navbar-left">
+                <a class="navbar-brand"
+                    style="padding-left: 1em" >
+                    Playlist Gallery
+                </a>   
+            </div>
+        </div>
+    </nav>
+    <div class="gallery-previews">
+        <!-- <div class="container-fluid"> -->
+            <!-- <div class="row">
+                <div class="col-xs-12"> -->
+                    <p *ngIf="loadedPlaylists.length < 1 && !isFetching">No playlists available!</p>
+
+                    <div *ngIf="loadedPlaylists.length >= 1 && !isFetching">
+                        <div 
+                            class="box" 
+                            *ngFor="let playlist of loadedPlaylists; let i = index"
+                            (click)="onOpenPlaylist(i)">  
+                            <div class="images-box">
+                                <div class="core-img"></div>
+                                <div class="thumbnails">
+                                    <div id="thumb1" class="thumb"></div>
+                                    <div id="thumb2" class="thumb"></div>
+                                    <div id="thumb3" class="thumb"></div>
+                                    <div id="thumb4" class="thumb"></div>
+                                </div>
+                            </div>
+                            <div class="pl-label">
+                                <div class="container-fluid">
+                                    <h4>{{ playlist.title}}</h4>
+                                </div>  
+                            </div>
+                        </div>    
+                    </div>
+                <!-- </div>
+            </div> -->
+            <app-playlist-preview></app-playlist-preview>
+        <!-- </div> -->
+        <div class="row">
+            <div class="col-xs-12 col-md-6 col-md-offset-3">
+                <p *ngIf="loadedPlaylists.length < 1 && !isFetching">No playlists available!</p>
+                <ul class="list-group" *ngIf="loadedPlaylists.length >= 1 && !isFetching">
+                    <li class="list-group-item" *ngFor="let playlist of loadedPlaylists">
+                        <h5>{{ playlist.title }}</h5>
+                        <p>{{ playlist.description }}</p>
+                        <p>
+                            <span class="badge bg-silver" *ngFor="let tag of playlist.tags">{{ tag.name }}</span>
+                        </p>
+                        
+                    </li>
+                </ul>
+                <p *ngIf="isFetching">Loading...</p>
+                <button class="btn btn-default" (click)="onFetchPlaylists()">Fetch Playlists</button> 
+                <button class="btn btn-default" (click)="onClearPlaylists()">Clear All</button>
+            </div>
+        </div>
+    </div>
+    
+</div>

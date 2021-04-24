@@ -5,3 +5,27 @@ h4 {
 form {
     margin: 15px;
 }
+
+.form-box {
+    border: 1px solid white;
+}
+
+img {
+    max-height: 250px;
+    max-width: 350px;
+    margin:2em;
+}
+
+.btn {
+    background-color: rgb(80, 80, 80);
+    color: white;
+}
+
+input, textarea {
+    border: unset;
+    display: flexbox;
+    box-shadow: inset 1px 2px 1px rgba(0, 0, 0, 0.08);
+    width: 100%;
+    /* margin: 0 10px; */
+    
+ }

@@ -15,7 +15,7 @@ import { CreatePlaylistComponent } from './create-playlist/create-playlist.compo
 
 import { AddMoreMediaComponent } from './create-playlist/add-more-media/add-more-media.component';
 import { OverlayComponent } from './shared/overlay/overlay.component';
-import { PlaylistService } from './shared/playlist.service';
+import { PlaylistService } from './create-playlist/playlist.service';
 import { TagFormComponent } from './create-playlist/create-collection/tag-form/tag-form.component';
 import { TagService } from './create-playlist/create-collection/tag-form/tag.service';
 import { AddItemComponent } from './create-playlist/add-item/add-item.component';
@@ -26,6 +26,8 @@ import { AddVideoComponent } from './shared/modal/add-video/add-video.component'
 import { AddImageComponent } from './shared/modal/add-image/add-image.component';
 import { AddSongComponent } from './shared/modal/add-song/add-song.component';
 import { TagLibraryComponent } from './create-playlist/create-collection/tag-library/tag-library.component';
+import { ViewGalleryComponent } from './view-gallery/view-gallery.component';
+import { PlaylistPreviewComponent } from './view-gallery/playlist-preview/playlist-preview.component';
 
 
 @NgModule({
@@ -48,6 +50,8 @@ import { TagLibraryComponent } from './create-playlist/create-collection/tag-lib
     AddImageComponent,
     AddSongComponent,
     TagLibraryComponent,
+    ViewGalleryComponent,
+    PlaylistPreviewComponent,
   ],
   imports: [
     BrowserModule,

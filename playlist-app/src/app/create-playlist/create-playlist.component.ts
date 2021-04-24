@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 
-import { PlaylistService } from '../shared/playlist.service';
+import { PlaylistService } from './playlist.service';
 import { Playlist } from '../shared/playlist.model';
 import { Tag } from '../shared/tag.model';
 import { PlaylistItem } from '../shared/playlist-item.model';
+import { CreatePlaylistService } from './create-playlist.service';
 
 @Component({
   	selector: 'app-create-playlist',
@@ -30,7 +31,8 @@ export class CreatePlaylistComponent implements OnInit {
 	//    show 1. 2. 3.
 	//    display playlist data through string interpolation
 
-  	constructor(private playlistService: PlaylistService) { }
+  	constructor(private playlistService: PlaylistService,
+				private createPlService: CreatePlaylistService) { }
 
 	ngOnInit(): void {
 		// this.mode = 'dataForm';
@@ -45,7 +47,7 @@ export class CreatePlaylistComponent implements OnInit {
 						console.log(this.currentPlaylist);
 					}
 				);
-			this.coreAddedSub = this.playlistService.coreAdded
+			this.coreAddedSub = this.createPlService.coreAdded
 				.subscribe(
 					(item: PlaylistItem) => {
 						this.currentPlaylist.playlistItems.push(item);

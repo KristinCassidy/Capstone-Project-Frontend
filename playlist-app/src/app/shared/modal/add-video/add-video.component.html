@@ -1,23 +1,43 @@
 <div class="container-fluid">
     <h4>{{ menuHeader }}</h4>
     <!-- <br> -->
-    <form>
-        <div class="row">
-            <div class="col-xs-12">
-                <div class="preview">
-                    <img src="assets/video icon.png" alt="thumbnail" class="img-responsive">
-                </div>
-                <div class="form-group">
-                    <label for="video">Paste Url:</label>
-                        <input 
+    <div class="container-fluid">
+        <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="preview">
+                        <img src="assets/video icon.png" alt="thumbnail" class="img-responsive">
+                    </div>
+                    <div class="form-group">
+                        <label for="name">Name:</label>
+                            <input 
                             type="text"
-                            class="form-control">
+                            id="name"
+                            class="form-control"
+                            name="name"
+                            ngModel>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="videoUrl">Paste Url:</label>
+                            <input 
+                                name="videoPath"
+                                type="text"
+                                class="form-control"
+                                ngModel
+                                required>
+                        
+                    </div>
+                    <button 
+                        class="btn pull-right" 
+                        type="submit"
+                        [disabled]="!f.valid"> Save 
+                    </button>
                     
                 </div>
-                <button type="submit"> Save </button>
-                
             </div>
-        </div>
-    </form>
+        </form>
+    </div>
+     
 </div>
 

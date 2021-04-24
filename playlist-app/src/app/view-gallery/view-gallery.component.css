@@ -1,0 +1,112 @@
+.gallery-page {
+    background-color:white;
+    display: flex;
+    position: absolute;
+    bottom: 0;
+    top: 65px;
+    right: 0;
+    left: 70px;
+    z-index: -1;
+    flex-flow: column;
+}
+
+.navbar {
+    /* display: block; */
+    color: rgb(147, 147, 147);
+    letter-spacing: 1px;
+    background-color: whitesmoke;
+    border-radius: unset;
+}
+
+.gallery-previews {
+    margin: 2em;
+    /* outline: solid; */
+    display: flex;
+    /* width: 80%; */
+    height: 80%;
+    /* flex-direction: row; */
+    /* flex-flow: row; */
+    
+}
+
+
+/* Playlist Preview  */
+.box {
+    /* border: solid; */
+    width: 200px;
+    height: 200px;
+    display: flexbox;
+    flex-direction: column;
+    margin: 1em;
+    /* outline: solid; */
+}
+
+.images-box {
+    display: flex;
+    flex-direction: row;
+    border-radius: 15px;
+    /* border: solid rgb(150, 150, 150); */
+}
+
+.core-img {
+    width: 160px;
+    height: 160px;
+    /* border: solid; */
+    background-image: url('/assets/image.png');
+    background-position: center;
+    background-size: cover;
+    display: flexbox;
+    border-radius: 15px 0 0 15px;
+    border: 1px solid rgb(150, 150, 150);
+    
+}
+
+.thumbnails {
+    width: 40px;
+    height: 160px;
+    display: flexbox;
+    border-radius: 0 15px 15px 0;
+}
+
+.thumb {
+    width: 40px;
+    height: 40px;
+    background-image: url('/assets/image.png');
+    background-position: center;
+    background-size: cover;
+    
+    /* border-left: solid white 2px; */
+}
+
+.pl-label {
+    width: 200px;
+    height: 40px;
+    /* background-color: rgb(245, 245, 245); */
+    display: flex;
+    letter-spacing: 1px;
+}
+
+#thumb1 {
+    border-radius: 0 15px 0 0;
+    border: 1px solid rgb(150, 150, 150);
+    border-left: unset;
+    border-bottom: unset;
+}
+
+#thumb2 {
+    border: 1px solid rgb(150, 150, 150);
+    border-left: unset;
+    border-bottom: unset;
+}
+
+#thumb3 {
+    border: 1px solid rgb(150, 150, 150);
+    border-left: unset;
+    border-bottom: unset;
+}
+
+#thumb4 {
+    border-radius: 0 0 15px 0;
+    border: 1px solid rgb(150, 150, 150);
+    border-left: unset;
+}

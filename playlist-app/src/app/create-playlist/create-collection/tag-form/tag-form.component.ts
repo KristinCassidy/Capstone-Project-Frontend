@@ -14,7 +14,7 @@ import { TagService } from './tag.service';
 export class TagFormComponent implements OnInit, OnDestroy {
 	tags: Tag[];
 	private tagChangedSub: Subscription;
-	tag;
+	tag: Tag[];
 
 	subscription: Subscription;
 	editMode = false;
