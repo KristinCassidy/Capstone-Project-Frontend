@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 
-import { QuoteItem }  from '../../../shared/playlist-item.model';
-import { PlaylistService } from '../../../create-playlist/playlist.service';
-import { CreatePlaylistService } from 'src/app/create-playlist/create-playlist.service';
+import { QuoteItem }  from '../../models/playlist-item.model';
+import { PlaylistService } from '../../services/playlist.service';
+import { CreatePlaylistService } from 'src/app/shared/services/create-playlist.service';
 
 
 @Component({

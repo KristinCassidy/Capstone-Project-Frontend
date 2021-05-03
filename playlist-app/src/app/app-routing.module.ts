@@ -14,6 +14,7 @@ import { AddImageComponent } from './shared/modal/add-image/add-image.component'
 import { TagLibraryComponent } from './create-playlist/create-collection/tag-library/tag-library.component';
 import { ModalComponent } from './shared/modal/modal.component';
 import { ViewGalleryComponent } from './view-gallery/view-gallery.component';
+import { PlaylistResolver } from './shared/services/playlist-resolver.service';
 
 
 
@@ -33,7 +34,12 @@ const routes: Routes = [
   ]},
   { path: 'view-playlist', component: ViewPlaylistComponent},
   { path: 'tag-library', component: TagLibraryComponent},
-  { path: 'view-gallery', component: ViewGalleryComponent}
+  { path: 'view-gallery', component: ViewGalleryComponent},
+  { path: 'view-playlist/:id', component: ViewPlaylistComponent, resolve: {playlist: PlaylistResolver} 
+  },
+  
+  { path: '**', redirectTo: '/splash'}
+  
 ];
 
 @NgModule({

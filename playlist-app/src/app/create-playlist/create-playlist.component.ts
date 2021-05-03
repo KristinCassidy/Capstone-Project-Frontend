@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 
-import { PlaylistService } from './playlist.service';
-import { Playlist } from '../shared/playlist.model';
-import { Tag } from '../shared/tag.model';
-import { PlaylistItem } from '../shared/playlist-item.model';
-import { CreatePlaylistService } from './create-playlist.service';
+import { PlaylistService } from '../shared/services/playlist.service';
+import { Playlist } from '../shared/models/playlist.model';
+import { Tag } from '../shared/models/tag.model';
+import { PlaylistItem } from '../shared/models/playlist-item.model';
+import { CreatePlaylistService } from '../shared/services/create-playlist.service';
 
 @Component({
   	selector: 'app-create-playlist',
@@ -13,14 +13,14 @@ import { CreatePlaylistService } from './create-playlist.service';
   	styleUrls: ['./create-playlist.component.css']
 })
 export class CreatePlaylistComponent implements OnInit {
-  	currentPlaylist: Playlist;
+  	private currentPlaylist: Playlist;
   	// mode: string;
-  	private plChangedSub: Subscription;
+  	private playlistStarted: Subscription;
 	private coreAddedSub: Subscription;
 
   	title: string;
-  	tags: Tag[];
-  	description: string;
+	tags: Tag[];
+	description: string;
 
 	//mode=dataForm
 	//    show only "1. Enter title..."
@@ -31,13 +31,12 @@ export class CreatePlaylistComponent implements OnInit {
 	//    show 1. 2. 3.
 	//    display playlist data through string interpolation
 
-  	constructor(private playlistService: PlaylistService,
-				private createPlService: CreatePlaylistService) { }
+  	constructor(private playlistService: PlaylistService) { }
 
 	ngOnInit(): void {
 		// this.mode = 'dataForm';
-		this.currentPlaylist = this.playlistService.getPlaylist();
-			this.plChangedSub = this.playlistService.playlistCreated
+		// this.currentPlaylist = this.playlistService.getPlaylist();
+			this.playlistStarted = this.playlistService.playlistCreated
 				.subscribe(
 					(playlist: Playlist) => {
 						this.currentPlaylist = playlist;
@@ -47,7 +46,7 @@ export class CreatePlaylistComponent implements OnInit {
 						console.log(this.currentPlaylist);
 					}
 				);
-			this.coreAddedSub = this.createPlService.coreAdded
+			this.coreAddedSub = this.playlistService.coreAdded
 				.subscribe(
 					(item: PlaylistItem) => {
 						this.currentPlaylist.playlistItems.push(item);
@@ -57,7 +56,7 @@ export class CreatePlaylistComponent implements OnInit {
 	};
 
 	ngOnDestroy(): void {
-		this.plChangedSub.unsubscribe();
+		this.playlistStarted.unsubscribe();
 		this.coreAddedSub.unsubscribe();
 	};
 

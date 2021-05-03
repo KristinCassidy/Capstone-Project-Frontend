@@ -16,6 +16,8 @@ export class AddVideoComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onSubmit(form:NgForm) {}
+  onSubmit(form:NgForm) {
+    // this.router.navigate(['core'], {relativeTo: this.route});
+  }
 
 }

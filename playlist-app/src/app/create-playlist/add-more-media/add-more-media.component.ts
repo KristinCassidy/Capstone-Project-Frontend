@@ -8,6 +8,7 @@ import { Component, Input, OnInit } from '@angular/core';
 export class AddMoreMediaComponent implements OnInit {
 	selected: boolean = false;
 	state: string = "normal";
+	coreImage: string;
 
 	@Input() showModal: boolean = false;
 	uploadType: string;
@@ -15,6 +16,7 @@ export class AddMoreMediaComponent implements OnInit {
 	constructor() { }
 
 	ngOnInit(): void {
+		
 	}
 
 	onSelected() {

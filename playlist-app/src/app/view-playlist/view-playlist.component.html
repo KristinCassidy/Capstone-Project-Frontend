@@ -1,18 +1,19 @@
 <div class="pl-page">
     <div class="subheader">
-        <h4>Playlist Title</h4>     
+        <h4>{{ playlist.title }}</h4>     
         <ul>
-            <li>description</li>
-            <li>keywords</li>
+            <li>{{ playlist.description}}</li>
+            <li>Tags:
+                <span *ngFor="let tag of playlist.tags" class="badge">{{ tag.name }} </span>
+            </li>
         </ul>
     </div>
     <div class="single-view">
+        <!-- <div class="media-item" style="background-image: url('{{ imagePath }}');"></div> -->
         <div class="media-item"></div>
         <div class="media-item"></div>
         <div class="media-item"></div>
         <div class="media-item"></div>
         <div class="media-item"></div>
-        
     </div>
 </div>
-

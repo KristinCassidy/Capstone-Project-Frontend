@@ -17,6 +17,10 @@
     letter-spacing: 1px;
 }
 
+a {
+    color:rgb(147, 147, 147);
+}
+
 .create-pl {
     /* display: flex; */
     position: relative;
@@ -37,3 +41,8 @@
     z-index: 2;
     cursor: pointer;
 }
+
+
+
+
+

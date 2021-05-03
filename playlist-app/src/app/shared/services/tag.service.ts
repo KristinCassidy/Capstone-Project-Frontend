@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
-import { Tag } from '../../../shared/tag.model';
+import { Tag } from '../models/tag.model';
 
 @Injectable({providedIn: 'root'})
 export class TagService {
@@ -9,34 +9,31 @@ export class TagService {
 	tagsChanged = new Subject<Tag[]>();
 	startedEditing = new Subject<number>();
 	removeTag = new Subject<number>();
-	tagPostUrl: string;
 
-	constructor(public http: HttpClient){}
+	constructor(public http: HttpClient) {}
 	
-	private tags: Tag[] = [
-		new Tag(0, 'music'),
-		new Tag(1, 'art')
-	];
+	private playlistTags: Tag[] = [];
+	private tagLibrary: Tag[] = [];
 
-	private tagLibrary: Tag[] = [
-		new Tag(0, 'noir'),
-		new Tag(1, 'new wave')
-	];
+	setTags(tags: Tag[]) {
+		this.tagLibrary = tags;
+		this.tagsChanged.next(this.tagLibrary.slice());
+	}
 
 	// TAG FORM
 	getTags() {
-		return this.tags.slice();
+		return this.playlistTags.slice();
 	}
 
 	addTag(tag: Tag) {
-		this.tags.push(tag);
-		this.tagChanged.next(this.tags.slice());
+		this.playlistTags.push(tag);
+		this.tagChanged.next(this.playlistTags.slice());
 		// console.log(this.tags)
 	}
 
 	deleteTag(index: number) {
-		this.tags.splice(index, 1);
-		this.tagChanged.next(this.tags.slice());
+		this.playlistTags.splice(index, 1);
+		this.tagChanged.next(this.playlistTags.slice());
 	}
 
 	// TAG LIBRARY
@@ -57,6 +54,8 @@ export class TagService {
 	getTagLibrary() {
 		return this.tagLibrary.slice();
 	}
+
+
 
 
 }

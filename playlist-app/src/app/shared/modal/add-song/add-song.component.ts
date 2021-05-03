@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { SongItem } from '../../playlist-item.model';
+import { SongItem } from '../../models/playlist-item.model';
 
 @Component({
 	selector: 'app-add-song',

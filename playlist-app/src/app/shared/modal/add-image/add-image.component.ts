@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { ImageItem } from '../../playlist-item.model';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ImageItem } from '../../models/playlist-item.model';
+import { PlaylistService } from '../../services/playlist.service';
 
 @Component({
   selector: 'app-add-image',
@@ -11,7 +13,9 @@ import { ImageItem } from '../../playlist-item.model';
 export class AddImageComponent implements OnInit {
   menuHeader: string = 'Add Image:';
 
-  constructor() { }
+  constructor(private route: ActivatedRoute,
+              private router: Router,
+              private playlistService: PlaylistService) { }
 
   ngOnInit(): void {
   }
@@ -19,7 +23,9 @@ export class AddImageComponent implements OnInit {
   onAddImage(form: NgForm) {
     const value = form.value;
     const image = new ImageItem(null, value.imagePath, value.name);
+    this.playlistService.addCoreToPlaylist(image);
     console.log(image);
+    this.router.navigate(['../../add-media'], {relativeTo: this.route});
   }
 
 }

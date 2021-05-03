@@ -6,6 +6,9 @@
 
 body {
     background-image: url(/assets/splash-background.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }
 
 

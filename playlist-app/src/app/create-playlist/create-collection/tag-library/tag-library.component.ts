@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Subscription } from 'rxjs';
-import { Tag } from 'src/app/shared/tag.model';
-import { TagService } from '../tag-form/tag.service';
+import { DataStorageService } from 'src/app/shared/services/data-storage.service';
+import { Tag } from 'src/app/shared/models/tag.model';
+import { TagService } from '../../../shared/services/tag.service';
 
 @Component({
 	selector: 'app-tag-library',
@@ -13,37 +14,63 @@ export class TagLibraryComponent implements OnInit {
 	tag: string;
 	tags: Tag[] = [];
 	editMode = false;
+	loadedTags: Tag[] = [];
+	isFetching = false;
 
 	private tagsChangedSub: Subscription;
 
-	constructor(public tagService: TagService) { }
+	constructor(private tagService: TagService,
+				private storageService: DataStorageService) { }
 
 	ngOnInit(): void {
-		this.tags = this.tagService.getTagLibrary();
-		this.tagsChangedSub = this.tagService.tagsChanged
-			.subscribe(
-		  		(tags: Tag[]) => {
-		    	this.tags = tags;
-		  		}
-			);
+		this.isFetching = true;
+		this.storageService.fetchTags().subscribe(tags => {
+			this.isFetching = false;
+			this.loadedTags = tags;
+		});
+
+		// this.tags = this.tagService.getTagLibrary();
+		// this.tagsChangedSub = this.tagService.tagsChanged
+		// 	.subscribe(
+		//   		(tags: Tag[]) => {
+		//     	this.tags = tags;
+		//   		}
+		// 	);
 	}
 
 	onSubmit(form: NgForm) {
-		this.onAddToLibrary(form);
-	}
-
-	onAddToLibrary(form: NgForm) {
-		// this.tags.push(this.tagService.getTags())
 		const value = form.value;
 		const newTag = new Tag(null, value.tagName);
-		// add logic to parse the tag library for duplicate tags
-		this.tagService.addToTagLibrary(newTag);
+		this.storageService.createAndStoreTag(newTag);
 		form.reset();
 	}
+
+	// onCreateTag(tagData: Tag) {
+	// 	this.storageService.createAndStoreTag(tagData)
+	// 	console.log(tagData);
+	// }
 
 	onEditTag(index: number) {
 		this.tagService.startedEditing.next(index);
 
 	}
+
+	onFetchTags() {
+		this.isFetching = true;
+		this.storageService.fetchTags().subscribe(tags => {
+			this.isFetching = false;
+			this.loadedTags = tags;
+		});
+	}
+
+	onClearTags() {
+		this.storageService.deleteTags().subscribe(() => {
+			this.loadedTags = [];
+		});
+	}
+
+	// onSaveTags() {
+	// 	this.storageService.putTags();
+	// }
 
 }

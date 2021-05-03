@@ -15,9 +15,9 @@ import { CreatePlaylistComponent } from './create-playlist/create-playlist.compo
 
 import { AddMoreMediaComponent } from './create-playlist/add-more-media/add-more-media.component';
 import { OverlayComponent } from './shared/overlay/overlay.component';
-import { PlaylistService } from './create-playlist/playlist.service';
+import { PlaylistService } from './shared/services/playlist.service';
 import { TagFormComponent } from './create-playlist/create-collection/tag-form/tag-form.component';
-import { TagService } from './create-playlist/create-collection/tag-form/tag.service';
+import { TagService } from './shared/services/tag.service';
 import { AddItemComponent } from './create-playlist/add-item/add-item.component';
 import { ViewPlaylistComponent } from './view-playlist/view-playlist.component';
 import { ModalComponent } from './shared/modal/modal.component';
@@ -28,6 +28,7 @@ import { AddSongComponent } from './shared/modal/add-song/add-song.component';
 import { TagLibraryComponent } from './create-playlist/create-collection/tag-library/tag-library.component';
 import { ViewGalleryComponent } from './view-gallery/view-gallery.component';
 import { PlaylistPreviewComponent } from './view-gallery/playlist-preview/playlist-preview.component';
+import { PlaylistResolver } from './shared/services/playlist-resolver.service';
 
 
 @NgModule({
@@ -61,7 +62,7 @@ import { PlaylistPreviewComponent } from './view-gallery/playlist-preview/playli
     HttpClientModule,
     BrowserAnimationsModule
   ],
-  providers: [ PlaylistService, TagService],
+  providers: [ PlaylistService, TagService, PlaylistResolver],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
