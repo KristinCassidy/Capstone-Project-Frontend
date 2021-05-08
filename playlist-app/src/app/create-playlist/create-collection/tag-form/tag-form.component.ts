@@ -14,29 +14,18 @@ import { TagService } from '../../../shared/services/tag.service';
 export class TagFormComponent implements OnInit, OnDestroy {
 	tags: Tag[];
 	private tagChangedSub: Subscription;
-	// tag: Tag[];
-	private playlistTags: Tag[] = [];
-	private tagLibrary: Tag[] = [];
 
 	subscription: Subscription;
-	editMode = false;
 
 	constructor(private tagService: TagService) { }
 
 	ngOnInit(): void {
-		// this.tags = this.tagService.getTags();
 		this.tagChangedSub = this.tagService.tagChanged
 			.subscribe(
 				(tags: Tag[]) => {
 					this.tags = tags;
 				}
 			);
-		// this.subscription = this.tagService.startedEditing
-		//     .subscribe(
-		//       (index: number) => {
-		//         this.editMode = true;
-		//       }
-		//     )
 	}
 
 	ngOnDestroy(): void {

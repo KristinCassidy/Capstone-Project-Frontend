@@ -21,6 +21,7 @@ input.ng-invalid.ng-touched {
 
 .subheader {
     display: flexbox;
+    
     color: rgb(147, 147, 147);
     letter-spacing: 1px;
 }

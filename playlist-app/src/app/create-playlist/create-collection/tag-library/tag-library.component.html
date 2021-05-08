@@ -11,6 +11,7 @@
             <div 
                 class="navbar-right"
                 style="padding-right: 1em">
+                <button class="btn" *ngIf="editMode" (click)="onUpdate()">Update</button> 
                 <button class="btn" (click)="onFetchTags()">Fetch Tags</button> 
                 <button class="btn" (click)="onClearTags()">Clear All</button>
                 <!-- <button class="btn" (click)="onSaveTags()">Save Tags</button> -->

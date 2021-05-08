@@ -29,6 +29,7 @@ import { TagLibraryComponent } from './create-playlist/create-collection/tag-lib
 import { ViewGalleryComponent } from './view-gallery/view-gallery.component';
 import { PlaylistPreviewComponent } from './view-gallery/playlist-preview/playlist-preview.component';
 import { PlaylistResolver } from './shared/services/playlist-resolver.service';
+import { TagsResolver } from './shared/services/tags-resolver.service';
 
 
 @NgModule({
@@ -62,7 +63,7 @@ import { PlaylistResolver } from './shared/services/playlist-resolver.service';
     HttpClientModule,
     BrowserAnimationsModule
   ],
-  providers: [ PlaylistService, TagService, PlaylistResolver],
+  providers: [ PlaylistService, TagService, PlaylistResolver, TagsResolver],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

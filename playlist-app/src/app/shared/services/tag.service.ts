@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 import { Tag } from '../models/tag.model';
@@ -10,15 +10,15 @@ export class TagService {
 	startedEditing = new Subject<number>();
 	removeTag = new Subject<number>();
 
-	constructor(public http: HttpClient) {}
+	constructor() {}
 	
 	private playlistTags: Tag[] = [];
 	private tagLibrary: Tag[] = [];
 
-	setTags(tags: Tag[]) {
-		this.tagLibrary = tags;
-		this.tagsChanged.next(this.tagLibrary.slice());
-	}
+	// setTags(tags: Tag[]) {
+	// 	this.tagLibrary = tags;
+	// 	this.tagsChanged.next(this.tagLibrary.slice());
+	// }
 
 	// TAG FORM
 	getTags() {
@@ -55,7 +55,24 @@ export class TagService {
 		return this.tagLibrary.slice();
 	}
 
+	//TAG LIBRARY -- EDIT
+	// getTag(index: number) {
+	// 	console.log(this.tagLibrary[index]);
+	// 	return this.tagLibrary[index];
 
+	// }
 
+	// updateTag(index: number, newTag: Tag) {
+	// 	this.tagLibrary[index] = newTag;
+	// 	this.tagsChanged.next(this.tagLibrary.slice());
+	// 	console.log(this.tagLibrary.slice())
+	// 	return this.tagLibrary.slice();
+	// }
+	
+	setTags(updatedTags: Tag[]) {
+		this.tagLibrary = updatedTags;
+		this.tagsChanged.next(this.tagLibrary.slice());
+		
+	}
 
 }

@@ -35,4 +35,6 @@ export class ViewPlaylistComponent implements OnInit {
 			}
 		);
 	}
+
+	onEdit(){}
 }

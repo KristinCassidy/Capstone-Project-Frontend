@@ -37,6 +37,7 @@ form {
     padding: 0 1em;
     font-family: mainFont;
     margin: 0.5em;
+    cursor: pointer;
 }
 
 .app-control {

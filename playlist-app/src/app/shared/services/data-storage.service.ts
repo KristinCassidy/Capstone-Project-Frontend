@@ -1,10 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
 
 import { Playlist } from '../models/playlist.model';
 import { Tag } from '../models/tag.model';
 import { PlaylistService } from './playlist.service';
+import { TagService } from './tag.service';
+
 
 @Injectable({
   	providedIn: 'root'
@@ -12,18 +15,36 @@ import { PlaylistService } from './playlist.service';
 export class DataStorageService {
   	tagsUrl: string = 'https://playlist-app-fd53b-default-rtdb.firebaseio.com/tags.json';
   	playlistUrl: string = 'https://playlist-app-fd53b-default-rtdb.firebaseio.com/playlists.json';
+	updateTagsSub: Subscription;
+	loadedTags: Tag[];
+	tagId: string;
 
   	constructor(private http: HttpClient,
-				private playlistService: PlaylistService) { }
+				private playlistService: PlaylistService,
+				private tagService: TagService) { }
 
-  	// putTags() {
-	// 	const tags = this.tagService.getTagLibrary();
-	// 	this.http
-	// 		.put(this.tagsUrl, tags)
-	// 		.subscribe(response => {
-	//   			console.log(response);
-	// 		});
-  	// }
+  	setTags(updatedTags: Tag[]) {
+		  const tags = updatedTags;
+		  this.loadedTags = tags;
+		  this.tagService.tagsChanged.next(tags.slice());
+		  this.http.put(this.tagsUrl, tags).subscribe();
+		// this.tagService.tagsChanged.subscribe(
+			// tags => {
+				// this.http
+					// .post(this.tagsUrl, tags)
+					// .subscribe(response => {
+	  					// console.log(response);
+					// });
+			// }
+		// )
+	}
+
+
+		//set new form value = to tags[index]
+		//return 
+		//set local tags at backend tags
+		// this.tagLibrary[index] = newTag;
+		// this.tagsChanged.next(this.tagLibrary.slice());
 
   	fetchTags() {
 		return this.http
@@ -36,10 +57,32 @@ export class DataStorageService {
 							tagsArray.push({ ...responseData[key], id: key });
 						}	
 					}
-					return tagsArray;
+					return tagsArray.map(tag => {
+						return {
+							...tag,
+							id: tag.id ? tag.id : ''
+						}
+					})
+				}),
+				tap(tags => {
+					this.setTags(tags);
 				})
 			);
   	};
+
+	// getTags() {
+	// 	return this.http.get<{ [key:string]: Tag }>(this.tagsUrl)
+	// 		.pipe(
+	// 			map(responseData => {
+	// 				const tagsArray: Tag[] = [];
+	// 				for (const key in responseData) {
+	// 					tagsArray.push({ ...responseData[key]});
+	// 				}
+	// 				console.log(tagsArray);
+	// 				return tagsArray;
+	// 			})
+	// 		);
+	// }
 
 
 	createAndStoreTag(tagData: Tag) {
@@ -51,6 +94,8 @@ export class DataStorageService {
 	deleteTags() {
 		return this.http.delete(this.tagsUrl);
 	};
+
+
 
 
 	// PLAYLISTS

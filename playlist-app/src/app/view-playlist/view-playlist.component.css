@@ -3,12 +3,16 @@
     display: flex;
     position: absolute;
     bottom: 0;
-    top: 50px;
+    top: 65px;
     right: 0;
     left: 70px;
     z-index: -1;
-    padding: 2em;
+    /* padding: 2em; */
     flex-flow: column;
+}
+
+.media {
+    margin: 3em;
 }
 
 .subheader {
@@ -31,4 +35,26 @@
     height: 15vw;
     border: solid;
     margin: 10px;
+}
+
+nav {
+    /* display: block; */
+    color: rgb(97, 97, 97);;
+    letter-spacing: 1px;
+    /* background-color: rgb(97, 97, 97); */
+    border-radius: unset;
+}
+
+.navbar {
+    color: rgb(147, 147, 147);
+    letter-spacing: 1px;
+    background-color: whitesmoke;
+    border-radius: unset;
+}
+
+.btn {
+    color: rgb(190, 190, 190);
+    background-color:  rgba(27, 27, 27, 0.534);
+    margin: 5px;
+    /* opacity: 0.6; */
 }

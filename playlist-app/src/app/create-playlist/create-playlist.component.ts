@@ -22,19 +22,10 @@ export class CreatePlaylistComponent implements OnInit {
 	tags: Tag[];
 	description: string;
 
-	//mode=dataForm
-	//    show only "1. Enter title..."
-	//mode=addCore
-	//    show 1. 2.
-	//    display playlist data through string interpolation
-	//mode=addMedia
-	//    show 1. 2. 3.
-	//    display playlist data through string interpolation
-
   	constructor(private playlistService: PlaylistService) { }
 
 	ngOnInit(): void {
-		// this.mode = 'dataForm';
+
 		// this.currentPlaylist = this.playlistService.getPlaylist();
 			this.playlistStarted = this.playlistService.playlistCreated
 				.subscribe(

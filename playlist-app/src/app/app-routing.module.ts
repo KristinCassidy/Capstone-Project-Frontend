@@ -15,7 +15,7 @@ import { TagLibraryComponent } from './create-playlist/create-collection/tag-lib
 import { ModalComponent } from './shared/modal/modal.component';
 import { ViewGalleryComponent } from './view-gallery/view-gallery.component';
 import { PlaylistResolver } from './shared/services/playlist-resolver.service';
-
+import { TagsResolver } from './shared/services/tags-resolver.service';
 
 
 const routes: Routes = [
@@ -33,7 +33,8 @@ const routes: Routes = [
     { path: 'view', component: ViewPlaylistComponent}
   ]},
   { path: 'view-playlist', component: ViewPlaylistComponent},
-  { path: 'tag-library', component: TagLibraryComponent},
+  { path: 'tag-library', component: TagLibraryComponent, resolve: {tags: TagsResolver}
+},
   { path: 'view-gallery', component: ViewGalleryComponent},
   { path: 'view-playlist/:id', component: ViewPlaylistComponent, resolve: {playlist: PlaylistResolver} 
   },
