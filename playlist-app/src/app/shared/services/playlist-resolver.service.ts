@@ -15,7 +15,9 @@ export class PlaylistResolver implements Resolve<Playlist>{
   constructor(private playlistService: PlaylistService,
               private storageService: DataStorageService) { }
 
-  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
+  resolve(route: ActivatedRouteSnapshot, 
+          state: RouterStateSnapshot) {
+
     console.log(this.playlistService.currentPlaylist)
     return this.playlistService.currentPlaylist;
   }

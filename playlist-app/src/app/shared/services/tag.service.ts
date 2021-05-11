@@ -69,10 +69,14 @@ export class TagService {
 	// 	return this.tagLibrary.slice();
 	// }
 	
+	// setTags(updatedTags: Tag[]) {
+	// 	this.tagLibrary = updatedTags;
+	// 	this.tagsChanged.next(this.tagLibrary.slice());
+		
+	// }
 	setTags(updatedTags: Tag[]) {
 		this.tagLibrary = updatedTags;
 		this.tagsChanged.next(this.tagLibrary.slice());
-		
-	}
+  }
 
 }

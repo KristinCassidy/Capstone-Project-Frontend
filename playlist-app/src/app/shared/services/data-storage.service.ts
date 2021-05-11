@@ -23,28 +23,11 @@ export class DataStorageService {
 				private playlistService: PlaylistService,
 				private tagService: TagService) { }
 
-  	setTags(updatedTags: Tag[]) {
-		  const tags = updatedTags;
-		  this.loadedTags = tags;
-		  this.tagService.tagsChanged.next(tags.slice());
-		  this.http.put(this.tagsUrl, tags).subscribe();
-		// this.tagService.tagsChanged.subscribe(
-			// tags => {
-				// this.http
-					// .post(this.tagsUrl, tags)
-					// .subscribe(response => {
-	  					// console.log(response);
-					// });
-			// }
-		// )
+  
+
+	putTags(tags: Tag[]) {
+		this.http.put(this.tagsUrl, tags).subscribe();
 	}
-
-
-		//set new form value = to tags[index]
-		//return 
-		//set local tags at backend tags
-		// this.tagLibrary[index] = newTag;
-		// this.tagsChanged.next(this.tagLibrary.slice());
 
   	fetchTags() {
 		return this.http
@@ -57,46 +40,28 @@ export class DataStorageService {
 							tagsArray.push({ ...responseData[key], id: key });
 						}	
 					}
-					return tagsArray.map(tag => {
-						return {
-							...tag,
-							id: tag.id ? tag.id : ''
+					return tagsArray
+					.map(tag => {
+						return { ...tag, id: tag.id ? tag.id : ''
 						}
-					})
-				}),
+					});
+				})
+				,
 				tap(tags => {
-					this.setTags(tags);
+					this.tagService.setTags(tags);
 				})
 			);
   	};
 
-	// getTags() {
-	// 	return this.http.get<{ [key:string]: Tag }>(this.tagsUrl)
-	// 		.pipe(
-	// 			map(responseData => {
-	// 				const tagsArray: Tag[] = [];
-	// 				for (const key in responseData) {
-	// 					tagsArray.push({ ...responseData[key]});
-	// 				}
-	// 				console.log(tagsArray);
-	// 				return tagsArray;
-	// 			})
-	// 		);
-	// }
-
-
 	createAndStoreTag(tagData: Tag) {
 		this.http
 			.post(this.tagsUrl, tagData).subscribe();
+			
 	};
-
 
 	deleteTags() {
 		return this.http.delete(this.tagsUrl);
 	};
-
-
-
 
 	// PLAYLISTS
 	postPlaylist(postData: Playlist) {

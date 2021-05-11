@@ -19,32 +19,31 @@ import { TagsResolver } from './shared/services/tags-resolver.service';
 
 
 const routes: Routes = [
-  { path: '', redirectTo: '/splash', pathMatch: 'full' },
-  { path: 'splash', component: SplashComponent},
-  { path: 'create-playlist', component: CreatePlaylistComponent, children: [
-    { path: '', component: CreateCollectionComponent, pathMatch: 'full' },
-    { path: 'core', component: AddCoreComponent, children: [
-      { path: 'video', component: AddVideoComponent},
-      { path: 'quote', component: AddQuoteComponent },
-      { path: 'song', component: AddSongComponent},
-      { path: 'image', component: AddImageComponent},
-    ]},
-    { path: 'add-media', component: AddMoreMediaComponent},
-    { path: 'view', component: ViewPlaylistComponent}
-  ]},
-  { path: 'view-playlist', component: ViewPlaylistComponent},
-  { path: 'tag-library', component: TagLibraryComponent, resolve: {tags: TagsResolver}
-},
-  { path: 'view-gallery', component: ViewGalleryComponent},
-  { path: 'view-playlist/:id', component: ViewPlaylistComponent, resolve: {playlist: PlaylistResolver} 
-  },
-  
-  { path: '**', redirectTo: '/splash'}
-  
+	{ path: '', redirectTo: '/splash', pathMatch: 'full' },
+	{ path: 'splash', component: SplashComponent},
+	{ path: 'create-playlist', component: CreatePlaylistComponent, children: [
+		{ path: '', component: CreateCollectionComponent, pathMatch: 'full' },
+		{ path: 'core', component: AddCoreComponent, children: [
+			{ path: 'video', component: AddVideoComponent},
+			{ path: 'quote', component: AddQuoteComponent },
+			{ path: 'song', component: AddSongComponent},
+			{ path: 'image', component: AddImageComponent}
+		]},
+		{ path: 'add-media', component: AddMoreMediaComponent},
+		{ path: 'view', component: ViewPlaylistComponent}
+	]},
+	{ path: 'view-playlist', component: ViewPlaylistComponent},
+	{ path: 'tag-library', component: TagLibraryComponent, resolve: {tags: TagsResolver}},
+	{ path: 'tag-library/:id', component: TagLibraryComponent, resolve: {tags: TagsResolver}},
+	{ path: 'view-gallery', component: ViewGalleryComponent},
+	{ path: 'view-playlist/:id', component: ViewPlaylistComponent, resolve: {playlist: PlaylistResolver}},
+	
+	{ path: '**', redirectTo: '/splash'}
+	
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+	imports: [RouterModule.forRoot(routes)],
+	exports: [RouterModule]
 })
 export class AppRoutingModule { }

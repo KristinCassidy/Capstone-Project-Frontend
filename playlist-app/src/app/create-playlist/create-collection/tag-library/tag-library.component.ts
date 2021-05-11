@@ -16,8 +16,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class TagLibraryComponent implements OnInit, OnDestroy {
 	@ViewChild('f', { static: false }) tagForm: NgForm;
-	tag: string;
-	tags: Tag[] = [];
 	editMode = false;
 	editedTagIndex: number;
 	editedTag: Tag;
@@ -36,11 +34,12 @@ export class TagLibraryComponent implements OnInit, OnDestroy {
 
 	ngOnInit(): void {
 		this.isFetching = true;
-		this.getTags();
+		this.onFetchTags();
 		this.tagsChangedSub = this.tagService.tagsChanged.subscribe(
 			(tags: Tag[]) => {
 				this.loadedTags = tags
-			});
+			}
+			);
 		this.editTagSub = this.tagService.startedEditing
 		    .subscribe(
 		      (index: number) => {
@@ -48,35 +47,30 @@ export class TagLibraryComponent implements OnInit, OnDestroy {
 				this.editedTagIndex = index;
 		      }
 		    )
-		
-
-		// this.tags = this.tagService.getTagLibrary();
 	}
-
-	
 
 	onSubmit(form: NgForm) {
 		const value = form.value;
 		if(this.editMode) {
 			this.onUpdate(value.tagName);
 			this.editMode = false;
+			form.reset();
 		} else {
 			const newTag = new Tag(null, value.tagName);
 			this.storageService.createAndStoreTag(newTag);
-			// const tags = this.storageService.fetchTags();
+			form.reset();
 			// this.tagService.tagsChanged.next(this.tags.slice());
-			// this.onFetchTags();
-			// console.log(this.loadedTags.slice())
+			console.log(this.loadedTags.push(newTag))
 			
 		}
-		form.reset();
 	}
 
 			onUpdate(newName: string) {
 				this.editedTag.name = newName;
 				this.loadedTags[this.editedTagIndex] = this.editedTag;
+				
 				this.tagService.tagsChanged.next(this.loadedTags.slice());
-				this.storageService.setTags(this.loadedTags.slice());
+				this.tagService.setTags(this.loadedTags.slice());
 				// this.storageService.updateTag(this.editedTagIndex,this.editedTag);
 				// this.storageService.setTags;
 			}
@@ -94,9 +88,9 @@ export class TagLibraryComponent implements OnInit, OnDestroy {
 	onFetchTags() {
 		this.isFetching = true;
 		this.storageService.fetchTags().subscribe(tags => {
-			this.isFetching = false;
 			this.loadedTags = tags;
 			this.tagService.tagsChanged.next(this.loadedTags.slice())
+			this.isFetching = false;
 		});
 	}
 
@@ -105,17 +99,6 @@ export class TagLibraryComponent implements OnInit, OnDestroy {
 			this.loadedTags = [];
 		});
 	}
-
-	getTags() {
-		this.storageService.fetchTags().subscribe(tagsArray => {
-			this.isFetching = false;
-			this.loadedTags = tagsArray;
-		});	
-	}
-
-	// onSaveTags() {
-	// 	this.storageService.putTags();
-	// }
 
 	ngOnDestroy(): void {
 		this.tagsChangedSub.unsubscribe();
