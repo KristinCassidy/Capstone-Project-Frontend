@@ -72,7 +72,7 @@ export class TagLibraryComponent implements OnInit, OnDestroy {
 				this.tagService.tagsChanged.next(this.loadedTags.slice());
 				this.tagService.setTags(this.loadedTags.slice());
 				// this.storageService.updateTag(this.editedTagIndex,this.editedTag);
-				// this.storageService.setTags;
+				this.storageService.putTags(this.loadedTags.slice());
 			}
 
 	onEditTag(index: number) {
@@ -82,7 +82,6 @@ export class TagLibraryComponent implements OnInit, OnDestroy {
 		this.tagForm.setValue({
 				tagName: this.editedTag.name
 		})
-
 	}
 
 	onFetchTags() {

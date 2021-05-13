@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ImageItem } from '../../models/playlist-item.model';
-import { PlaylistService } from '../../services/playlist.service';
+import { ImageItem } from 'src/app/shared/models/playlist-item.model';
+import { PlaylistService } from 'src/app/shared/services/playlist.service';
+
 
 @Component({
   selector: 'app-add-image',

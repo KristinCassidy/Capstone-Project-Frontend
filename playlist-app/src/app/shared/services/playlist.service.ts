@@ -1,7 +1,6 @@
 import { Injectable } from "@angular/core";
 import { Subject } from 'rxjs';
 
-import { DataStorageService } from "./data-storage.service";
 import { Playlist } from '../models/playlist.model';
 import { PlaylistItem } from "../models/playlist-item.model";
 
@@ -10,23 +9,17 @@ export class PlaylistService {
 	playlistCreated = new Subject<Playlist>();
 	openPlaylist = new Subject<Playlist>();
 	playlistsChanged = new Subject<Playlist[]>();
-
 	coreAdded = new Subject<PlaylistItem>();
+	editMode = new Subject<boolean>();
 
 	constructor() { }
-	// private storageService: DataStorageService
-	private playlistsArray: Playlist[] = [];
-	private playlist: Playlist;
-	currentPlaylist: Playlist;
-	// playlists: Playlist[] = this.storageService.fetchPlaylists();
+		private playlistsArray: Playlist[] = [];
+		private playlist: Playlist;
+		currentPlaylist: Playlist;
 
 	setPlaylists(playlists: Playlist[]) {
 		this.playlistsArray = playlists;
 		this.playlistsChanged.next(this.playlistsArray.slice());
-	}
-
-	getPlaylist(id: string) {
-
 	}
 
 	updatePlaylist(index: number, newPlaylist: Playlist) {
@@ -36,6 +29,7 @@ export class PlaylistService {
 		this.currentPlaylist = newPlaylist;
 		console.log(this.currentPlaylist);
 		this.openPlaylist.next(this.currentPlaylist);
+		this.editMode.next(false);
 		return(this.currentPlaylist);
 	}
 
@@ -43,8 +37,13 @@ export class PlaylistService {
 		this.currentPlaylist.playlistItems.push(item);
 	}
 
-	
+	addItemToArray(item: PlaylistItem) {
+		const playlistItems: PlaylistItem[] = [];
+		playlistItems.push(...playlistItems, item);
+		console.log(playlistItems.slice())
+		return playlistItems.slice();
 
+	}
 }
 
 

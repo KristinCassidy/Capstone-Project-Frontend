@@ -1,5 +1,6 @@
 import { animate, keyframes, state, style, transition, trigger } from '@angular/animations';
 import { Component, Input, OnInit } from '@angular/core';
+import { DataStorageService } from 'src/app/shared/services/data-storage.service';
 
 import { PlaylistService } from '../../shared/services/playlist.service';
 
@@ -65,7 +66,8 @@ export class AddCoreComponent implements OnInit {
   @Input() showModal: boolean = false;
   uploadType: string;
 
-  constructor(private playlistService: PlaylistService) { }
+  constructor(private playlistService: PlaylistService,
+			private storageService: DataStorageService) { }
 
   ngOnInit(): void {
 	//   ng sthis.playlistService.updatePlaylist();

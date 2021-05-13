@@ -54,24 +54,21 @@ export class DataStorageService {
   	};
 
 	createAndStoreTag(tagData: Tag) {
-		this.http
-			.post(this.tagsUrl, tagData).subscribe();
-			
+		this.http.post(this.tagsUrl, tagData).subscribe();	
 	};
 
 	deleteTags() {
 		return this.http.delete(this.tagsUrl);
 	};
 
-	// PLAYLISTS
-	postPlaylist(postData: Playlist) {
+// PLAYLISTS
 		//saves playlist to backend [post to backend]	
-		this.http.post<{ name: string }>(this.playlistUrl, 
-			postData
-			)
+	postPlaylist(postData: Playlist) {
+		this.http
+			.post<{ name: string }>(this.playlistUrl, postData)
 			.subscribe(responseData => {
 				console.log(responseData);
-		});
+			});
 	};
 
 
@@ -79,23 +76,6 @@ export class DataStorageService {
 		//deletes all playlists
 		return this.http.delete(this.playlistUrl);
 	};
-
-
-	// fetchPlaylistObjects() {
-		//fetches all playlists from backend
-	// 	return this.http
-	// 		.get<Playlist[]>(this.playlistUrl)
-	// 		.pipe(
-	// 			map(playlists => {
-	// 				return playlists.map(playlist => {
-	// 					return {
-	// 						...playlist, playlistItems: playlist.playlistItems ? playlist.playlistItems: []
-	// 					};
-	// 				});
-	// 			}),
-			
-	// 		)
-	// };
 
 	fetchPlaylists() {
 		//fetches all playlists from backend
@@ -111,41 +91,29 @@ export class DataStorageService {
 					}
 					// console.log(playlistsArray)
 					return playlistsArray.map(playlist => {
-						return {
-							...playlist, playlistItems: playlist.playlistItems ? playlist.playlistItems: []
-						}
+						return {...playlist, playlistItems: playlist.playlistItems ? playlist.playlistItems: []}
 					})
-				
 				}),
 				tap(playlists => {
-					this.playlistService.setPlaylists(playlists)
+					this.playlistService.setPlaylists(playlists);
 				})
 			)
 	};
 
 
-	fetchPlaylist( key ) {
-		// this.http
-		// 	.get(this.playlistUrl).subscribe(
-		// 		responseData => {
-		// 			console.log(responseData[key])
-		// 		}
-		// 	)
-		
-		// .pipe(
-		// 	map(responseData => {
-		// 		const playlistsArray: Playlist[] = [];
-		// 		for (const key in responseData) {
-		// 			if (responseData.hasOwnProperty(key)) {
-		// 				playlistsArray.push({...responseData[key], id: key });
-		// 			}
-		// 		}
-		// 		console.log(playlistsArray)
-		// 		return playlistsArray;
-			
-		// 	})
-		// )
+	fetchPlaylist( idKey: string ) {
+		const plUrl = `https://playlist-app-fd53b-default-rtdb.firebaseio.com/playlists/${ idKey }.json`;
+		return this.http.get<{ [key: string]: Playlist }>(plUrl);
+	}
 
+	deletePlaylist(idKey: string ) {
+		const plUrl = `https://playlist-app-fd53b-default-rtdb.firebaseio.com/playlists/${ idKey }.json`;
+		return this.http.delete(plUrl);
+	}
+
+	putPlaylist(idKey: string, updatedPlaylist: Playlist) {
+		const plUrl = `https://playlist-app-fd53b-default-rtdb.firebaseio.com/playlists/${ idKey }.json`;
+		return this.http.put(plUrl, updatedPlaylist).subscribe();
 	}
 
 }

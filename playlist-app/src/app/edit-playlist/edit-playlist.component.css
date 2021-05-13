@@ -1,0 +1,113 @@
+.form-page {
+    background-color: rgb(246, 246, 246);
+    display: flex;
+    position: absolute;
+    bottom: 0;
+    top: 50px;
+    right: 0;
+    left: 70px;
+    z-index: -1;
+    padding: 2em;
+    flex-flow: column;
+}
+
+input.ng-invalid.ng-touched {
+	border: 1px solid rgb(21, 255, 0);
+} 
+
+/* form {
+    padding: 2em;
+} */
+
+.subheader {
+    display: flexbox;
+    
+    color: rgb(147, 147, 147);
+    letter-spacing: 1px;
+}
+
+.pl-form {
+    display: flexbox;
+    padding: 2em 100px 4em 100px;
+    max-width: 620px;
+    outline:white solid 1px;
+}
+
+input, textarea {
+     /* box-shadow: none; */
+    border: none;
+    display: flexbox;
+}
+
+.plus {
+    width: 30px;
+    /* border: solid 1px; */
+    border-radius: 200px;
+    background-color: rgba(80, 80, 80, 0.386);
+    padding:5px;
+    opacity: 0.8;
+    cursor: pointer;
+    
+}
+
+.plus:hover {
+    opacity: 1;
+}
+
+.app-control {
+    display: flexbox;
+    vertical-align: middle;
+    border-radius: 200px;
+    width: 30px;
+    height: 30px;
+    border: none;
+    /* box-shadow: -3px 3px; */
+    background-color: none;
+    position: relative;
+}
+
+.tags {
+    display: flex;
+    position: relative;
+    align-items: center;
+    padding-top: 13px;
+    /* padding-bottom: 15px; */
+    /* align-content:space-between; */
+    
+}
+
+.col-sm-2 {
+    display: flexbox;
+    position: relative;
+    top: 37px;
+}
+
+.create-btn {
+    position: relative;
+    display: flexbox;
+    float: right;
+    top: 15px;
+}
+
+.btn {
+    border-radius: 200px 0 0 200px;
+    background-color: rgba(0, 0, 0, 0.673);
+    padding: 14px 20px;
+    color: whitesmoke;
+    font-weight:bold;
+    border: solid white;
+}
+
+.desc {
+    padding-top: 13px;
+}
+
+textarea {
+    min-height: 3em;
+    min-width: 100%;
+    max-width: 100%;
+}
+
+.tag-control {
+    margin: 10px;
+}
