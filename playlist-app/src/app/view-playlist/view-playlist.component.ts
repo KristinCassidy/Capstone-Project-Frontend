@@ -14,7 +14,6 @@ import { PlaylistService } from '../shared/services/playlist.service';
 	styleUrls: ['./view-playlist.component.css']
 })
 export class ViewPlaylistComponent implements OnInit, OnDestroy {
-	// @ViewChild('f', { static: false }) tagForm: NgForm;
 	plChangedSub: Subscription;
 	editModeSub: Subscription;
 	playlists: Playlist[];
@@ -29,9 +28,10 @@ export class ViewPlaylistComponent implements OnInit, OnDestroy {
 	}
 
 	ngOnInit(): void {
+
 		this.editModeSub = this.playlistService.editMode.subscribe(
 			data => {
-			this.editMode = data;
+				this.editMode = data;
 			}
 		);
 		this.storageService.fetchPlaylists().subscribe(
@@ -46,6 +46,9 @@ export class ViewPlaylistComponent implements OnInit, OnDestroy {
 				console.log(data);
 			}
 		);
+		if(!this.playlist){
+			this.router.navigate(['view-gallery'])
+		}
 	}
 
 	onEdit() {

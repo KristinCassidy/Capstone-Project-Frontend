@@ -27,69 +27,73 @@
                                 formControlName="desc"
                                 id="desc"
                                 class="form-control"  
-                                rows="2">
+                                rows="3">
                             </textarea>
                     </div>       
                 </div>  
                 <div class="row tags">
-                    <app-tag-form></app-tag-form>
+                    <app-tag-form [tags]="tags"></app-tag-form>
                 </div>
-                <div class="row">
-                    <div class="col-xs-8">
-                        <label for="description">Item 1:</label>
-                            <input 
-                                type="text" 
-                                id="item1"
-                                formControlName="item1"
-                                class="form-control"/>
-                    </div>       
-                </div>  
 
-                <div class="row">
-                    <div class="col-xs-8">
-                        <label for="description">Item 2:</label>
-                            <input 
-                                type="text" 
-                                id="item2"
-                                formControlName="item2"
-                                class="form-control"/>
-                    </div>       
-                </div> 
+                <!-- <div formControlName="playlistItems">
 
-                <div class="row">
-                    <div class="col-xs-8">
-                        <label for="description">Item 3:</label>
-                            <input 
-                                type="text" 
-                                id="item3"
-                                formControlName="item3"
-                                class="form-control"/>
-                    </div>       
-                </div> 
+                    <div class="row">
+                        <div class="col-xs-8">
+                            <label for="description">Item 1:</label>
+                                <input 
+                                    type="text" 
+                                    id="item1"
+                                    formControlName="item1"
+                                    class="form-control"/>
+                        </div>       
+                    </div>  
 
-                <div class="row">
-                    <div class="col-xs-8">
-                        <label for="description">Item 4:</label>
-                            <input 
-                                type="text" 
-                                id="item4"
-                                formControlName="item4"
-                                class="form-control"/>
-                    </div>       
-                </div> 
+                    <div class="row">
+                        <div class="col-xs-8">
+                            <label for="description">Item 2:</label>
+                                <input 
+                                    type="text" 
+                                    id="item2"
+                                    formControlName="item2"
+                                    class="form-control"/>
+                        </div>       
+                    </div> 
 
-                <div class="row">
-                    <div class="col-xs-8">
-                        <label for="description">Item 5:</label>
-                            <input 
-                                type="text" 
-                                id="item5"
-                                formControlName="item5"
-                                class="form-control"/>
-                    </div>       
-                </div> 
+                    <div class="row">
+                        <div class="col-xs-8">
+                            <label for="description">Item 3:</label>
+                                <input 
+                                    type="text" 
+                                    id="item3"
+                                    formControlName="item3"
+                                    class="form-control"/>
+                        </div>       
+                    </div> 
 
-                <div class="create-btn">
+                    <div class="row">
+                        <div class="col-xs-8">
+                            <label for="description">Item 4:</label>
+                                <input 
+                                    type="text" 
+                                    id="item4"
+                                    formControlName="item4"
+                                    class="form-control"/>
+                        </div>       
+                    </div> 
+
+                    <div class="row">
+                        <div class="col-xs-8">
+                            <label for="description">Item 5:</label>
+                                <input 
+                                    type="text" 
+                                    id="item5"
+                                    formControlName="item5"
+                                    class="form-control"/>
+                        </div>       
+                    </div> 
+                </div> -->
+
+                <div class="update-btn">
                     <button 
                         class="btn" 
                         type="submit"

@@ -1,5 +1,5 @@
 import { Component, Input, OnInit, Output, ViewChild } from '@angular/core';
-import { FormGroup, FormControl, Validators, NgForm } from '@angular/forms';
+import { FormGroup, FormControl, Validators, NgForm, FormArray } from '@angular/forms';
 import { ActivatedRoute, Data, Params, Router } from '@angular/router';
 
 import { Playlist } from 'src/app/shared/models/playlist.model';
@@ -47,45 +47,45 @@ export class EditPlaylistComponent implements OnInit {
 			(data: Data) => {
 				this.playlist = data['playlist'];
 				this.tags = this.playlist.tags;
-				console.log(data);
+				console.log(this.tags);
 			}
 		);
-		this.editPlaylistForm = 
-			new FormGroup({
+		this.editPlaylistForm = new FormGroup({
 				'title': new FormControl(this.playlist.title, Validators.required),
 				'desc': new FormControl(this.playlist.description),
-
-				'item1': new FormControl(this.playlist.playlistItems),
-				'item2': new FormControl(null),
-				'item3': new FormControl(null),
-				'item4': new FormControl(null),
-				'item5': new FormControl(null),
+				'playlistItems': new FormGroup({
+					'item1': new FormControl(null),
+					'item2': new FormControl(null),
+					'item3': new FormControl(null),
+					'item4': new FormControl(null),
+					'item5': new FormControl(null)
+				})
+			
 	 	});
-		// this.storageService.fetchPlaylists();
 	}
 
 	onSubmit() {
 		const tags = this.tagService.getTags();
-			this.tagService.addTagsToLibrary(tags);
+		this.tagService.addTagsToLibrary(tags);
 			tags.forEach(tag =>
 				(this.storageService.createAndStoreTag(tag)));
 
-			this.onUpdate(this.editPlaylistForm);
-			this.playlistService.editMode.next(false);
-
+		this.onUpdate(this.editPlaylistForm.value);
+		this.playlistService.editMode.next(false);
 		}
 
-	onUpdate(form: FormGroup) {
+	onUpdate(form: NgForm) {
 		const value = form.value
 		const tags = this.tagService.getTags();
 		this.playlist = this.playlist[this.id];
-		this.playlist = new Playlist( value.title, this.id, tags, value.desc, value.playlistItems);
-		// this.currentPlaylist = newPlayList;
+		this.playlist = new Playlist( value['title'], this.id, tags, value['desc'],this.playlistItems);
+
 		this.playlistService.playlistCreated.next(this.playlist);
 		this.storageService.putPlaylist(this.id, this.playlist);
 			console.log(this.playlist);
 		}
-
+	
+				
 	//   addTagsToLibrary(newTags: Tag[]) {
 	// 	newTags.forEach( newTag =>
 	// 		(this.tagLibrary.push(newTag))

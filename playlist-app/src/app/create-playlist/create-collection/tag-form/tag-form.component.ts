@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Subscription } from 'rxjs';
 
@@ -12,7 +12,7 @@ import { TagService } from '../../../shared/services/tag.service';
 	host: {'class': 'col-xs-12'}
 })
 export class TagFormComponent implements OnInit, OnDestroy {
-	tags: Tag[];
+	@Input()tags: Tag[];
 	private tagChangedSub: Subscription;
 
 	subscription: Subscription;
