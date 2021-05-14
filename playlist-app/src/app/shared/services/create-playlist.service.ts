@@ -29,5 +29,6 @@ export class CreatePlaylistService {
 		this.currentPlaylist.playlistItems.push(item);
 	}
 
+  
 
 }

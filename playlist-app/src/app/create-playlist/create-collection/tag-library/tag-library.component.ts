@@ -22,8 +22,6 @@ export class TagLibraryComponent implements OnInit, OnDestroy {
 	loadedTags: Tag[] = [];
 	isFetching = false;
 
-	
-
 	constructor(private tagService: TagService,
 				private storageService: DataStorageService,
 				private router: Router,
@@ -39,13 +37,13 @@ export class TagLibraryComponent implements OnInit, OnDestroy {
 			(tags: Tag[]) => {
 				this.loadedTags = tags
 			}
-			);
+		);
 		this.editTagSub = this.tagService.startedEditing
 		    .subscribe(
-		      (index: number) => {
-		        this.editMode = true;
-				this.editedTagIndex = index;
-		      }
+		      	(index: number) => {
+		        	this.editMode = true;
+					this.editedTagIndex = index;
+		      	}
 		    )
 	}
 
@@ -65,15 +63,15 @@ export class TagLibraryComponent implements OnInit, OnDestroy {
 		}
 	}
 
-			onUpdate(newName: string) {
-				this.editedTag.name = newName;
-				this.loadedTags[this.editedTagIndex] = this.editedTag;
-				
-				this.tagService.tagsChanged.next(this.loadedTags.slice());
-				this.tagService.setTags(this.loadedTags.slice());
-				// this.storageService.updateTag(this.editedTagIndex,this.editedTag);
-				this.storageService.putTags(this.loadedTags.slice());
-			}
+	onUpdate(newName: string) {
+		this.editedTag.name = newName;
+		this.loadedTags[this.editedTagIndex] = this.editedTag;
+		
+		this.tagService.tagsChanged.next(this.loadedTags.slice());
+		this.tagService.setTags(this.loadedTags.slice());
+		// this.storageService.updateTag(this.editedTagIndex,this.editedTag);
+		this.storageService.putTags(this.loadedTags.slice());
+	}
 
 	onEditTag(index: number) {
 		this.editMode = true;
@@ -97,6 +95,13 @@ export class TagLibraryComponent implements OnInit, OnDestroy {
 		this.storageService.deleteTags().subscribe(() => {
 			this.loadedTags = [];
 		});
+	}
+
+	onDeleteTag() {
+		this.tagService.deletefromLibrary(this.editedTagIndex);
+		this.storageService.deleteTag(this.editedTag)
+		this.tagForm.reset();
+		this.editMode = false;
 	}
 
 	ngOnDestroy(): void {

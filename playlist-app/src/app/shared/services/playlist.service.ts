@@ -22,7 +22,7 @@ export class PlaylistService {
 		this.playlistsChanged.next(this.playlistsArray.slice());
 	}
 
-	updatePlaylist(index: number, newPlaylist: Playlist) {
+	updatePlaylist(newPlaylist: Playlist) {
 		//edits selected/ current playlist
 		// const playlists = this.storageService.fetchPlaylists();
 		// this.currentPlaylist = playlists[index];

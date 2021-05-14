@@ -5,8 +5,6 @@ import { PlaylistService } from '../shared/services/playlist.service';
 import { DataStorageService } from '../shared/services/data-storage.service';
 import { Playlist } from '../shared/models/playlist.model';
 
-
-
 @Component({
 	selector: 'app-view-gallery',
 	templateUrl: './view-gallery.component.html',
@@ -53,8 +51,16 @@ export class ViewGalleryComponent implements OnInit {
   	onOpenPlaylist(index: number) {
 		const selected = this.loadedPlaylists[index];
 		// this.playlistService.openPlaylist.next(selected);
-		this.playlistService.updatePlaylist(index, selected);
+		this.playlistService.updatePlaylist(selected);
 		// console.log(selected);
 		this.router.navigate(['view-playlist', selected.id], {});
   	}
+	
+	//   onOpenPlaylist(index: number) {
+	// 	const selected = this.loadedPlaylists[index];
+	// 	// this.playlistService.openPlaylist.next(selected);
+	// 	this.playlistService.updatePlaylist(selected);
+	// 	// console.log(selected);
+	// 	this.router.navigate(['view-playlist', selected.id], {});
+  	// }
 }

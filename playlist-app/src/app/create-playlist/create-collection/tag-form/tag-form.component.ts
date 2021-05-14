@@ -15,8 +15,6 @@ export class TagFormComponent implements OnInit, OnDestroy {
 	@Input()tags: Tag[];
 	private tagChangedSub: Subscription;
 
-	subscription: Subscription;
-
 	constructor(private tagService: TagService) { }
 
 	ngOnInit(): void {
@@ -26,6 +24,7 @@ export class TagFormComponent implements OnInit, OnDestroy {
 					this.tags = tags;
 				}
 			);
+		this.tagService.setTagForm(this.tags);
 	}
 
 	ngOnDestroy(): void {

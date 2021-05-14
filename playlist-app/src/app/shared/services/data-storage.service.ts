@@ -23,7 +23,7 @@ export class DataStorageService {
 				private playlistService: PlaylistService,
 				private tagService: TagService) { }
 
-  
+// TAGS-------------------------------------------------------------------------------------------------------- 
 
 	putTags(tags: Tag[]) {
 		this.http.put(this.tagsUrl, tags).subscribe();
@@ -53,17 +53,27 @@ export class DataStorageService {
 			);
   	};
 
-	createAndStoreTag(tagData: Tag) {
-		this.http.post(this.tagsUrl, tagData).subscribe();	
-	};
-
 	deleteTags() {
 		return this.http.delete(this.tagsUrl);
 	};
 
-// PLAYLISTS
-		//saves playlist to backend [post to backend]	
-	postPlaylist(postData: Playlist) {
+// TAG--------------------------------------------------------------------------------------------------------
+
+	createAndStoreTag(tagData: Tag) {
+		this.http.post(this.tagsUrl, tagData).subscribe();	
+	};
+
+	deleteTag(tag: Tag) {
+		const tagUrl = `https://playlist-app-fd53b-default-rtdb.firebaseio.com/tags/${ tag.id }.json`;
+		return this.http.delete(tagUrl).subscribe();
+	}
+
+
+
+// PLAYLISTS---------------------------------------------------------------------------------------------------
+
+	
+	postPlaylist(postData: Playlist) {  //saves playlist to backend [post to backend]
 		this.http
 			.post<{ name: string }>(this.playlistUrl, postData)
 			.subscribe(responseData => {
@@ -72,13 +82,12 @@ export class DataStorageService {
 	};
 
 
-	deletePlaylists() {
-		//deletes all playlists
+	deletePlaylists() { //deletes all playlists
 		return this.http.delete(this.playlistUrl);
 	};
 
-	fetchPlaylists() {
-		//fetches all playlists from backend
+
+	fetchPlaylists() { //fetches all playlists from backend
 		return this.http
 			.get<{ [key: string]: Playlist }>(this.playlistUrl)
 			.pipe(
@@ -100,6 +109,8 @@ export class DataStorageService {
 			)
 	};
 
+
+// PLAYLIST----------------------------------------------------------------------------------------------------
 
 	fetchPlaylist( idKey: string ) {
 		const plUrl = `https://playlist-app-fd53b-default-rtdb.firebaseio.com/playlists/${ idKey }.json`;

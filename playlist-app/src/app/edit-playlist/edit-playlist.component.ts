@@ -47,19 +47,15 @@ export class EditPlaylistComponent implements OnInit {
 			(data: Data) => {
 				this.playlist = data['playlist'];
 				this.tags = this.playlist.tags;
-				console.log(this.tags);
+				this.tagService.tagChanged.next(this.tags);
+				// console.log(this.tags);
+				this.playlistItems = this.playlist.playlistItems;
 			}
 		);
 		this.editPlaylistForm = new FormGroup({
 				'title': new FormControl(this.playlist.title, Validators.required),
 				'desc': new FormControl(this.playlist.description),
-				'playlistItems': new FormGroup({
-					'item1': new FormControl(null),
-					'item2': new FormControl(null),
-					'item3': new FormControl(null),
-					'item4': new FormControl(null),
-					'item5': new FormControl(null)
-				})
+		
 			
 	 	});
 	}

@@ -3,8 +3,8 @@ import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/r
 // import { Observable } from 'rxjs';
 
 // import { TagService } from './tag.service';
-import { DataStorageService } from './data-storage.service';
-import { Tag } from '../models/tag.model';
+import { DataStorageService } from '../data-storage.service';
+import { Tag } from '../../models/tag.model';
 
 @Injectable({
   providedIn: 'root'

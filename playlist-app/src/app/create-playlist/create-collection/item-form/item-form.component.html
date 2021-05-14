@@ -1,0 +1,96 @@
+
+<div class="row">
+    <div class="col-xs-12">
+        <form (ngSubmit)="onAddItem(f)" #f="ngForm">
+            <div class="row">
+                <h4>Item 1:</h4>
+                <div class="col-xs-8 form-group">
+                    <label for="url">url:</label>
+                        <input 
+                            type="text"
+                            id="tag"
+                            class="form-control"
+                            name="itemUrl"
+                            ngModel
+                            required>
+                </div>
+                <div class="col-xs-4">
+                    <label for="name">name:</label>
+                        <input 
+                            type="text"
+                            id="name"
+                            class="form-control"
+                            name="itemName"
+                            ngModel
+                            required>
+                </div>
+            </div>
+                <div class="col-sm-2">
+                    <button 
+                        class="app-control" 
+                        type="submit"
+                        [disabled]="!f.valid">
+                        save
+                    </button>
+                </div>
+            
+        </form>
+    </div>
+</div>
+   <!-- <div formControlName="playlistItems"> -->
+
+                    <!-- <div class="row">
+                        <div class="col-xs-8">
+                            <label for="description">Item 1:</label>
+                                <input 
+                                    type="text" 
+                                    id="item1"
+                                    formControlName="item1"
+                                    class="form-control"/>
+                        </div>       
+                    </div>   -->
+
+                    <!-- <div class="row">
+                        <div class="col-xs-8">
+                            <label for="description">Item 2:</label>
+                                <input 
+                                    type="text" 
+                                    id="item2"
+                                    formControlName="item2"
+                                    class="form-control"/>
+                        </div>       
+                    </div> 
+
+                    <div class="row">
+                        <div class="col-xs-8">
+                            <label for="description">Item 3:</label>
+                                <input 
+                                    type="text" 
+                                    id="item3"
+                                    formControlName="item3"
+                                    class="form-control"/>
+                        </div>       
+                    </div> 
+
+                    <div class="row">
+                        <div class="col-xs-8">
+                            <label for="description">Item 4:</label>
+                                <input 
+                                    type="text" 
+                                    id="item4"
+                                    formControlName="item4"
+                                    class="form-control"/>
+                        </div>       
+                    </div> 
+
+                    <div class="row">
+                        <div class="col-xs-8">
+                            <label for="description">Item 5:</label>
+                                <input 
+                                    type="text" 
+                                    id="item5"
+                                    formControlName="item5"
+                                    class="form-control"/>
+                        </div>       
+                    </div>  -->
+                <!-- </div> -->

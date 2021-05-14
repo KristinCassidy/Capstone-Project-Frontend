@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/router';
 
-import { Playlist } from '../models/playlist.model';
-import { DataStorageService } from './data-storage.service';
+import { Playlist } from '../../models/playlist.model';
+import { DataStorageService } from '../data-storage.service';
 
 @Injectable({
   providedIn: 'root'

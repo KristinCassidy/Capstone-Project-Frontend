@@ -28,10 +28,11 @@ import { AddSongComponent } from './shared/components/modal/add-song/add-song.co
 import { TagLibraryComponent } from './create-playlist/create-collection/tag-library/tag-library.component';
 import { ViewGalleryComponent } from './view-gallery/view-gallery.component';
 import { PlaylistPreviewComponent } from './view-gallery/playlist-preview/playlist-preview.component';
-import { PlaylistResolver } from './shared/services/playlist-resolver.service';
-import { TagsResolver } from './shared/services/tags-resolver.service';
+import { PlaylistResolver } from './shared/services/resolvers/playlist-resolver.service';
+import { TagsResolver } from './shared/services/resolvers/tags-resolver.service';
 import { EditPlaylistComponent } from './edit-playlist/edit-playlist.component';
-import { PlaylistsResolver } from './shared/services/playlists-resolver.service';
+import { PlaylistsResolver } from './shared/services/resolvers/playlists-resolver.service';
+import { ItemFormComponent } from './create-playlist/create-collection/item-form/item-form.component';
 
 @NgModule({
   declarations: [
@@ -56,6 +57,7 @@ import { PlaylistsResolver } from './shared/services/playlists-resolver.service'
     ViewGalleryComponent,
     PlaylistPreviewComponent,
     EditPlaylistComponent,
+    ItemFormComponent,
   ],
   imports: [
     BrowserModule,

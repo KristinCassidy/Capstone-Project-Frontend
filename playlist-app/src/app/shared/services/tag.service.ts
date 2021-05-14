@@ -15,12 +15,7 @@ export class TagService {
 	private playlistTags: Tag[] = [];
 	private tagLibrary: Tag[] = [];
 
-	// setTags(tags: Tag[]) {
-	// 	this.tagLibrary = tags;
-	// 	this.tagsChanged.next(this.tagLibrary.slice());
-	// }
-
-	// TAG FORM
+// TAG FORM
 	getTags() {
 		return this.playlistTags.slice();
 	}
@@ -35,8 +30,14 @@ export class TagService {
 		this.playlistTags.splice(index, 1);
 		this.tagChanged.next(this.playlistTags.slice());
 	}
+	
+// EDIT PLAYLIST TAG FORM
+	setTagForm(currentTags: Tag[]) {
+		this.playlistTags = currentTags;
+		this.tagChanged.next(this.playlistTags.slice());
+	}
 
-	// TAG LIBRARY
+// TAG LIBRARY
 	addToTagLibrary(newTag: Tag) {
 		this.tagLibrary.push(newTag);
 		this.tagsChanged.next(this.tagLibrary.slice());
@@ -54,29 +55,19 @@ export class TagService {
 	getTagLibrary() {
 		return this.tagLibrary.slice();
 	}
-
-	//TAG LIBRARY -- EDIT
-	// getTag(index: number) {
-	// 	console.log(this.tagLibrary[index]);
-	// 	return this.tagLibrary[index];
-
-	// }
-
-	// updateTag(index: number, newTag: Tag) {
-	// 	this.tagLibrary[index] = newTag;
-	// 	this.tagsChanged.next(this.tagLibrary.slice());
-	// 	console.log(this.tagLibrary.slice())
-	// 	return this.tagLibrary.slice();
-	// }
 	
-	// setTags(updatedTags: Tag[]) {
-	// 	this.tagLibrary = updatedTags;
-	// 	this.tagsChanged.next(this.tagLibrary.slice());
-		
-	// }
+	deletefromLibrary(index: number) {
+		console.log(index);
+		this.tagLibrary.splice(index, 1);
+		this.tagsChanged.next(this.tagLibrary.slice());
+	}
+
+//TAG LIBRARY -- EDIT	
 	setTags(updatedTags: Tag[]) {
 		this.tagLibrary = updatedTags;
 		this.tagsChanged.next(this.tagLibrary.slice());
-  }
+  	}
+
+
 
 }

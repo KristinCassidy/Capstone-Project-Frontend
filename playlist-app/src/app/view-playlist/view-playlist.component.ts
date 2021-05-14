@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import { ActivatedRoute, Data, Router } from '@angular/router';
+import { ActivatedRoute, Data, Params, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 
 import { DataStorageService } from '../shared/services/data-storage.service';
@@ -19,19 +19,25 @@ export class ViewPlaylistComponent implements OnInit, OnDestroy {
 	playlists: Playlist[];
 	playlist: Playlist;
 	tags: Tag[];
+	id: string;
 	editMode: boolean;
 
 	constructor(private storageService: DataStorageService,
 				private playlistService: PlaylistService,
 				private router: Router,
-				private route: ActivatedRoute) { 
-	}
+				private route: ActivatedRoute) { }
 
 	ngOnInit(): void {
-
 		this.editModeSub = this.playlistService.editMode.subscribe(
 			data => {
 				this.editMode = data;
+			}
+		);
+		this.route.params
+		.subscribe(
+			(params: Params) => {
+				this.id = params['id'];
+				this.storageService.fetchPlaylist(this.id).subscribe();
 			}
 		);
 		this.storageService.fetchPlaylists().subscribe(
@@ -62,6 +68,10 @@ export class ViewPlaylistComponent implements OnInit, OnDestroy {
 		this.storageService.deletePlaylist(playlistId).subscribe();
 		this.router.navigate(['../../view-gallery'], {relativeTo: this.route});
 		this.playlistService.playlistsChanged;
+	}
+
+	onCancel() {
+		this.editMode = false;
 	}
 
 	ngOnDestroy() {

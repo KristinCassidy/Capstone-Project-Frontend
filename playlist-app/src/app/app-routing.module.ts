@@ -14,10 +14,10 @@ import { AddImageComponent } from './shared/components/modal/add-image/add-image
 import { TagLibraryComponent } from './create-playlist/create-collection/tag-library/tag-library.component';
 import { ModalComponent } from './shared/components/modal/modal.component';
 import { ViewGalleryComponent } from './view-gallery/view-gallery.component';
-import { PlaylistResolver } from './shared/services/playlist-resolver.service';
-import { TagsResolver } from './shared/services/tags-resolver.service';
+import { PlaylistResolver } from './shared/services/resolvers/playlist-resolver.service';
+import { TagsResolver } from './shared/services/resolvers/tags-resolver.service';
 import { EditPlaylistComponent } from './edit-playlist/edit-playlist.component';
-import { PlaylistsResolver } from './shared/services/playlists-resolver.service';
+import { PlaylistsResolver } from './shared/services/resolvers/playlists-resolver.service';
 
 
 const routes: Routes = [

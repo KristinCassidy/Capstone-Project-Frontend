@@ -2,9 +2,9 @@ import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/router';
 import { Observable } from 'rxjs';
 
-import { PlaylistService } from './playlist.service';
-import { DataStorageService } from './data-storage.service';
-import { Playlist } from '../models/playlist.model';
+import { PlaylistService } from '../playlist.service';
+import { DataStorageService } from '../data-storage.service';
+import { Playlist } from '../../models/playlist.model';
 
 
 @Injectable({
