@@ -1,0 +1,22 @@
+input, textarea {
+    /* box-shadow: none; */
+   border: none;
+   display: flexbox;
+}
+
+button {
+    position: relative;
+    top: 25px;
+}
+
+/* img {
+    position: relative;
+    display: flexbox;
+    max-height: 200px;
+    margin: 40px;
+    z-index: 10;
+    top:30px;
+}
+.img-preview {
+    display: flexbox;
+} */

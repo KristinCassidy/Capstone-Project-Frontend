@@ -1,21 +1,21 @@
 
 <div class="container-fluid">
     <div class="pl-form">
-        <form [formGroup]="editPlaylistForm" (ngSubmit)="onSubmit()">
-            
+        <form (ngSubmit)="onSubmit(f)" #f="ngForm">
                 <div class="row">
                     <div class="col-md-12">
                         <label for="title">Title: </label>
                             <input 
-                                type="text" 
+                                type="text"
                                 id="title"
-                                formControlName="title"
-                                class="form-control"/>
-                                <span 
-                                    *ngIf="!editPlaylistForm.get('title').valid && 
-                                    editPlaylistForm.get('title').touched"
+                                class="form-control"
+                                name="title"
+                                ngModel
+                                required/>
+                                <!-- <span 
+                                    *ngIf="!f.get('title').valid &&  f.get('title').touched"
                                     class="help-block">Please enter a Title!
-                                </span>
+                                </span> -->
                     </div>
                 </div>
 
@@ -24,26 +24,26 @@
                     <div class="col-xs-12 desc">
                         <label for="description">Description:</label>
                             <textarea 
-                                formControlName="desc"
+                                type="text"
                                 id="desc"
+                                name="desc"
                                 class="form-control"  
-                                rows="3">
+                                rows="3"
+                                ngModel>
                             </textarea>
                     </div>       
                 </div>  
                 <div class="row tags">
                     <app-tag-form [tags]="tags"></app-tag-form>
                 </div>
-                <div class="row tags">
+                <div class="row">
                     <app-item-form></app-item-form>
                 </div>
-            
-
                 <div class="update-btn">
                     <button 
                         class="btn" 
                         type="submit"
-                        [disabled]="!editPlaylistForm.valid"
+                        [disabled]="!f.valid"
                         >UPDATE</button>
                 </div> 
         </form>

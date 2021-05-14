@@ -28,13 +28,13 @@ export class ViewPlaylistComponent implements OnInit, OnDestroy {
 				private route: ActivatedRoute) { }
 
 	ngOnInit(): void {
+		this.plChangedSub = this.playlistService.mediaAdded.subscribe();
 		this.editModeSub = this.playlistService.editMode.subscribe(
 			data => {
 				this.editMode = data;
 			}
 		);
-		this.route.params
-		.subscribe(
+		this.route.params.subscribe(
 			(params: Params) => {
 				this.id = params['id'];
 				this.storageService.fetchPlaylist(this.id).subscribe();

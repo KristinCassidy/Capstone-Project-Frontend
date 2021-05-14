@@ -11,10 +11,11 @@ export class PlaylistService {
 	playlistsChanged = new Subject<Playlist[]>();
 	coreAdded = new Subject<PlaylistItem>();
 	editMode = new Subject<boolean>();
+	mediaAdded = new Subject<Playlist>();
 
 	constructor() { }
 		private playlistsArray: Playlist[] = [];
-		private playlist: Playlist;
+		// private playlist: Playlist;
 		currentPlaylist: Playlist;
 
 	setPlaylists(playlists: Playlist[]) {
@@ -33,17 +34,26 @@ export class PlaylistService {
 		return(this.currentPlaylist);
 	}
 
-	addCoreToPlaylist(item: PlaylistItem) {
+//PLAYLIST ITEMS------------------------------------------------------------------------------------
+
+	addItem(item: PlaylistItem) {
 		this.currentPlaylist.playlistItems.push(item);
+		console.log(this.currentPlaylist);
+		this.mediaAdded.next(this.currentPlaylist);
 	}
 
-	addItemToArray(item: PlaylistItem) {
-		const playlistItems: PlaylistItem[] = [];
-		playlistItems.push(...playlistItems, item);
-		console.log(playlistItems.slice())
-		return playlistItems.slice();
-
+	setPlEditForm(playlist: Playlist) {
+		// this.currentPlaylist = playlist;
+		// this.tagChanged.next(this.playlistTags.slice());
 	}
+	// addItemToArray(item: PlaylistItem) {
+		// 	const playlistItems: PlaylistItem[] = [];
+		// 	playlistItems.push(...playlistItems, item);
+		// 	console.log(playlistItems.slice())
+		// 	return playlistItems.slice();
+	// }
+
+
 }
 
 
