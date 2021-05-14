@@ -20,7 +20,7 @@ export class EditPlaylistComponent implements OnInit {
 	id: string;
 	editPlaylistForm: FormGroup;
 	playlistItems: PlaylistItem[];
-	@Input()playlist: Playlist;
+	playlist;
 	tags: Tag[];
 
 	private updatedPlaylistSub: Subscription;
@@ -44,34 +44,36 @@ export class EditPlaylistComponent implements OnInit {
 			(data: Data) => {
 				this.playlist = data['playlist'];
 				this.tags = this.playlist.tags;
+				this.tagService.tagChanged.next(this.tags);
+				// console.log(this.tags);
 				this.playlistItems = this.playlist.playlistItems;
 			}
 		);
-		// this.playlistForm.form.patchValue({
-		// 			title: this.playlist.title,
-		// 			desc: this.playlist.description
-		// 		})
-			
-		
-		// this.tagService.tagChanged.subscribe()
 		this.editPlaylistForm = new FormGroup({
 				'title': new FormControl(this.playlist.title, Validators.required),
-				'desc': new FormControl(this.playlist.description)
+				'desc': new FormControl(this.playlist.description),
+
+				
 	 	});
 	}
 
-	onSubmit(form: NgForm) {
-		const value = form.value;
+	onSubmit() {
 		const tags = this.tagService.getTags();
 		this.tagService.addTagsToLibrary(tags);
 			tags.forEach(tag =>
 				(this.storageService.createAndStoreTag(tag)));
-		const playlistItems = this.playlistItems;
-		
-		this.playlist = this.playlist[this.id];
-		this.playlist = new Playlist( value['title'], this.id, tags, value['desc'], playlistItems);
-		// this.onUpdate(this.editPlaylistForm.value);
+			
+		this.onUpdate(this.editPlaylistForm.value);
 		this.playlistService.editMode.next(false);
+	}
+
+	onUpdate(form: NgForm) {
+		const value = form.value
+		const tags = this.tagService.getTags();
+		this.playlist = this.playlist[this.id];
+		this.playlist = new Playlist( value['title'], this.id, tags, value['desc'],this.playlistItems);
+
+		this.playlistService.playlistCreated.next(this.playlist);
 		this.storageService.putPlaylist(this.id, this.playlist);
 			console.log(this.playlist);
 		}

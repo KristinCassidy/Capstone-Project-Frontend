@@ -19,7 +19,7 @@
     </nav>
     <div class="media">
         <div *ngIf="editMode">
-            <app-edit-playlist [playlist]="playlist"></app-edit-playlist>
+            <app-edit-playlist></app-edit-playlist>
         </div>
 
         <div class="subheader">
@@ -35,7 +35,7 @@
         <div class="single-view">
             <!-- <div class="media-item" style="background-image: url('{{ imagePath }}');"></div> -->
             <div class="media-item">
-                <img src="{{ playlist.playlistItems[0]}}" alt="" class="img-responsive">
+                <img src="" alt="" class="img-responsive">
             </div>
             <div class="media-item">
                 <img src="" alt="" class="img-responsive">
