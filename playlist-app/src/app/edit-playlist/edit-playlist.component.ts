@@ -16,7 +16,7 @@ import { TagService } from '../shared/services/tag.service';
 	styleUrls: ['./edit-playlist.component.css']
 })
 export class EditPlaylistComponent implements OnInit {
-	@ViewChild('f', { static: false }) playlistForm: NgForm;
+	// @ViewChild('f', { static: false }) playlistForm: NgForm;
 	id: string;
 	editPlaylistForm: FormGroup;
 	playlistItems: PlaylistItem[];
@@ -59,18 +59,19 @@ export class EditPlaylistComponent implements OnInit {
 
 	onSubmit() {
 		const tags = this.tagService.getTags();
-		this.tagService.addTagsToLibrary(tags);
-			tags.forEach(tag =>
-				(this.storageService.createAndStoreTag(tag)));
+		// this.tagService.addTagsToLibrary(tags);
+		// 	tags.forEach(tag =>
+		// 		(this.storageService.createAndStoreTag(tag)));
 			
-		this.onUpdate(this.editPlaylistForm.value);
+		this.onUpdate();
 		this.playlistService.editMode.next(false);
 	}
 
-	onUpdate(form: NgForm) {
-		const value = form.value
+	onUpdate() {
+		const value = this.editPlaylistForm.value;
+		console.log(this.editPlaylistForm.value);
 		const tags = this.tagService.getTags();
-		this.playlist = this.playlist[this.id];
+		// this.playlist = this.playlist[this.id];
 		this.playlist = new Playlist( value['title'], this.id, tags, value['desc'],this.playlistItems);
 
 		this.playlistService.playlistCreated.next(this.playlist);

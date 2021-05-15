@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { PlaylistService } from '../shared/services/playlist.service';
 import { DataStorageService } from '../shared/services/data-storage.service';
 import { Playlist } from '../shared/models/playlist.model';
+import { PlaylistItem } from '../shared/models/playlist-item.model';
 
 @Component({
 	selector: 'app-view-gallery',
@@ -13,6 +14,8 @@ import { Playlist } from '../shared/models/playlist.model';
 export class ViewGalleryComponent implements OnInit {
 	loadedPlaylists: Playlist[] = [];
 	isFetching: boolean = false;
+	playlistItems: PlaylistItem[];
+	// playlistItem: PlaylistItem;
 
   	constructor(private playlistService: PlaylistService,
 			  	private storageService: DataStorageService,
@@ -26,6 +29,8 @@ export class ViewGalleryComponent implements OnInit {
 				playlists => {
 		 			this.isFetching = false;
 		  			this.loadedPlaylists = playlists;
+					  console.log(playlists)
+
 			});
   	}
 

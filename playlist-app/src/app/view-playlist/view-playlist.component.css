@@ -30,11 +30,13 @@
 
 .media-item {
     display: flexbox;
-
+    background-position: center;
+    background-size: cover;
     width: 15vw;
     height: 15vw;
     border: solid;
     margin: 10px;
+
 }
 
 nav {

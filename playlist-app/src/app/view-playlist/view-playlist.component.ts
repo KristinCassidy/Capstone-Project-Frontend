@@ -6,6 +6,7 @@ import { DataStorageService } from '../shared/services/data-storage.service';
 import { Playlist } from '../shared/models/playlist.model';
 import { Tag } from '../shared/models/tag.model';
 import { PlaylistService } from '../shared/services/playlist.service';
+import { PlaylistItem } from '../shared/models/playlist-item.model';
 // import { NgForm } from '@angular/forms';
 
 @Component({
@@ -18,6 +19,7 @@ export class ViewPlaylistComponent implements OnInit, OnDestroy {
 	editModeSub: Subscription;
 	playlists: Playlist[];
 	playlist: Playlist;
+	playlistItems: PlaylistItem[];
 	tags: Tag[];
 	id: string;
 	editMode: boolean;
@@ -49,9 +51,17 @@ export class ViewPlaylistComponent implements OnInit, OnDestroy {
 			(data: Data) => {
 				this.playlist = data['playlist'];
 				this.tags = this.playlist.tags;
+				this.playlistItems = this.playlist.playlistItems;
 				console.log(data);
 			}
 		);
+		this.playlistService.mediaAdded.subscribe(
+			playlist => {
+				this.playlist = playlist;
+				this.playlistItems = this.playlist.playlistItems
+				console.log(playlist)
+			}
+		)
 		if(!this.playlist){
 			this.router.navigate(['view-gallery'])
 		}
@@ -60,6 +70,7 @@ export class ViewPlaylistComponent implements OnInit, OnDestroy {
 	onEdit() {
 		this.editMode = true;
 		this.playlistService.editMode.next(true);
+	
 		// this.router.navigate(['edit'], {relativeTo: this.route});
 	}
 

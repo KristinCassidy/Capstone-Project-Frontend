@@ -53,6 +53,9 @@ export class PlaylistService {
 		// 	return playlistItems.slice();
 	// }
 
+	getImageUrl(playlist: Playlist) {
+		console.log(playlist.playlistItems);
+	}
 
 }
 

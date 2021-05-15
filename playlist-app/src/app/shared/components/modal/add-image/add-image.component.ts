@@ -24,7 +24,7 @@ export class AddImageComponent implements OnInit {
   onAddImage(form: NgForm) {
     const value = form.value;
     const image = new ImageItem(null, value.imagePath, value.name);
-    this.playlistService.addCoreToPlaylist(image);
+    this.playlistService.addItem(image);
     console.log(image);
     this.router.navigate(['../../add-media'], {relativeTo: this.route});
   }
