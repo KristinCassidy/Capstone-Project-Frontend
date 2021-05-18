@@ -24,7 +24,9 @@ export class TagFormComponent implements OnInit, OnDestroy {
 					this.tags = tags;
 				}
 			);
-		this.tagService.setTagForm(this.tags);
+		if(this.tags) {
+			this.tagService.setTagForm(this.tags);
+		}
 	}
 
 	ngOnDestroy(): void {

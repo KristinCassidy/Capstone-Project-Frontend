@@ -29,7 +29,7 @@ export class ViewGalleryComponent implements OnInit {
 				playlists => {
 		 			this.isFetching = false;
 		  			this.loadedPlaylists = playlists;
-					  console.log(playlists)
+					  console.log(playlists[0].playlistItems[0].imagePath)
 
 			});
   	}

@@ -76,6 +76,7 @@ export class EditPlaylistComponent implements OnInit {
 
 		this.playlistService.playlistCreated.next(this.playlist);
 		this.storageService.putPlaylist(this.id, this.playlist);
+		this.playlistService.mediaAdded.next(this.playlist);
 			console.log(this.playlist);
 		}
 	

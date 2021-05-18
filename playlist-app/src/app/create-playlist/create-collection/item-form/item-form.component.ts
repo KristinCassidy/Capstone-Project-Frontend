@@ -36,6 +36,7 @@ export class ItemFormComponent implements OnInit, OnDestroy {
 		// this.itemArray.push(newItem);
 		// this.playlist.playlistItems = this.itemArray;
 		this.playlistService.addItem(newItem);
+		form.reset();
 
 	}
 
