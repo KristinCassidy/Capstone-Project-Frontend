@@ -25,7 +25,7 @@ export class AddQuoteComponent implements OnInit {
 
   onSubmit(form: NgForm) {
     const value = form.value;
-    const quote = new QuoteItem(null, value.quote, value.name, null);
+    const quote = new QuoteItem(null, value.quote, value.name, null, null);
     this.createPlaylistService.addCoreToPlaylist(quote);
     this.createPlaylistService.coreAdded.next(quote);
     this.router.navigate(['../../add-media'], {relativeTo: this.route});

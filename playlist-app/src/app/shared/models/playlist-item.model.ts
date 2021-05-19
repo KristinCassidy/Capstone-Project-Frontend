@@ -21,6 +21,7 @@ export class QuoteItem extends PlaylistItem {
         this.quote = quote;
         this.name = name;
         this.font = font;
+        this.imagePath = imagePath;
     }
 }
 

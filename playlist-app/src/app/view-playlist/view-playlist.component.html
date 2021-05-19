@@ -31,24 +31,25 @@
                 </li>
             </ul>
         </div>
-        
-        <div class="single-view">
+        <div class="single-view" *ngIf="playlistItems.length < 1">
+            <div class="media-item">
+                <img src="" alt="" class="img-responsive">
+            </div>
+            <div class="media-item">
+                <img src="" alt="" class="img-responsive">
+            </div>
+            <div class="media-item">
+                <img src="" alt="" class="img-responsive">
+            </div>
+            <div class="media-item">
+                <img src="" alt="" class="img-responsive">
+            </div>
+            <div class="media-item">
+                <img src="" alt="" class="img-responsive">
+            </div>
+        </div>
+        <div class="single-view" *ngIf="playlistItems.length > 0">
             <div *ngFor="let item of playlistItems" class="media-item" style="background-image: url('{{ item.imagePath }}');"></div>
-            <!-- <div class="media-item">
-                <img src="" alt="" class="img-responsive">
-            </div>
-            <div class="media-item">
-                <img src="" alt="" class="img-responsive">
-            </div>
-            <div class="media-item">
-                <img src="" alt="" class="img-responsive">
-            </div>
-            <div class="media-item">
-                <img src="" alt="" class="img-responsive">
-            </div>
-            <div class="media-item">
-                <img src="" alt="" class="img-responsive">
-            </div> -->
         </div>
     </div>
 </div>

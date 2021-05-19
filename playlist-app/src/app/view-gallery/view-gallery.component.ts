@@ -16,6 +16,11 @@ export class ViewGalleryComponent implements OnInit {
 	isFetching: boolean = false;
 	playlistItems: PlaylistItem[];
 	// playlistItem: PlaylistItem;
+	coreUrl: string;
+	item2Url: string;
+	item3Url: string;
+	item4Url: string;
+	item5Url: string;
 
   	constructor(private playlistService: PlaylistService,
 			  	private storageService: DataStorageService,
@@ -29,8 +34,12 @@ export class ViewGalleryComponent implements OnInit {
 				playlists => {
 		 			this.isFetching = false;
 		  			this.loadedPlaylists = playlists;
-					  console.log(playlists[0].playlistItems[0].imagePath)
-
+					this.loadedPlaylists.map(
+						(playlist: Playlist) =>
+							this.coreUrl = playlist.playlistItems[0].imagePath,
+							console.log(this.coreUrl)
+					)
+					 
 			});
   	}
 
