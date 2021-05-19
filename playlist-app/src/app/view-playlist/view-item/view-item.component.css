@@ -1,0 +1,54 @@
+.backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.755);
+    z-index: 50;
+}
+
+/* .modal-page {
+    position: fixed;
+    display: flex;
+    z-index: 100;
+    align-content: flex-start;
+    justify-items: center;
+} */
+
+
+.modal-box {
+    position: fixed;
+    display: flexbox;
+    top: 20vh;
+    left: 35vw;
+    min-width: 300px;
+    width: 40vw;
+    max-width: 400px;
+    height: 60vh;
+    padding: 16px 10px 20px 10px;
+    margin: auto;
+    z-index: 100;
+    background-color: whitesmoke;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+    border-radius: 20px;
+}
+
+.modal-box-actions {
+    text-align: right;
+    position: relative;
+    /* width: 100%; */
+    /* display: flexbox; */
+}
+
+/* .modal-box-header {
+    display: flex;
+} */
+
+.modal-box-body {
+    display: flexbox;
+}
+
+.modal-box-footer {
+    display: flexbox;
+}

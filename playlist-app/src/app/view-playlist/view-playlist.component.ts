@@ -23,6 +23,10 @@ export class ViewPlaylistComponent implements OnInit, OnDestroy {
 	tags: Tag[];
 	id: string;
 	editMode: boolean;
+	isFetching: boolean = false;
+	selected: boolean = false;
+	showModal: boolean = false;
+	imageUrl: string;
 
 	constructor(private storageService: DataStorageService,
 				private playlistService: PlaylistService,
@@ -30,12 +34,7 @@ export class ViewPlaylistComponent implements OnInit, OnDestroy {
 				private route: ActivatedRoute) { }
 
 	ngOnInit(): void {
-		this.plChangedSub = this.playlistService.mediaAdded.subscribe();
-		this.editModeSub = this.playlistService.editMode.subscribe(
-			data => {
-				this.editMode = data;
-			}
-		);
+		this.isFetching = true;
 		this.route.params.subscribe(
 			(params: Params) => {
 				this.id = params['id'];
@@ -45,6 +44,7 @@ export class ViewPlaylistComponent implements OnInit, OnDestroy {
 		this.storageService.fetchPlaylists().subscribe(
 			responseData => {
 				this.playlists = responseData;
+				this.isFetching = false
 			}
 		);
 		this.route.data.subscribe(
@@ -52,16 +52,23 @@ export class ViewPlaylistComponent implements OnInit, OnDestroy {
 				this.playlist = data['playlist'];
 				this.tags = this.playlist.tags;
 				this.playlistItems = this.playlist.playlistItems;
-				console.log(data);
+				// console.log(data);
 			}
 		);
-		this.playlistService.mediaAdded.subscribe(
+		this.plChangedSub = this.playlistService.mediaAdded.subscribe(
 			playlist => {
 				this.playlist = playlist;
 				this.playlistItems = this.playlist.playlistItems
 				console.log(playlist)
+				this.isFetching = false;
 			}
-		)
+		);
+		this.editModeSub = this.playlistService.editMode.subscribe(
+			data => {
+				this.editMode = data;
+			}
+		);
+	
 		if(!this.playlist){
 			this.router.navigate(['view-gallery'])
 		}
@@ -85,7 +92,22 @@ export class ViewPlaylistComponent implements OnInit, OnDestroy {
 		this.editMode = false;
 	}
 
+	onOpenImage(index: number) {
+		this.selected = !this.selected;
+		this.showModal = true;
+		this.imageUrl = this.playlistItems[index].imagePath;
+		this.playlistService.getImageUrl(this.imageUrl);
+		console.log(this.imageUrl)
+		// this.router.navigate(['/'], {relativeTo: this.route})
+		//open image in modal
+	}
+
+	onModalMenu() {
+		this.showModal = null;
+	}
+
 	ngOnDestroy() {
 		this.editModeSub.unsubscribe();
+		this.plChangedSub.unsubscribe();
 	}
 }

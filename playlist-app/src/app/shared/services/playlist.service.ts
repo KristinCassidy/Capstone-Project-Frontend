@@ -12,6 +12,7 @@ export class PlaylistService {
 	coreAdded = new Subject<PlaylistItem>();
 	editMode = new Subject<boolean>();
 	mediaAdded = new Subject<Playlist>();
+	openItem = new Subject<string>();
 
 	constructor() { }
 		private playlistsArray: Playlist[] = [];
@@ -28,6 +29,7 @@ export class PlaylistService {
 		// const playlists = this.storageService.fetchPlaylists();
 		// this.currentPlaylist = playlists[index];
 		this.currentPlaylist = newPlaylist;
+		//KEEP vvvvvv
 		console.log(this.currentPlaylist);
 		this.openPlaylist.next(this.currentPlaylist);
 		this.editMode.next(false);
@@ -53,8 +55,8 @@ export class PlaylistService {
 		// 	return playlistItems.slice();
 	// }
 
-	getImageUrl(playlist: Playlist) {
-		console.log(playlist.playlistItems);
+	getImageUrl(url: string) {
+		return this.openItem.next(url);
 	}
 
 }

@@ -41,7 +41,7 @@ export class ViewGalleryComponent implements OnInit {
 								.subscribe(
 									images => {
 										this.images = images
-										console.log(images)
+										// console.log(images)
 										
 								})
 								
@@ -54,7 +54,7 @@ export class ViewGalleryComponent implements OnInit {
 						this.loadedPlaylists = data['playlists'];
 						// this.tags = this.playlist.tags;
 						// this.playlistItems = this.playlist.playlistItems;
-						console.log(data);
+						// console.log(data);
 					}
 				);
 				// this.route.data.subscribe(

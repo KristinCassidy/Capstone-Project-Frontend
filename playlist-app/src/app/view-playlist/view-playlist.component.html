@@ -1,55 +1,87 @@
 <div class="pl-page">
-    <nav class="navbar navbar-default">
-        <div class="container-fluid">
-            <div class="navbar-header navbar-left">
-                <span class="navbar-brand"
-                    style="padding-left: 1em">
-                    Playlist: {{ playlist.title }}
-                </span>   
-            
-            </div>
-            <div 
-                class="navbar-right"
-                style="padding-right: 1em">
-                <button class="btn" (click)="onEdit()">Edit</button> 
-                <button class="btn"(click)="onDelete()">Delete</button>
-                <button *ngIf="editMode" class="btn" (click)="onCancel()">Cancel</button>
-            </div>
-        </div>
-    </nav>
-    <div class="media">
-        <div *ngIf="editMode">
-            <app-edit-playlist></app-edit-playlist>
-        </div>
+    <app-view-item *ngIf="showModal" (close)="onModalMenu()"[imageUrl]="image"></app-view-item>
+	<nav class="navbar navbar-default">
+		<div class="container-fluid">
+			<div class="navbar-header navbar-left">
+				<span class="navbar-brand"
+					style="padding-left: 1em">
+					Playlist: {{ playlist.title }}
+				</span>   
+			
+			</div>
+			<div 
+				class="navbar-right"
+				style="padding-right: 1em">
+				<button class="btn" (click)="onEdit()">Edit</button> 
+				<button class="btn"(click)="onDelete()">Delete</button>
+				<button *ngIf="editMode" class="btn" (click)="onCancel()">Cancel</button>
+			</div>
+		</div>
+	</nav>
+	<div class="media">
+		<div *ngIf="editMode">
+			<app-edit-playlist></app-edit-playlist>
+		</div>
 
-        <div class="subheader">
-            <h4>{{ playlist.title }}</h4>     
-            <ul>
-                <li>{{ playlist.description}}</li>
-                <li>Tags:
-                    <span *ngFor="let tag of playlist.tags" class="badge">{{ tag.name }} </span>
-                </li>
-            </ul>
-        </div>
-        <div class="single-view" *ngIf="playlistItems.length < 1">
-            <div class="media-item">
-                <img src="" alt="" class="img-responsive">
-            </div>
-            <div class="media-item">
-                <img src="" alt="" class="img-responsive">
-            </div>
-            <div class="media-item">
-                <img src="" alt="" class="img-responsive">
-            </div>
-            <div class="media-item">
-                <img src="" alt="" class="img-responsive">
-            </div>
-            <div class="media-item">
-                <img src="" alt="" class="img-responsive">
-            </div>
-        </div>
-        <div class="single-view" *ngIf="playlistItems.length > 0">
-            <div *ngFor="let item of playlistItems" class="media-item" style="background-image: url('{{ item.imagePath }}');"></div>
-        </div>
-    </div>
+		<div class="subheader">
+			<h4>{{ playlist.title }}</h4>     
+			<ul>
+				<li>{{ playlist.description}}</li>
+				<li>Tags:
+					<span *ngFor="let tag of playlist.tags" class="badge">{{ tag.name }} </span>
+				</li>
+			</ul>
+		</div>
+		<p *ngIf="playlistItems.length < 1 && !isFetching">No playlists available!</p>
+		<p *ngIf="isFetching">Loading...</p>
+		<!-- <div > -->
+
+		<div class="single-view" *ngIf="playlistItems.length >= 1 && !isFetching">
+			<!-- <div *ngFor="let item of playlistItems; let i = index"> -->
+				<div 
+					id="core"
+					class="media-item"  
+					(click)="onOpenImage(0)" 
+					style="background-image: url('{{ playlistItems[0].imagePath }}');">
+				</div>
+				<div 
+					id="item2"
+					class="media-item"  
+					(click)="onOpenImage(1)" 
+					style="background-image: url('{{ playlistItems[1].imagePath }}');">
+				</div>
+				<div 
+					id="item3"
+					class="media-item"  
+					(click)="onOpenImage(2)" 
+					style="background-image: url('{{ playlistItems[2].imagePath }}');">
+				</div>
+				<div 
+					id="item4"
+					class="media-item"  
+					(click)="onOpenImage(3)" 
+					style="background-image: url('{{ playlistItems[3].imagePath }}');">
+				</div>
+				
+				<div 
+					id="item5"
+					class="media-item"  
+					(click)="onOpenImage(4)" 
+					style="background-image: url('{{ playlistItems[4].imagePath }}');">
+				</div>
+
+			<!-- </div> -->
+			<!-- <div 
+				class="media-item" 
+				(click)="onOpenImage(i)"
+				style="background-image: url('{{ item.imagePath }}');"></div>
+		</div> -->
+
+		<!-- <div class="single-view" *ngIf="playlistItems.length < 1"> -->
+			<!-- <div class="media-item" >
+				<img src="" alt="" class="img-responsive">
+			</div> -->
+		 
+		</div>
+	</div>
 </div>

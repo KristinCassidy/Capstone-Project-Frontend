@@ -30,36 +30,37 @@
                                     style="background-image: url('{{ playlist.playlistItems[0].imagePath }}')">
                                 </div>
                                     <ng-template #noCore><div class="core-img"></div></ng-template>
-                                <div class="thumbnails">
-                                    <div 
-                                        id="thumb1" 
-                                        class="thumb" 
-                                        *ngIf="playlist.playlistItems[1]; else no1"
-                                        style="background-image: url('{{ playlist.playlistItems[1].imagePath }}')">
+                                    
+                                    <div class="thumbnails">
+                                        <div 
+                                            id="thumb1" 
+                                            class="thumb" 
+                                            *ngIf="playlist.playlistItems[1]; else no1"
+                                            style="background-image: url('{{ playlist.playlistItems[1].imagePath }}')">
+                                        </div>
+                                        <ng-template #no1><div id="thumb1" class="thumb"></div></ng-template>
+                                        <div 
+                                            id="thumb2" 
+                                            class="thumb" 
+                                            *ngIf="playlist.playlistItems[2]; else no2"
+                                            style="background-image: url('{{ playlist.playlistItems[2].imagePath }}')">
+                                        </div>
+                                        <ng-template #no2><div id="thumb2" class="thumb"></div></ng-template>
+                                        <div 
+                                            id="thumb3"
+                                            class="thumb" 
+                                            *ngIf="playlist.playlistItems[3]; else no3"
+                                            style="background-image: url('{{ playlist.playlistItems[3].imagePath }}')">
+                                        </div>
+                                        <ng-template #no3><div id="thumb3" class="thumb"></div></ng-template>
+                                        <div 
+                                            id="thumb4" 
+                                            class="thumb" 
+                                            *ngIf="playlist.playlistItems[4]; else no4"
+                                            style="background-image: url('{{ playlist.playlistItems[4].imagePath }}')">
+                                        </div>
+                                        <ng-template #no4><div id="thumb4" class="thumb"></div></ng-template>
                                     </div>
-                                    <ng-template #no1><div id="thumb1" class="thumb"></div></ng-template>
-                                    <div 
-                                        id="thumb2" 
-                                        class="thumb" 
-                                        *ngIf="playlist.playlistItems[2]; else no2"
-                                        style="background-image: url('{{ playlist.playlistItems[2].imagePath }}')">
-                                    </div>
-                                    <ng-template #no2><div id="thumb2" class="thumb"></div></ng-template>
-                                    <div 
-                                        id="thumb3"
-                                        class="thumb" 
-                                        *ngIf="playlist.playlistItems[3]; else no3"
-                                        style="background-image: url('{{ playlist.playlistItems[3].imagePath }}')">
-                                    </div>
-                                    <ng-template #no3><div id="thumb3" class="thumb"></div></ng-template>
-                                    <div 
-                                        id="thumb4" 
-                                        class="thumb" 
-                                        *ngIf="playlist.playlistItems[4]; else no4"
-                                        style="background-image: url('{{ playlist.playlistItems[4].imagePath }}')">
-                                    </div>
-                                    <ng-template #no4><div id="thumb4" class="thumb"></div></ng-template>
-                                </div>
                             </div>
                             
                                 <!-- <div class="images-box"> -->

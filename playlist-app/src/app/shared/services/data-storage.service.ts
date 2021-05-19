@@ -146,10 +146,10 @@ export class DataStorageService {
 						// if(responseData.hasOwnProperty(key)) {
 							// items.push(...responseData[key]);
 					// 	}
-						console.log(items)
+						// console.log(items)
 					// }
 					// if (responseData !== null) {
-						console.log(responseData[0])
+						// console.log(responseData[0])
 						return responseData
 				// .map(tag => {
 				// 	return { ...tag, id: tag.id ? tag.id : ''
