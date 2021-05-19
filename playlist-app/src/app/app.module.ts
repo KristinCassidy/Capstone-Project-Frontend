@@ -33,6 +33,8 @@ import { TagsResolver } from './shared/services/resolvers/tags-resolver.service'
 import { EditPlaylistComponent } from './edit-playlist/edit-playlist.component';
 import { PlaylistsResolver } from './shared/services/resolvers/playlists-resolver.service';
 import { ItemFormComponent } from './create-playlist/create-collection/item-form/item-form.component';
+// import { ImageResolver } from './shared/services/resolvers/image-resolver.service';
+
 
 @NgModule({
   declarations: [
@@ -72,7 +74,8 @@ import { ItemFormComponent } from './create-playlist/create-collection/item-form
     TagService, 
     PlaylistResolver,
     PlaylistsResolver, 
-    TagsResolver
+    TagsResolver,
+    // ImageResolver
   ],
   bootstrap: [AppComponent]
 })

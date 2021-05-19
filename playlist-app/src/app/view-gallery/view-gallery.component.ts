@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Data, Router } from '@angular/router';
 
 import { PlaylistService } from '../shared/services/playlist.service';
 import { DataStorageService } from '../shared/services/data-storage.service';
@@ -15,9 +15,10 @@ export class ViewGalleryComponent implements OnInit {
 	loadedPlaylists: Playlist[] = [];
 	isFetching: boolean = false;
 	playlistItems: PlaylistItem[];
+	images;
 	// playlistItem: PlaylistItem;
-	coreUrl: string;
-	item2Url: string;
+	coreUrl;
+	item2Url;
 	item3Url: string;
 	item4Url: string;
 	item5Url: string;
@@ -34,14 +35,45 @@ export class ViewGalleryComponent implements OnInit {
 				playlists => {
 		 			this.isFetching = false;
 		  			this.loadedPlaylists = playlists;
-					this.loadedPlaylists.map(
-						(playlist: Playlist) =>
-							this.coreUrl = playlist.playlistItems[0].imagePath,
-							console.log(this.coreUrl)
+					playlists.forEach(
+						playlist => {
+							this.storageService.fetchImages(playlist.id)
+								.subscribe(
+									images => {
+										this.images = images
+										console.log(images)
+										
+								})
+								
+						}
 					)
-					 
-			});
-  	}
+						
+				});
+				this.route.data.subscribe(
+					(data: Data) => {
+						this.loadedPlaylists = data['playlists'];
+						// this.tags = this.playlist.tags;
+						// this.playlistItems = this.playlist.playlistItems;
+						console.log(data);
+					}
+				);
+				// this.route.data.subscribe(
+					// (data: Data) => {
+						// this.loadedPlaylists = data['playlists'];
+						// this.tags = this.playlist.tags;
+						// this.tagService.tagChanged.next(this.tags);
+						// console.log(this.tags);
+						// this.playlistItems = this.playlist.playlistItems;
+					}
+				// );
+					// this.loadedPlaylists.map(
+					// 	(playlist: Playlist) =>
+					// 		this.coreUrl = playlist.playlistItems,
+					// 		console.log(this.coreUrl)
+					// )
+
+				
+  	
 
 	onFetchPlaylists() {
 		this.isFetching = true;

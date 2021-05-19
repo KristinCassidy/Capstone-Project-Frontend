@@ -18,6 +18,7 @@ import { PlaylistResolver } from './shared/services/resolvers/playlist-resolver.
 import { TagsResolver } from './shared/services/resolvers/tags-resolver.service';
 import { EditPlaylistComponent } from './edit-playlist/edit-playlist.component';
 import { PlaylistsResolver } from './shared/services/resolvers/playlists-resolver.service';
+// import { ImageResolver } from './shared/services/resolvers/image-resolver.service';
 
 
 const routes: Routes = [

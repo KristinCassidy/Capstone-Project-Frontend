@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
+import { PlaylistItem } from '../models/playlist-item.model';
 
 import { Playlist } from '../models/playlist.model';
 import { Tag } from '../models/tag.model';
@@ -127,5 +128,69 @@ export class DataStorageService {
 		return this.http.put(plUrl, updatedPlaylist).subscribe();
 	}
 
-}
+// PLAYLIST ITEMS----------------------------------------------------------------------------------------------------
 
+	fetchItems( idKey: string ) {
+		const plUrl = `https://playlist-app-fd53b-default-rtdb.firebaseio.com/playlists/${ idKey }/playlistItems.json`;
+		return this.http.get<{ [key: string]: PlaylistItem[] }>(plUrl);
+	}
+
+	fetchImages( idKey: string ) {
+		const plUrl = `https://playlist-app-fd53b-default-rtdb.firebaseio.com/playlists/${ idKey }/playlistItems.json`;
+		return this.http.get<{ [key: string]: PlaylistItem[] }>(plUrl)
+			.pipe(
+				map(responseData => {
+					const items: PlaylistItem[] = [];
+
+					for (const key in responseData) {
+						// if(responseData.hasOwnProperty(key)) {
+							// items.push(...responseData[key]);
+					// 	}
+						console.log(items)
+					// }
+					// if (responseData !== null) {
+						console.log(responseData[0])
+						return responseData
+				// .map(tag => {
+				// 	return { ...tag, id: tag.id ? tag.id : ''
+				// 	}
+				// });
+					// }
+				}
+					
+				}
+
+				)
+			)
+	}
+
+
+
+
+
+
+// fetcTags() {
+// 	return this.http
+// 		  .get<{ [key:string]: Tag }>(this.tagsUrl)
+// 		.pipe(
+// 			map(responseData => {
+// 				const tagsArray: Tag[] = [];
+// 				for (const key in responseData) {
+// 					if (responseData.hasOwnProperty(key)) {
+// 						tagsArray.push({ ...responseData[key], id: key });
+// 					}	
+// 				}
+// 				return tagsArray
+// 				.map(tag => {
+// 					return { ...tag, id: tag.id ? tag.id : ''
+// 					}
+// 				});
+// 			})
+// 			,
+// 			tap(tags => {
+// 				this.tagService.setTags(tags);
+// 			})
+// 		);
+//   };
+
+}
