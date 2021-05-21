@@ -16,7 +16,6 @@ export class PlaylistService {
 
 	constructor() { }
 		private playlistsArray: Playlist[] = [];
-		// private playlist: Playlist;
 		currentPlaylist: Playlist;
 
 	setPlaylists(playlists: Playlist[]) {
@@ -39,10 +38,22 @@ export class PlaylistService {
 //PLAYLIST ITEMS------------------------------------------------------------------------------------
 
 	addItem(item: PlaylistItem) {
+		// this.mediaAdded.subscribe(
+		// 	playlist => {
+		// 		this.currentPlaylist = playlist;
+		// 		console.log(this.currentPlaylist)
+		// 	}
+		// )
 		this.currentPlaylist.playlistItems.push(item);
 		console.log(this.currentPlaylist);
 		this.mediaAdded.next(this.currentPlaylist);
 	}
+
+	// deleteItem(item: PlaylistItem) {
+	// 	this.currentPlaylist.playlistItems.splice(item);
+	// 	console.log(this.currentPlaylist);
+	// 	this.mediaAdded.next(this.currentPlaylist);
+	// }
 
 	setPlEditForm(playlist: Playlist) {
 		// this.currentPlaylist = playlist;

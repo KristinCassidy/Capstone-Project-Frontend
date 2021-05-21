@@ -115,7 +115,7 @@ export class DataStorageService {
 
 	fetchPlaylist( idKey: string ) {
 		const plUrl = `https://playlist-app-fd53b-default-rtdb.firebaseio.com/playlists/${ idKey }.json`;
-		return this.http.get<{ [key: string]: Playlist }>(plUrl);
+		return this.http.get<Playlist>(plUrl);
 	}
 
 	deletePlaylist(idKey: string ) {
@@ -133,6 +133,11 @@ export class DataStorageService {
 	fetchItems( idKey: string ) {
 		const plUrl = `https://playlist-app-fd53b-default-rtdb.firebaseio.com/playlists/${ idKey }/playlistItems.json`;
 		return this.http.get<{ [key: string]: PlaylistItem[] }>(plUrl);
+	}
+
+	putItems(idKey: string, items: PlaylistItem[]) {
+		const plUrl = `https://playlist-app-fd53b-default-rtdb.firebaseio.com/playlists/${ idKey }/playlistItems.json`;
+		return this.http.put(plUrl, items);
 	}
 
 	fetchImages( idKey: string ) {
@@ -163,34 +168,5 @@ export class DataStorageService {
 				)
 			)
 	}
-
-
-
-
-
-
-// fetcTags() {
-// 	return this.http
-// 		  .get<{ [key:string]: Tag }>(this.tagsUrl)
-// 		.pipe(
-// 			map(responseData => {
-// 				const tagsArray: Tag[] = [];
-// 				for (const key in responseData) {
-// 					if (responseData.hasOwnProperty(key)) {
-// 						tagsArray.push({ ...responseData[key], id: key });
-// 					}	
-// 				}
-// 				return tagsArray
-// 				.map(tag => {
-// 					return { ...tag, id: tag.id ? tag.id : ''
-// 					}
-// 				});
-// 			})
-// 			,
-// 			tap(tags => {
-// 				this.tagService.setTags(tags);
-// 			})
-// 		);
-//   };
 
 }

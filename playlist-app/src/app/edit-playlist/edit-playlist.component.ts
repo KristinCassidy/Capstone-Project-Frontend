@@ -1,5 +1,5 @@
-import { Component, Input, OnInit, Output, ViewChild } from '@angular/core';
-import { FormGroup, FormControl, Validators, NgForm, FormArray } from '@angular/forms';
+import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { FormGroup, FormControl, Validators, NgForm } from '@angular/forms';
 import { ActivatedRoute, Data, Params, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 
@@ -17,11 +17,14 @@ import { TagService } from '../shared/services/tag.service';
 })
 export class EditPlaylistComponent implements OnInit {
 	// @ViewChild('f', { static: false }) playlistForm: NgForm;
+	// @Output() close = new EventEmitter<void>();
+	// @Output() 
 	id: string;
 	editPlaylistForm: FormGroup;
 	playlistItems: PlaylistItem[];
 	playlist;
 	tags: Tag[];
+	images;
 
 	private updatedPlaylistSub: Subscription;
 	
@@ -37,7 +40,7 @@ export class EditPlaylistComponent implements OnInit {
 			.subscribe(
 				(params: Params) => {
 					this.id = params['id'];
-					this.storageService.fetchPlaylist(this.id).subscribe();
+					// this.storageService.fetchPlaylist(this.id).subscribe();
 				}
 			);
 		this.route.data.subscribe(
@@ -51,10 +54,12 @@ export class EditPlaylistComponent implements OnInit {
 		);
 		this.editPlaylistForm = new FormGroup({
 				'title': new FormControl(this.playlist.title, Validators.required),
-				'desc': new FormControl(this.playlist.description),
-
-				
+				'desc': new FormControl(this.playlist.description),				
 	 	});
+		// this.updatedPlaylistSub = this.playlistService.mediaAdded.subscribe(
+		// 	playlist => this.playlist = playlist
+		// );
+		// this.getImages();
 	}
 
 	onSubmit() {
@@ -69,15 +74,24 @@ export class EditPlaylistComponent implements OnInit {
 
 	onUpdate() {
 		const value = this.editPlaylistForm.value;
-		console.log(this.editPlaylistForm.value);
+		// console.log(this.editPlaylistForm.value);
 		const tags = this.tagService.getTags();
 		// this.playlist = this.playlist[this.id];
-		this.playlist = new Playlist( value['title'], this.id, tags, value['desc'],this.playlistItems);
+		this.playlist = new Playlist( value['title'], this.id, tags, value['desc'], this.playlistItems);
 
 		this.playlistService.playlistCreated.next(this.playlist);
 		this.storageService.putPlaylist(this.id, this.playlist);
 		this.playlistService.mediaAdded.next(this.playlist);
-			console.log(this.playlist);
+			// console.log(this.playlist);
 		}
-	
+
+	onRemoveItem(index: number) {
+		this.playlistItems.splice(index,1);
+		// console.log(this.playlistItems.slice())
+	}
+
+	onEdit() {}
+
 }
+	
+

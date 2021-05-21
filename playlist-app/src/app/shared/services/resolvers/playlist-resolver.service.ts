@@ -11,14 +11,16 @@ import { Playlist } from '../../models/playlist.model';
   providedIn: 'root'
 })
 export class PlaylistResolver implements Resolve<Playlist>{
-
+  
   constructor(private playlistService: PlaylistService,
               private storageService: DataStorageService) { }
-
+              id: string;
   resolve(route: ActivatedRouteSnapshot, 
           state: RouterStateSnapshot) {
 
-    console.log(this.playlistService.currentPlaylist)
-    return this.playlistService.currentPlaylist;
+     this.id = route.params.id;
+    // console.log(this.playlistService.currentPlaylist)
+    console.log(this.storageService.fetchPlaylist(this.id));
+    return this.storageService.fetchPlaylist(this.id);
   }
 }

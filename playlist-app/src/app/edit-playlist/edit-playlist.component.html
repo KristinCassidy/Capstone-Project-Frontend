@@ -35,8 +35,101 @@
                     <app-tag-form [tags]="tags"></app-tag-form>
                 </div>
                 <div class="row">
-                    <app-item-form></app-item-form>
+                    <div class="col-xs-12">
+                        <app-item-form></app-item-form>
+                    </div>
                 </div>
+                <div class="single-view">
+       
+                    <!-- <div 
+                        id="core"
+                        class="media-item"  
+                        style="background-image: url('{{ playlistItems[0].imagePath }}');"> -->
+                        <!-- <span *ngIf="playlistItems" class="close-x pull-right" (click)="onRemoveItem(0)">
+                            <i class="bi bi-x-circle-fill"></i>
+                        </span> -->
+                    <!-- </div> -->
+                    <div *ngIf="playlistItems[0]; else noCore"
+                        id="core"
+                        class="media-item"  
+                        style="background-image: url('{{ playlistItems[0].imagePath }}');">
+                        <span *ngIf="playlistItems" class="close-x pull-right" (click)="onRemoveItem(0)">
+                            <i class="bi bi-x-circle-fill"></i>
+                        </span>
+                    </div>
+                    <ng-template #noCore>
+                        <div
+                            id="core"
+                            class="media-item">
+                        </div>
+                    </ng-template>
+
+                    <div *ngIf="playlistItems[1]; else noItem2"
+                        id="item2"
+                        class="media-item"  
+                        style="background-image: url('{{ playlistItems[1].imagePath }}');">
+                        <span *ngIf="playlistItems[1]" class="close-x pull-right" (click)="onRemoveItem(1)">
+                            <i class="bi bi-x-circle-fill"></i>
+                        </span>
+                    </div>
+
+                    <ng-template #noItem2>
+                        <div
+                            id="item2"
+                            class="media-item">
+                        </div>
+                    </ng-template>
+
+                    <div *ngIf="playlistItems[2]; else noItem3"
+                        id="item3"
+                        class="media-item"  
+                        style="background-image: url('{{ playlistItems[2].imagePath }}');">
+                        <span *ngIf="playlistItems[2]" class="close-x pull-right" (click)="onRemoveItem(2)">
+                            <i class="bi bi-x-circle-fill"></i>
+                        </span>
+                    </div>
+
+                    <ng-template #noItem3>
+                        <div
+                            id="item3"
+                            class="media-item">
+                        </div>
+                    </ng-template>
+                        
+                    <div *ngIf="playlistItems[3]; else noItem4"
+                        id="item4"
+                        class="media-item" 
+                        style="background-image: url('{{ playlistItems[3].imagePath }}');">
+                        <span *ngIf="playlistItems[3]" class="close-x pull-right" (click)="onRemoveItem(3)">
+                            <i class="bi bi-x-circle-fill"></i>
+                        </span>
+                    </div>
+
+                    <ng-template #noItem4>
+                        <div
+                            id="item4"
+                            class="media-item">
+                        </div>
+                    </ng-template>
+
+                    <div *ngIf="playlistItems[4]; else noItem5"
+                        id="item5"
+                        class="media-item"  
+                        style="background-image: url('{{ playlistItems[4].imagePath }}');">
+                        <span *ngIf="playlistItems[4]" class="close-x pull-right" (click)="onRemoveItem(4)">
+                            <i class="bi bi-x-circle-fill"></i>
+                        </span>
+                    </div>
+
+                    <ng-template #noItem5>
+                        <div
+                            id="item5"
+                            class="media-item">
+                        </div>
+                    </ng-template>
+            
+                </div>
+               
 
 
                 <div class="update-btn">
@@ -47,5 +140,6 @@
                         >UPDATE</button>
                 </div> 
         </form>
+    
     </div>
 </div>

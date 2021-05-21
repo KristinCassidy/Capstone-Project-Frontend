@@ -17,6 +17,7 @@ import { PlaylistItem } from '../shared/models/playlist-item.model';
 export class ViewPlaylistComponent implements OnInit, OnDestroy {
 	plChangedSub: Subscription;
 	editModeSub: Subscription;
+
 	playlists: Playlist[];
 	playlist: Playlist;
 	playlistItems: PlaylistItem[];
@@ -38,7 +39,7 @@ export class ViewPlaylistComponent implements OnInit, OnDestroy {
 		this.route.params.subscribe(
 			(params: Params) => {
 				this.id = params['id'];
-				this.storageService.fetchPlaylist(this.id).subscribe();
+				// this.storageService.fetchPlaylist(this.id).subscribe();
 			}
 		);
 		this.storageService.fetchPlaylists().subscribe(
@@ -52,14 +53,14 @@ export class ViewPlaylistComponent implements OnInit, OnDestroy {
 				this.playlist = data['playlist'];
 				this.tags = this.playlist.tags;
 				this.playlistItems = this.playlist.playlistItems;
-				// console.log(data);
+				console.log(data);
 			}
 		);
 		this.plChangedSub = this.playlistService.mediaAdded.subscribe(
 			playlist => {
 				this.playlist = playlist;
-				this.playlistItems = this.playlist.playlistItems
-				console.log(playlist)
+				this.playlistItems = this.playlist.playlistItems;
+				// console.log(playlist)
 				this.isFetching = false;
 			}
 		);
@@ -77,7 +78,7 @@ export class ViewPlaylistComponent implements OnInit, OnDestroy {
 	onEdit() {
 		this.editMode = true;
 		this.playlistService.editMode.next(true);
-	
+		// this.playlistService.mediaAdded.next(this.playlist);
 		// this.router.navigate(['edit'], {relativeTo: this.route});
 	}
 
@@ -94,10 +95,16 @@ export class ViewPlaylistComponent implements OnInit, OnDestroy {
 
 	onOpenImage(index: number) {
 		this.selected = !this.selected;
-		this.showModal = true;
-		this.imageUrl = this.playlistItems[index].imagePath;
-		this.playlistService.getImageUrl(this.imageUrl);
-		console.log(this.imageUrl)
+		if (this.editMode) {
+			console.log(this.playlist.id, index)
+			// this.storageService.deleteItem(this.playlist.id, index).subscribe();
+		} else {
+			this.showModal = true;
+			this.imageUrl = this.playlistItems[index].imagePath;
+			this.playlistService.getImageUrl(this.imageUrl);
+			console.log(this.imageUrl)
+		}
+		
 		// this.router.navigate(['/'], {relativeTo: this.route})
 		//open image in modal
 	}

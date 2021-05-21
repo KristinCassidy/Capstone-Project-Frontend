@@ -12,6 +12,7 @@ export class PlaylistsResolver implements Resolve<Playlist[]>{
   constructor( private storageService: DataStorageService) { }
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
+    console.log(this.storageService.fetchPlaylists())
     return this.storageService.fetchPlaylists();
   }
 }

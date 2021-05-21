@@ -57,24 +57,8 @@ export class ViewGalleryComponent implements OnInit {
 						// console.log(data);
 					}
 				);
-				// this.route.data.subscribe(
-					// (data: Data) => {
-						// this.loadedPlaylists = data['playlists'];
-						// this.tags = this.playlist.tags;
-						// this.tagService.tagChanged.next(this.tags);
-						// console.log(this.tags);
-						// this.playlistItems = this.playlist.playlistItems;
-					}
-				// );
-					// this.loadedPlaylists.map(
-					// 	(playlist: Playlist) =>
-					// 		this.coreUrl = playlist.playlistItems,
-					// 		console.log(this.coreUrl)
-					// )
-
-				
-  	
-
+	}
+			
 	onFetchPlaylists() {
 		this.isFetching = true;
 		this.storageService
@@ -102,11 +86,5 @@ export class ViewGalleryComponent implements OnInit {
 		this.router.navigate(['view-playlist', selected.id], {});
   	}
 	
-	//   onOpenPlaylist(index: number) {
-	// 	const selected = this.loadedPlaylists[index];
-	// 	// this.playlistService.openPlaylist.next(selected);
-	// 	this.playlistService.updatePlaylist(selected);
-	// 	// console.log(selected);
-	// 	this.router.navigate(['view-playlist', selected.id], {});
-  	// }
+
 }

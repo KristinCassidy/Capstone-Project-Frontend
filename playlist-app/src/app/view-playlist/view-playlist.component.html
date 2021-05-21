@@ -24,7 +24,7 @@
 		</div>
 
 		<div class="subheader">
-			<h4>{{ playlist.title }}</h4>     
+			<h3>{{ playlist.title }}</h3>     
 			<ul>
 				<li>{{ playlist.description}}</li>
 				<li>Tags:
@@ -32,43 +32,73 @@
 				</li>
 			</ul>
 		</div>
-		<p *ngIf="playlistItems.length < 1 && !isFetching">No playlists available!</p>
+		<!-- <p *ngIf="playlistItems.length < 1 && !isFetching">No playlists available!</p> -->
 		<p *ngIf="isFetching">Loading...</p>
 		<!-- <div > -->
 
-		<div class="single-view" *ngIf="playlistItems.length >= 1 && !isFetching">
+		<div class="single-view" *ngIf="!isFetching">
 			<!-- <div *ngFor="let item of playlistItems; let i = index"> -->
-				<div 
+				<div *ngIf="playlistItems[0]; else noCore"
 					id="core"
 					class="media-item"  
 					(click)="onOpenImage(0)" 
 					style="background-image: url('{{ playlistItems[0].imagePath }}');">
 				</div>
-				<div 
+				<ng-template #noCore>
+					<div
+						id="core"
+						class="media-item">
+					</div>
+				</ng-template>
+				<div *ngIf="playlistItems[1]; else noItem2"
 					id="item2"
 					class="media-item"  
 					(click)="onOpenImage(1)" 
 					style="background-image: url('{{ playlistItems[1].imagePath }}');">
 				</div>
-				<div 
+				<ng-template #noItem2 >
+					<div
+						id="item2"
+						class="media-item">
+					</div>
+				</ng-template>
+				<div *ngIf="playlistItems[2]; else noItem3"
 					id="item3"
 					class="media-item"  
 					(click)="onOpenImage(2)" 
 					style="background-image: url('{{ playlistItems[2].imagePath }}');">
 				</div>
-				<div 
+				<ng-template #noItem3 >
+					<div
+						id="item3"
+						class="media-item">
+					</div>
+				</ng-template>
+				<div *ngIf="playlistItems[3]; else noItem4"
 					id="item4"
 					class="media-item"  
 					(click)="onOpenImage(3)" 
 					style="background-image: url('{{ playlistItems[3].imagePath }}');">
 				</div>
+				<ng-template #noItem4 >
+					<div
+						id="item4"
+						class="media-item">
+					</div>
+				</ng-template>
 				
-				<div 
+				<div *ngIf="playlistItems[4]; else noItem5"
 					id="item5"
 					class="media-item"  
 					(click)="onOpenImage(4)" 
 					style="background-image: url('{{ playlistItems[4].imagePath }}');">
 				</div>
+				<ng-template #noItem5 >
+					<div
+						id="item5"
+						class="media-item">
+					</div>
+				</ng-template>
 
 			<!-- </div> -->
 			<!-- <div 
