@@ -12,7 +12,7 @@ import { AddVideoComponent } from './shared/components/modal/add-video/add-video
 import { AddSongComponent } from './shared/components/modal/add-song/add-song.component';
 import { AddImageComponent } from './shared/components/modal/add-image/add-image.component';
 import { TagLibraryComponent } from './create-playlist/create-collection/tag-library/tag-library.component';
-import { ModalComponent } from './shared/components/modal/modal.component';
+// import { ModalComponent } from './shared/components/modal/modal.component';
 import { ViewGalleryComponent } from './view-gallery/view-gallery.component';
 import { PlaylistResolver } from './shared/services/resolvers/playlist-resolver.service';
 import { TagsResolver } from './shared/services/resolvers/tags-resolver.service';
@@ -36,11 +36,7 @@ const routes: Routes = [
 		{ path: 'view', component: ViewPlaylistComponent}
 	]},
 	{ path: 'view-playlist', component: ViewPlaylistComponent},
-	{ path: 'view-playlist/:id', component: ViewPlaylistComponent, resolve: {playlist: PlaylistResolver}
-	// ,children: [
-		// {path: ':name', component: ViewPlaylistComponent}
-	// ]
-},
+	{ path: 'view-playlist/:id', component: ViewPlaylistComponent, resolve: {playlist: PlaylistResolver}},
 	{ path: 'view-playlist/:id/edit', component: EditPlaylistComponent, resolve: {playlist: PlaylistResolver}},
 
 	{ path: 'tag-library', component: TagLibraryComponent, resolve: {tags: TagsResolver}}, 

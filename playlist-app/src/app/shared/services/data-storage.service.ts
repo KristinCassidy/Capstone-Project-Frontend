@@ -14,8 +14,8 @@ import { TagService } from './tag.service';
   	providedIn: 'root'
 })
 export class DataStorageService {
-  	tagsUrl: string = 'https://playlist-app-fd53b-default-rtdb.firebaseio.com/tags.json';
-  	playlistUrl: string = 'https://playlist-app-fd53b-default-rtdb.firebaseio.com/playlists.json';
+  	tagsUrl: string = 'https://playlist-app-78d55-default-rtdb.firebaseio.com/tags.json';
+  	playlistUrl: string = 'https://playlist-app-78d55-default-rtdb.firebaseio.com/playlists.json';
 	updateTagsSub: Subscription;
 	loadedTags: Tag[];
 	tagId: string;
@@ -65,7 +65,7 @@ export class DataStorageService {
 	};
 
 	deleteTag(tag: Tag) {
-		const tagUrl = `https://playlist-app-fd53b-default-rtdb.firebaseio.com/tags/${ tag.id }.json`;
+		const tagUrl = `https://playlist-app-78d55-default-rtdb.firebaseio.com/tags/${ tag.id }.json`;
 		return this.http.delete(tagUrl).subscribe();
 	}
 
@@ -114,34 +114,34 @@ export class DataStorageService {
 // PLAYLIST----------------------------------------------------------------------------------------------------
 
 	fetchPlaylist( idKey: string ) {
-		const plUrl = `https://playlist-app-fd53b-default-rtdb.firebaseio.com/playlists/${ idKey }.json`;
+		const plUrl = `https://playlist-app-78d55-default-rtdb.firebaseio.com/playlists/${ idKey }.json`;
 		return this.http.get<Playlist>(plUrl);
 	}
 
 	deletePlaylist(idKey: string ) {
-		const plUrl = `https://playlist-app-fd53b-default-rtdb.firebaseio.com/playlists/${ idKey }.json`;
+		const plUrl = `https://playlist-app-78d55-default-rtdb.firebaseio.com/playlists/${ idKey }.json`;
 		return this.http.delete(plUrl);
 	}
 
 	putPlaylist(idKey: string, updatedPlaylist: Playlist) {
-		const plUrl = `https://playlist-app-fd53b-default-rtdb.firebaseio.com/playlists/${ idKey }.json`;
+		const plUrl = `https://playlist-app-78d55-default-rtdb.firebaseio.com/playlists/${ idKey }.json`;
 		return this.http.put(plUrl, updatedPlaylist).subscribe();
 	}
 
 // PLAYLIST ITEMS----------------------------------------------------------------------------------------------------
 
 	fetchItems( idKey: string ) {
-		const plUrl = `https://playlist-app-fd53b-default-rtdb.firebaseio.com/playlists/${ idKey }/playlistItems.json`;
+		const plUrl = `https://playlist-app-78d55-default-rtdb.firebaseio.com/playlists/${ idKey }/playlistItems.json`;
 		return this.http.get<{ [key: string]: PlaylistItem[] }>(plUrl);
 	}
 
 	putItems(idKey: string, items: PlaylistItem[]) {
-		const plUrl = `https://playlist-app-fd53b-default-rtdb.firebaseio.com/playlists/${ idKey }/playlistItems.json`;
+		const plUrl = `https://playlist-app-78d55-default-rtdb.firebaseio.com/playlists/${ idKey }/playlistItems.json`;
 		return this.http.put(plUrl, items);
 	}
 
 	fetchImages( idKey: string ) {
-		const plUrl = `https://playlist-app-fd53b-default-rtdb.firebaseio.com/playlists/${ idKey }/playlistItems.json`;
+		const plUrl = `https://playlist-app-78d55-default-rtdb.firebaseio.com/playlists/${ idKey }/playlistItems.json`;
 		return this.http.get<{ [key: string]: PlaylistItem[] }>(plUrl)
 			.pipe(
 				map(responseData => {
@@ -151,10 +151,10 @@ export class DataStorageService {
 						// if(responseData.hasOwnProperty(key)) {
 							// items.push(...responseData[key]);
 					// 	}
-						// console.log(items)
+						console.log(items)
 					// }
 					// if (responseData !== null) {
-						// console.log(responseData[0])
+						console.log(responseData[0])
 						return responseData
 				// .map(tag => {
 				// 	return { ...tag, id: tag.id ? tag.id : ''

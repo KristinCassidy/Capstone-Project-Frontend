@@ -56,6 +56,11 @@
                             class="badge badge-dark"
                             *ngFor="let tag of loadedTags; let i = index"
                             (click)="onEditTag(i)">
+                         <!-- <span 
+                            class="badge badge-dark"
+                            *ngFor="let tag of loadedTags; let i = index"
+                            (click)="onEditTag(i)"> -->
+                            <!-- <h6>{{ keyword | uppercase }}</h6> -->
                             <h5 >{{ tag.name }}</h5>
                         </span>
                     </div>
