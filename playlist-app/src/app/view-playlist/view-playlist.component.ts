@@ -20,7 +20,7 @@ export class ViewPlaylistComponent implements OnInit, OnDestroy {
 
 	playlists: Playlist[];
 	playlist: Playlist;
-	playlistItems: PlaylistItem[];
+	playlistItems: PlaylistItem[] = [];
 	tags: Tag[];
 	id: string;
 	editMode: boolean;
@@ -51,11 +51,13 @@ export class ViewPlaylistComponent implements OnInit, OnDestroy {
 		this.route.data.subscribe(
 			(data: Data) => {
 				this.playlist = data['playlist'];
+				console.log(this.playlist);
 				this.tags = this.playlist.tags;
 				this.playlistItems = this.playlist.playlistItems;
 				console.log(data);
 			}
 		);
+		
 		this.plChangedSub = this.playlistService.mediaAdded.subscribe(
 			playlist => {
 				this.playlist = playlist;
@@ -64,6 +66,7 @@ export class ViewPlaylistComponent implements OnInit, OnDestroy {
 				this.isFetching = false;
 			}
 		);
+	
 		this.editModeSub = this.playlistService.editMode.subscribe(
 			data => {
 				this.editMode = data;

@@ -99,7 +99,7 @@ export class DataStorageService {
 							playlistsArray.push({...responseData[key], id: key });
 						}
 					}
-					// console.log(playlistsArray)
+					console.log(playlistsArray)
 					return playlistsArray.map(playlist => {
 						return {...playlist, playlistItems: playlist.playlistItems ? playlist.playlistItems: []}
 					})

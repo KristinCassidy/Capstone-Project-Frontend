@@ -39,7 +39,33 @@
                         <app-item-form></app-item-form>
                     </div>
                 </div>
-                <div class="single-view">
+                <ng-template #empty>
+                   <div class="single-view">
+                        <div
+                            id="core"
+                            class="media-item">
+                        </div>
+                        <div
+                            id="core"
+                            class="media-item">
+                        </div>
+                        <div
+                            id="core"
+                            class="media-item">
+                        </div>
+                        <div
+                            id="core"
+                            class="media-item">
+                        </div>
+                        <div
+                            id="core"
+                            class="media-item">
+                        </div>
+                   </div>
+
+                </ng-template>
+                <div class="single-view" *ngIf="playlistItems; else empty">
+                   
        
                     <!-- <div 
                         id="core"
