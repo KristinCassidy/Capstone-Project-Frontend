@@ -47,7 +47,7 @@ export class EditPlaylistComponent implements OnInit {
 		this.route.data.subscribe(
 			(data: Data) => {
 				this.playlist = data['playlist'];
-				// this.tags = this.playlist.tags;
+				this.tags = this.playlist.tags;
 				// this.tagService.tagChanged.next(this.tags);
 				// console.log(this.tags);
 				// this.playlistItems = this.playlist.playlistItems;
