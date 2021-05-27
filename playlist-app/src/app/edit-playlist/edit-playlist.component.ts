@@ -16,13 +16,13 @@ import { TagService } from '../shared/services/tag.service';
 	styleUrls: ['./edit-playlist.component.css']
 })
 export class EditPlaylistComponent implements OnInit {
-	// @ViewChild('f', { static: false }) playlistForm: NgForm;
+	@ViewChild('f', { static: false }) playlistForm: NgForm;
 	// @Output() close = new EventEmitter<void>();
-	// @Output() 
+	 @Input() playlist: Playlist;
 	id: string;
 	editPlaylistForm: FormGroup;
 	playlistItems: PlaylistItem[];
-	playlist;
+	
 	tags: Tag[];
 	images;
 
@@ -40,19 +40,27 @@ export class EditPlaylistComponent implements OnInit {
 			.subscribe(
 				(params: Params) => {
 					this.id = params['id'];
-					// this.storageService.fetchPlaylist(this.id).subscribe();
+				
 				}
 			);
+	
 		this.route.data.subscribe(
 			(data: Data) => {
 				this.playlist = data['playlist'];
-				this.tags = this.playlist.tags;
-				this.tagService.tagChanged.next(this.tags);
+				// this.tags = this.playlist.tags;
+				// this.tagService.tagChanged.next(this.tags);
 				// console.log(this.tags);
-				this.playlistItems = this.playlist.playlistItems;
-				console.log(this.playlist);
+				// this.playlistItems = this.playlist.playlistItems;
+				console.log(data);
 			}
 		);
+		// this.storageService.fetchPlaylist(this.id).subscribe(
+			// playlist => {
+			// 	this.playlist = playlist
+			// 	console.log(playlist)
+			// }
+		
+		// );
 		this.editPlaylistForm = new FormGroup({
 				'title': new FormControl(this.playlist.title, Validators.required),
 				'desc': new FormControl(this.playlist.description),				
@@ -80,7 +88,7 @@ export class EditPlaylistComponent implements OnInit {
 		// this.playlist = this.playlist[this.id];
 		this.playlist = new Playlist( value['title'], this.id, tags, value['desc'], this.playlistItems);
 
-		this.playlistService.playlistCreated.next(this.playlist);
+		// this.playlistService.playlistCreated.next(this.playlist);
 		this.storageService.putPlaylist(this.id, this.playlist);
 		this.playlistService.mediaAdded.next(this.playlist);
 			// console.log(this.playlist);

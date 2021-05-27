@@ -32,13 +32,13 @@
 				</li>
 			</ul>
 		</div>
-		<!-- <p *ngIf="playlistItems.length < 1 && !isFetching">No playlists available!</p> -->
+		<p *ngIf="playlistItems.length < 1 && !isFetching">No items added!</p>
 		<p *ngIf="isFetching">Loading...</p>
 		<!-- <div > -->
 
 		<div class="single-view" *ngIf="!isFetching">
 			<!-- <div *ngFor="let item of playlistItems; let i = index"> -->
-				<div *ngIf="playlistItems[0] != undefined; else noCore"
+				<div *ngIf="playlistItems[0]; else noCore"
 					id="core"
 					class="media-item"  
 					(click)="onOpenImage(0)" 

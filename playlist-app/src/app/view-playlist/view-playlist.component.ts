@@ -42,31 +42,34 @@ export class ViewPlaylistComponent implements OnInit, OnDestroy {
 				this.id = params['id']
 			}
 		);
-		this.storageService.fetchPlaylist(this.id).subscribe(
-			playlist => {
-				this.playlist = playlist;
-				if (playlist.playlistItems) {
-					this.playlistItems = playlist.playlistItems;
+		this.route.data.subscribe(
+			(data: Data) => {
+				
+				this.playlist = data['playlist'];
+				// console.log(this.playlist);
+				this.tags = this.playlist.tags;
+				if (this.playlist.playlistItems) {
+					this.playlistItems = this.playlist.playlistItems;
 				} else {
 					this.playlistItems = [];
 				}
-	
-				// console.log(this.playlists);
-				// this.playlist = this.playlists[this.plIndex];
-				// this.tags = this.playlist.tags;
 				// this.playlistItems = this.playlist.playlistItems;
-				
-			}
-		);
-		this.route.data.subscribe(
-			(data: Data) => {
-				this.playlist = data['playlist']
-				// console.log(this.playlist);
-				this.tags = this.playlist.tags;
-				this.playlistItems = this.playlist.playlistItems;
 				console.log(data);
 			}
 		);
+		// this.storageService.fetchPlaylist(this.id).subscribe(
+			// (playlist: Playlist) => {
+			// 	this.playlist = playlist;
+			// 	console.log(playlist)
+			// 	if (this.playlist.playlistItems) {
+			// 		this.playlistItems = this.playlist.playlistItems;
+			// 	} else {
+			// 		this.playlistItems = [];
+			// 	}
+			// 	console.log(playlist)
+			// }
+		// );
+
 		this.playlistService.openPlaylist.subscribe(
 			data => {
 				const opened: Playlist = data;
@@ -76,7 +79,7 @@ export class ViewPlaylistComponent implements OnInit, OnDestroy {
 		)
 		this.plChangedSub = this.playlistService.mediaAdded.subscribe(
 			playlist => {
-				this.playlist = playlist;
+				// this.playlist = playlist;
 				this.playlistItems = this.playlist.playlistItems;
 				console.log(playlist)	
 			}
