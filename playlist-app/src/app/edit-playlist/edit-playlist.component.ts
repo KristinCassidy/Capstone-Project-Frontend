@@ -22,7 +22,6 @@ export class EditPlaylistComponent implements OnInit {
 	id: string;
 	editPlaylistForm: FormGroup;
 	playlistItems: PlaylistItem[];
-	
 	tags: Tag[];
 	images;
 
@@ -50,8 +49,8 @@ export class EditPlaylistComponent implements OnInit {
 				this.tags = this.playlist.tags;
 				// this.tagService.tagChanged.next(this.tags);
 				// console.log(this.tags);
-				// this.playlistItems = this.playlist.playlistItems;
-				console.log(data);
+				this.playlistItems = this.playlist.playlistItems;
+				console.log(this.playlist);
 			}
 		);
 		// this.storageService.fetchPlaylist(this.id).subscribe(

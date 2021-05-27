@@ -16,7 +16,7 @@ export class ItemFormComponent implements OnInit {
 	@ViewChild('f') playlistItemForm: NgForm;
 	updatePlaylistSub: Subscription;
 	playlist: Playlist;
-	itemArray: PlaylistItem[];
+	itemArray: PlaylistItem[] = [];
 	imagePath: string = '';
 	@Input() id: string;
 
@@ -42,11 +42,12 @@ export class ItemFormComponent implements OnInit {
 
 	onAddItem(form: NgForm) {
 		const value = form.value;
-		const newItem = new ImageItem(null, value.itemUrl, value.itemName);
-		// console.log(newItem)
-		this.itemArray.push(newItem);
+		const newItem = new PlaylistItem(null, value.itemName, value.itemUrl);
+		console.log(newItem)
+		const items: PlaylistItem[] = [];
+		items.push(newItem);
 		// this.playlist.playlistItems = this.itemArray;
-		this.storageService.putItems(this.id,this.itemArray.slice());
+		this.storageService.putItems(this.id,items.slice()).subscribe();
 		form.reset();
 
 	}
