@@ -53,20 +53,13 @@ export class EditPlaylistComponent implements OnInit {
 				console.log(this.playlist);
 			}
 		);
-		// this.storageService.fetchPlaylist(this.id).subscribe(
-			// playlist => {
-			// 	this.playlist = playlist
-			// 	console.log(playlist)
-			// }
-		
-		// );
 		this.editPlaylistForm = new FormGroup({
 				'title': new FormControl(this.playlist.title, Validators.required),
 				'desc': new FormControl(this.playlist.description),				
 	 	});
-		// this.updatedPlaylistSub = this.playlistService.mediaAdded.subscribe(
-		// 	playlist => this.playlist = playlist
-		// );
+		this.updatedPlaylistSub = this.playlistService.mediaAdded.subscribe(
+			playlist => this.playlist = playlist
+		);
 		// this.getImages();
 	}
 

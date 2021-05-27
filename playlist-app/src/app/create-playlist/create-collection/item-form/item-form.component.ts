@@ -44,10 +44,10 @@ export class ItemFormComponent implements OnInit {
 		const value = form.value;
 		const newItem = new PlaylistItem(null, value.itemName, value.itemUrl);
 		console.log(newItem)
-		const items: PlaylistItem[] = [];
-		items.push(newItem);
+		// itemArray: PlaylistItem[] = [];
+		this.itemArray.push(newItem);
 		// this.playlist.playlistItems = this.itemArray;
-		this.storageService.putItems(this.id,items.slice()).subscribe();
+		this.storageService.putItems(this.id,this.itemArray.slice()).subscribe();
 		form.reset();
 
 	}

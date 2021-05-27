@@ -31,34 +31,27 @@ export class ViewGalleryComponent implements OnInit {
 
   	ngOnInit() {
 		this.isFetching = true;
-		this.storageService.fetchPlaylists()
-	  		.subscribe( 
-				playlists => {
-		 			this.isFetching = false;
-		  			this.loadedPlaylists = playlists;
-					playlists.forEach(
-						playlist => {
-							if (playlist.playlistItems) {
-								this.storageService.fetchImages(playlist.id)
-									.subscribe(
-										images => {
-											// this.images = images
-											// console.log(images)	
-									})
-							} else {
-								playlists.map(playlist => {
-									return {...playlist, playlistItems: playlist.playlistItems ? playlist.playlistItems: []}
-								})		
-							}
-						}
-					)
-						
-				});
+		// this.storageService.fetchPlaylists()
+	  	// 	.subscribe( 
+		// 		playlists => {
+		 			
+		  			
+		// 			playlists.map(playlist => {
+		// 				return {...playlist, playlistItems: playlist.playlistItems ? playlist.playlistItems: []}
+		// 			})		
+		// 			this.loadedPlaylists = playlists;
+		// 			}
+		// 		)
 				this.route.data.subscribe(
 					(data: Data) => {
 						this.loadedPlaylists = data['playlists'];
+						this.loadedPlaylists.map(
+							playlist => {
+								return {...playlist, playlistItems: playlist.playlistItems ? playlist.playlistItems: []}
+							})	
 						// this.tags = this.playlist.tags;
 						// this.playlistItems = this.playlist.playlistItems;
+						this.isFetching = false;
 						console.log(data);
 					}
 				);
