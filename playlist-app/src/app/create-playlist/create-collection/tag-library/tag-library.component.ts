@@ -36,6 +36,7 @@ export class TagLibraryComponent implements OnInit, OnDestroy {
 		this.tagsChangedSub = this.tagService.tagsChanged.subscribe(
 			(tags: Tag[]) => {
 				this.loadedTags = tags
+				console.log(this.loadedTags)
 			}
 		);
 		this.editTagSub = this.tagService.startedEditing
@@ -58,7 +59,7 @@ export class TagLibraryComponent implements OnInit, OnDestroy {
 			this.storageService.createAndStoreTag(newTag);
 			form.reset();
 			// this.tagService.tagsChanged.next(this.tags.slice());
-			console.log(this.loadedTags.push(newTag))
+			// console.log(this.loadedTags.push(newTag))
 			
 		}
 	}
@@ -99,7 +100,7 @@ export class TagLibraryComponent implements OnInit, OnDestroy {
 
 	onDeleteTag() {
 		this.tagService.deletefromLibrary(this.editedTagIndex);
-		this.storageService.deleteTag(this.editedTag)
+		this.storageService.putTags(this.loadedTags)
 		this.tagForm.reset();
 		this.editMode = false;
 	}

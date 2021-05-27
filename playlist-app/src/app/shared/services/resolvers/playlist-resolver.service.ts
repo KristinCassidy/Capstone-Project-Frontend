@@ -22,5 +22,7 @@ export class PlaylistResolver implements Resolve<Playlist>{
     // console.log(this.playlistService.currentPlaylist)
     console.log(this.storageService.fetchPlaylist(this.id));
     return this.storageService.fetchPlaylist(this.id);
+    // return this.playlistService.openPlaylist;
   }
+
 }

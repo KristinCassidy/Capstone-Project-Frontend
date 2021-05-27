@@ -34,6 +34,7 @@ import { EditPlaylistComponent } from './edit-playlist/edit-playlist.component';
 import { PlaylistsResolver } from './shared/services/resolvers/playlists-resolver.service';
 import { ItemFormComponent } from './create-playlist/create-collection/item-form/item-form.component';
 import { ViewItemComponent } from './view-playlist/view-item/view-item.component';
+import { DataStorageService } from './shared/services/data-storage.service';
 // import { ImageResolver } from './shared/services/resolvers/image-resolver.service';
 
 
@@ -74,6 +75,7 @@ import { ViewItemComponent } from './view-playlist/view-item/view-item.component
   providers: [ 
     PlaylistService, 
     TagService, 
+    DataStorageService,
     PlaylistResolver,
     PlaylistsResolver, 
     TagsResolver,

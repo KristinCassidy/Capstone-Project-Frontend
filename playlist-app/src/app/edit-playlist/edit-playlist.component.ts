@@ -50,6 +50,7 @@ export class EditPlaylistComponent implements OnInit {
 				this.tagService.tagChanged.next(this.tags);
 				// console.log(this.tags);
 				this.playlistItems = this.playlist.playlistItems;
+				console.log(this.playlist);
 			}
 		);
 		this.editPlaylistForm = new FormGroup({

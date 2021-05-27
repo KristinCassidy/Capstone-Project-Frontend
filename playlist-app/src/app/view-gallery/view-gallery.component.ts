@@ -15,6 +15,7 @@ export class ViewGalleryComponent implements OnInit {
 	loadedPlaylists: Playlist[] = [];
 	isFetching: boolean = false;
 	playlistItems: PlaylistItem[];
+	playlistIndex: number;
 	images;
 	// playlistItem: PlaylistItem;
 	coreUrl;
@@ -37,14 +38,18 @@ export class ViewGalleryComponent implements OnInit {
 		  			this.loadedPlaylists = playlists;
 					playlists.forEach(
 						playlist => {
-							this.storageService.fetchImages(playlist.id)
-								.subscribe(
-									images => {
-										this.images = images
-										console.log(images)
-										
-								})
-								
+							if (playlist.playlistItems) {
+								this.storageService.fetchImages(playlist.id)
+									.subscribe(
+										images => {
+											// this.images = images
+											// console.log(images)	
+									})
+							} else {
+								playlists.map(playlist => {
+									return {...playlist, playlistItems: playlist.playlistItems ? playlist.playlistItems: []}
+								})		
+							}
 						}
 					)
 						
@@ -79,10 +84,12 @@ export class ViewGalleryComponent implements OnInit {
   	}
 
   	onOpenPlaylist(index: number) {
+		// this.playlistIndex = index;
+		// this.playlistService.playlistIndex.next(index);
 		const selected = this.loadedPlaylists[index];
-		// this.playlistService.openPlaylist.next(selected);
-		this.playlistService.updatePlaylist(selected);
-		// console.log(selected);
+		this.playlistService.openPlaylist.next(selected);
+		// this.playlistService.updatePlaylist(selected);
+		console.log(selected);
 		this.router.navigate(['view-playlist', selected.id], {});
   	}
 	

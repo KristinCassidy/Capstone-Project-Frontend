@@ -28,6 +28,7 @@ export class ViewPlaylistComponent implements OnInit, OnDestroy {
 	selected: boolean = false;
 	showModal: boolean = false;
 	imageUrl: string;
+	plIndex: number;
 
 	constructor(private storageService: DataStorageService,
 				private playlistService: PlaylistService,
@@ -38,44 +39,64 @@ export class ViewPlaylistComponent implements OnInit, OnDestroy {
 		this.isFetching = true;
 		this.route.params.subscribe(
 			(params: Params) => {
-				this.id = params['id'];
-				// this.storageService.fetchPlaylist(this.id).subscribe();
+				this.id = params['id']
 			}
 		);
-		this.storageService.fetchPlaylists().subscribe(
-			responseData => {
-				this.playlists = responseData;
-				this.isFetching = false
+		this.storageService.fetchPlaylist(this.id).subscribe(
+			playlist => {
+				this.playlist = playlist;
+				if (playlist.playlistItems) {
+					this.playlistItems = playlist.playlistItems;
+				} else {
+					this.playlistItems = [];
+				}
+	
+				// console.log(this.playlists);
+				// this.playlist = this.playlists[this.plIndex];
+				// this.tags = this.playlist.tags;
+				// this.playlistItems = this.playlist.playlistItems;
+				
 			}
 		);
 		this.route.data.subscribe(
 			(data: Data) => {
-				this.playlist = data['playlist'];
-				console.log(this.playlist);
+				this.playlist = data['playlist']
+				// console.log(this.playlist);
 				this.tags = this.playlist.tags;
 				this.playlistItems = this.playlist.playlistItems;
 				console.log(data);
 			}
 		);
-		
+		this.playlistService.openPlaylist.subscribe(
+			data => {
+				const opened: Playlist = data;
+				console.log(data);
+				this.playlistItems = opened.playlistItems;
+			}
+		)
 		this.plChangedSub = this.playlistService.mediaAdded.subscribe(
 			playlist => {
 				this.playlist = playlist;
 				this.playlistItems = this.playlist.playlistItems;
-				// console.log(playlist)
-				this.isFetching = false;
+				console.log(playlist)	
 			}
 		);
-	
 		this.editModeSub = this.playlistService.editMode.subscribe(
 			data => {
 				this.editMode = data;
 			}
 		);
-	
-		if(!this.playlist){
-			this.router.navigate(['view-gallery'])
-		}
+		// this.playlistService.playlistCreated.subscribe(
+		// 	data => {
+		// 		this.playlist = data;
+		// 		this.playlistItems = this.playlist.playlistItems;
+		// 	}
+		// )
+		this.isFetching = false;
+		// if(!this.playlist){
+		// 	this.router.navigate(['view-gallery'])
+		// }
+		
 	}
 
 	onEdit() {

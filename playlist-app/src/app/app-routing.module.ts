@@ -36,7 +36,7 @@ const routes: Routes = [
 		{ path: 'view', component: ViewPlaylistComponent}
 	]},
 	{ path: 'view-playlist', component: ViewPlaylistComponent},
-	{ path: 'view-playlist/:id', component: ViewPlaylistComponent, resolve: {playlist: PlaylistResolver}},
+	{ path: 'view-playlist/:id', component: ViewPlaylistComponent, resolve: {playlists: PlaylistsResolver}},
 	{ path: 'view-playlist/:id/edit', component: EditPlaylistComponent, resolve: {playlist: PlaylistResolver}},
 
 	{ path: 'tag-library', component: TagLibraryComponent, resolve: {tags: TagsResolver}}, 

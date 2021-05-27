@@ -13,6 +13,7 @@ export class PlaylistService {
 	editMode = new Subject<boolean>();
 	mediaAdded = new Subject<Playlist>();
 	openItem = new Subject<string>();
+	playlistIndex = new Subject<number>();
 
 	constructor() { }
 		private playlistsArray: Playlist[] = [];
@@ -29,8 +30,8 @@ export class PlaylistService {
 		// this.currentPlaylist = playlists[index];
 		this.currentPlaylist = newPlaylist;
 		//KEEP vvvvvv
-		console.log(this.currentPlaylist);
-		this.openPlaylist.next(this.currentPlaylist);
+		// console.log(this.currentPlaylist);
+		this.mediaAdded.next(this.currentPlaylist);
 		this.editMode.next(false);
 		return(this.currentPlaylist);
 	}

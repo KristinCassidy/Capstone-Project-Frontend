@@ -19,6 +19,7 @@ export class AddImageComponent implements OnInit {
               private playlistService: PlaylistService) { }
 
   ngOnInit(): void {
+    this.playlistService.playlistCreated.subscribe()
   }
 
   onAddImage(form: NgForm) {

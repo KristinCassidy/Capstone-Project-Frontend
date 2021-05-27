@@ -36,7 +36,7 @@
 		<p *ngIf="isFetching">Loading...</p>
 		<!-- <div > -->
 
-		<div class="single-view" *ngIf="!isFetching && playlistItems; else empty">
+		<div class="single-view" *ngIf="!isFetching">
 			<!-- <div *ngFor="let item of playlistItems; let i = index"> -->
 				<div *ngIf="playlistItems[0] != undefined; else noCore"
 					id="core"
@@ -49,23 +49,6 @@
 						id="core"
 						class="media-item">
 					</div>
-					<div
-						id="core"
-						class="media-item">
-					</div>	
-					<div
-						id="core"
-						class="media-item">
-					</div>
-					<div
-						id="core"
-						class="media-item">
-					</div>
-					<div
-						id="core"
-						class="media-item">
-					</div>
-					
 				</ng-template>
 				<div *ngIf="playlistItems[1]; else noItem2"
 					id="item2"

@@ -56,7 +56,7 @@ export class CreateCollectionComponent implements OnInit {
 	onCreate(form: FormGroup) {
 		const value = form.value
 		const tags = this.tagService.getTags();
-		const newPlayList = new Playlist( value.title, null, tags, value.desc, null);
+		const newPlayList = new Playlist( value.title, null, tags, value.desc, []);
 		// this.currentPlaylist = newPlayList;
 		this.playlistService.playlistCreated.next(newPlayList);
 		this.storageService.postPlaylist(newPlayList);

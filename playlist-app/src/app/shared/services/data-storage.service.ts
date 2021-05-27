@@ -73,14 +73,7 @@ export class DataStorageService {
 
 // PLAYLISTS---------------------------------------------------------------------------------------------------
 
-	
-	postPlaylist(postData: Playlist) {  //saves playlist to backend [post to backend]
-		this.http
-			.post<{ name: string }>(this.playlistUrl, postData)
-			.subscribe(responseData => {
-				console.log(responseData);
-			});
-	};
+
 
 
 	deletePlaylists() { //deletes all playlists
@@ -96,10 +89,10 @@ export class DataStorageService {
 					const playlistsArray: Playlist[] = [];
 					for (const key in responseData) {
 						if (responseData.hasOwnProperty(key)) {
-							playlistsArray.push({...responseData[key], id: key });
+							playlistsArray.push({...responseData[key], id: key, playlistItems: [] });
 						}
 					}
-					console.log(playlistsArray)
+					// console.log(playlistsArray)
 					return playlistsArray.map(playlist => {
 						return {...playlist, playlistItems: playlist.playlistItems ? playlist.playlistItems: []}
 					})
@@ -112,11 +105,19 @@ export class DataStorageService {
 
 
 // PLAYLIST----------------------------------------------------------------------------------------------------
-
+	
+	postPlaylist(postData: Playlist) {  //saves playlist to backend [post to backend]
+		this.http
+			.post<{ name: string }>(this.playlistUrl, postData)
+			.subscribe(responseData => {
+				console.log(responseData);
+			});
+	};
+	
 	fetchPlaylist( idKey: string ) {
 		const plUrl = `https://playlist-app-78d55-default-rtdb.firebaseio.com/playlists/${ idKey }.json`;
-		return this.http.get<Playlist>(plUrl);
-	}
+		return this.http.get<Playlist>(plUrl)
+	};
 
 	deletePlaylist(idKey: string ) {
 		const plUrl = `https://playlist-app-78d55-default-rtdb.firebaseio.com/playlists/${ idKey }.json`;
