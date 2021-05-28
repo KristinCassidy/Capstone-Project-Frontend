@@ -9,6 +9,7 @@ export class TagService {
 	tagsChanged = new Subject<Tag[]>();
 	startedEditing = new Subject<number>();
 	removeTag = new Subject<number>();
+	updateTag = new Subject<Tag>();
 
 	constructor() {}
 	
@@ -57,7 +58,7 @@ export class TagService {
 	}
 	
 	deletefromLibrary(index: number) {
-		console.log(index);
+		// console.log(index);
 		this.tagLibrary.splice(index, 1);
 		this.tagsChanged.next(this.tagLibrary.slice());
 	}

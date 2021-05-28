@@ -43,8 +43,7 @@ export class DataStorageService {
 					}
 					return tagsArray
 					.map(tag => {
-						return { ...tag, id: tag.id ? tag.id : ''
-						}
+						return { ...tag, id: tag.id ? tag.id : ''}
 					});
 				})
 				,
@@ -69,17 +68,20 @@ export class DataStorageService {
 		return this.http.delete(tagUrl).subscribe();
 	}
 
+	putTag(tag: Tag) {
+		console.log(tag);
+		const updated = new Tag(tag.id, tag.name);
+		const tagUrl = `https://playlist-app-78d55-default-rtdb.firebaseio.com/tags/${ tag.id }.json`;
+		return this.http.put(tagUrl, updated).subscribe();
+	}
+
 
 
 // PLAYLISTS---------------------------------------------------------------------------------------------------
 
-
-
-
 	deletePlaylists() { //deletes all playlists
 		return this.http.delete(this.playlistUrl);
 	};
-
 
 	fetchPlaylists() { //fetches all playlists from backend
 		return this.http

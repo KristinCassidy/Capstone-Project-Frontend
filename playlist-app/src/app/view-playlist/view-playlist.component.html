@@ -12,7 +12,7 @@
 			<div 
 				class="navbar-right"
 				style="padding-right: 1em">
-				<button class="btn" (click)="onEdit()">Edit</button> 
+				<button class="btn" *ngIf="!editMode"(click)="onEdit()">Edit</button> 
 				<button class="btn"(click)="onDelete()">Delete</button>
 				<button *ngIf="editMode" class="btn" (click)="onCancel()">Cancel</button>
 			</div>

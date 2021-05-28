@@ -6,7 +6,7 @@ import { Subscription} from 'rxjs';
 import { DataStorageService } from 'src/app/shared/services/data-storage.service';
 import { Tag } from 'src/app/shared/models/tag.model';
 import { TagService } from '../../../shared/services/tag.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Data, Router } from '@angular/router';
 
 
 @Component({
@@ -19,8 +19,10 @@ export class TagLibraryComponent implements OnInit, OnDestroy {
 	editMode = false;
 	editedTagIndex: number;
 	editedTag: Tag;
+	updatedTag: Tag;
 	loadedTags: Tag[] = [];
 	isFetching = false;
+	
 
 	constructor(private tagService: TagService,
 				private storageService: DataStorageService,
@@ -29,57 +31,69 @@ export class TagLibraryComponent implements OnInit, OnDestroy {
 
 	tagsChangedSub: Subscription;
 	editTagSub: Subscription;
+	updateTagSub: Subscription;
 
 	ngOnInit(): void {
 		this.isFetching = true;
-		this.onFetchTags();
+		this.route.data.subscribe(
+			(data: Data) => {
+				this.loadedTags = data['tags'];
+				console.log(this.loadedTags);
+			}
+		);
+		
 		this.tagsChangedSub = this.tagService.tagsChanged.subscribe(
 			(tags: Tag[]) => {
 				this.loadedTags = tags
 				console.log(this.loadedTags)
 			}
 		);
-		this.editTagSub = this.tagService.startedEditing
-		    .subscribe(
-		      	(index: number) => {
-		        	this.editMode = true;
-					this.editedTagIndex = index;
-		      	}
-		    )
+		this.editTagSub = this.tagService.startedEditing.subscribe(
+			(index: number) => {
+				this.editMode = true;
+				this.editedTagIndex = index;
+			}
+		);
+		this.updateTagSub = this.tagService.updateTag.subscribe(
+			(tag: Tag) => {
+				this.updatedTag = tag;
+				console.log(this.updatedTag)
+			}
+		);
 	}
 
 	onSubmit(form: NgForm) {
 		const value = form.value;
-		if(this.editMode) {
-			this.onUpdate(value.tagName);
+		if(this.editMode) {	
+			this.onUpdateName(value.tagName);
 			this.editMode = false;
 			form.reset();
+
 		} else {
 			const newTag = new Tag(null, value.tagName);
 			this.storageService.createAndStoreTag(newTag);
 			form.reset();
+		
 			// this.tagService.tagsChanged.next(this.tags.slice());
-			// console.log(this.loadedTags.push(newTag))
-			
+			this.loadedTags.push(newTag)
 		}
 	}
 
-	onUpdate(newName: string) {
+	onUpdateName(newName: string) {
 		this.editedTag.name = newName;
 		this.loadedTags[this.editedTagIndex] = this.editedTag;
-		
 		this.tagService.tagsChanged.next(this.loadedTags.slice());
-		this.tagService.setTags(this.loadedTags.slice());
-		// this.storageService.updateTag(this.editedTagIndex,this.editedTag);
-		this.storageService.putTags(this.loadedTags.slice());
+		// this.tagService.setTags(this.loadedTags.slice());
+		this.storageService.putTag(this.updatedTag);
 	}
 
 	onEditTag(index: number) {
 		this.editMode = true;
 		this.editedTagIndex = index;
 		this.editedTag = this.loadedTags[index];
+		this.tagService.updateTag.next(this.editedTag);
 		this.tagForm.setValue({
-				tagName: this.editedTag.name
+			tagName: this.editedTag.name
 		})
 	}
 
@@ -100,13 +114,17 @@ export class TagLibraryComponent implements OnInit, OnDestroy {
 
 	onDeleteTag() {
 		this.tagService.deletefromLibrary(this.editedTagIndex);
-		this.storageService.putTags(this.loadedTags)
+		this.storageService.deleteTag(this.editedTag);
+		// this.tagService.tagsChanged.next(this.loadedTags.slice());
 		this.tagForm.reset();
+		// this.onFetchTags();
 		this.editMode = false;
 	}
 
 	ngOnDestroy(): void {
 		this.tagsChangedSub.unsubscribe();
+		this.updateTagSub.unsubscribe();
+		this.editTagSub.unsubscribe();
 	}
 
 }

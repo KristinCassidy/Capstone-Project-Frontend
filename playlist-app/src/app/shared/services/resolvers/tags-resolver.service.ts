@@ -11,11 +11,13 @@ import { Tag } from '../../models/tag.model';
 })
 export class TagsResolver implements Resolve<Tag[]>{
 
-  constructor(
-              // private tagService: TagService,
+  constructor( // private tagService: TagService,
               private storageService: DataStorageService) { }
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
+    this.storageService.fetchTags().subscribe(
+      data => console.log(data)
+    )
     return this.storageService.fetchTags();
   }
 }

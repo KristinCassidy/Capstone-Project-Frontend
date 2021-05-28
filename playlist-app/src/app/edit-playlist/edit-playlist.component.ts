@@ -71,9 +71,9 @@ export class EditPlaylistComponent implements OnInit {
 
 	onSubmit() {
 		const tags = this.tagService.getTags();
-		// this.tagService.addTagsToLibrary(tags);
-		// 	tags.forEach(tag =>
-		// 		(this.storageService.createAndStoreTag(tag)));
+		this.tagService.addTagsToLibrary(tags);
+			tags.forEach(tag =>
+				(this.storageService.createAndStoreTag(tag)));
 			
 		this.onUpdate();
 		this.playlistService.editMode.next(false);
