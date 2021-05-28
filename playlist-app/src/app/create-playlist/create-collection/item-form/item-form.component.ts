@@ -35,7 +35,12 @@ export class ItemFormComponent implements OnInit {
 			(data: Data) => {
 				this.playlist = data['playlist'];
 				console.log(this.playlist)
-				this.itemArray = this.playlist.playlistItems;
+				if (this.playlist.playlistItems) {
+					this.itemArray = this.playlist.playlistItems;
+				} else {
+					this.playlist.playlistItems = [];
+				}
+				console.log(this.playlist)
 			}
 		);
 	}
@@ -45,9 +50,9 @@ export class ItemFormComponent implements OnInit {
 		const newItem = new PlaylistItem(null, value.itemName, value.itemUrl);
 		console.log(newItem)
 		// itemArray: PlaylistItem[] = [];
-		this.itemArray.push(newItem);
+		this.playlist.playlistItems.push(newItem);
 		// this.playlist.playlistItems = this.itemArray;
-		this.storageService.putItems(this.id,this.itemArray.slice()).subscribe();
+		this.storageService.putItems(this.id,this.playlist.playlistItems.slice()).subscribe();
 		form.reset();
 
 	}

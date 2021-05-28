@@ -45,12 +45,15 @@ export class ViewGalleryComponent implements OnInit {
 				this.route.data.subscribe(
 					(data: Data) => {
 						this.loadedPlaylists = data['playlists'];
-						this.loadedPlaylists.map(
-							playlist => {
-								return {...playlist, playlistItems: playlist.playlistItems ? playlist.playlistItems: []}
-							})	
+					
+						// this.loadedPlaylists.map(
+						// 	playlist => {
+						// 		return {...playlist, playlistItems: playlist.playlistItems ? playlist.playlistItems: []}
+						// 	})	
 						// this.tags = this.playlist.tags;
 						// this.playlistItems = this.playlist.playlistItems;
+
+						
 						this.isFetching = false;
 						console.log(data);
 					}
