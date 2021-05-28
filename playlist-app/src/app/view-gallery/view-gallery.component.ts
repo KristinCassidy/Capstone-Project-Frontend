@@ -37,15 +37,15 @@ export class ViewGalleryComponent implements OnInit {
 				this.fetchedPlaylists = data['playlists'];
 				this.fetchedPlaylists.forEach(
 					playlist => {
-						this.storageService.fetchPlaylist(playlist.id).subscribe(
-							playlist => {
+						// this.storageService.fetchPlaylist(playlist.id).subscribe(
+						// 	playlist => {
 								if(!playlist.playlistItems){
 									playlist.playlistItems = [];
 								}
 								this.loadedPlaylists.push(playlist)
-								console.log(playlist)
-							}
-						)
+								// console.log(playlist)
+							// }
+						// )
 					}
 				)
 				this.isFetching = false;

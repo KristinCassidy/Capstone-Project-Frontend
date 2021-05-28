@@ -89,7 +89,7 @@ export class DataStorageService {
 					const playlistsArray: Playlist[] = [];
 					for (const key in responseData) {
 						if (responseData.hasOwnProperty(key)) {
-							playlistsArray.push({...responseData[key], id: key, playlistItems: [] });
+							playlistsArray.push({...responseData[key], id: key });
 						}
 					}
 					// console.log(playlistsArray)
