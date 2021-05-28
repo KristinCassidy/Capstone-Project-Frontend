@@ -12,6 +12,7 @@ import { PlaylistItem } from '../shared/models/playlist-item.model';
 	styleUrls: ['./view-gallery.component.css']
 })
 export class ViewGalleryComponent implements OnInit {
+	fetchedPlaylists: Playlist[];
 	loadedPlaylists: Playlist[] = [];
 	isFetching: boolean = false;
 	playlistItems: PlaylistItem[];
@@ -31,33 +32,26 @@ export class ViewGalleryComponent implements OnInit {
 
   	ngOnInit() {
 		this.isFetching = true;
-		// this.storageService.fetchPlaylists()
-	  	// 	.subscribe( 
-		// 		playlists => {
-		 			
-		  			
-		// 			playlists.map(playlist => {
-		// 				return {...playlist, playlistItems: playlist.playlistItems ? playlist.playlistItems: []}
-		// 			})		
-		// 			this.loadedPlaylists = playlists;
-		// 			}
-		// 		)
-				this.route.data.subscribe(
-					(data: Data) => {
-						this.loadedPlaylists = data['playlists'];
-					
-						// this.loadedPlaylists.map(
-						// 	playlist => {
-						// 		return {...playlist, playlistItems: playlist.playlistItems ? playlist.playlistItems: []}
-						// 	})	
-						// this.tags = this.playlist.tags;
-						// this.playlistItems = this.playlist.playlistItems;
-
-						
-						this.isFetching = false;
-						console.log(data);
+		this.route.data.subscribe(
+			(data: Data) => {
+				this.fetchedPlaylists = data['playlists'];
+				this.fetchedPlaylists.forEach(
+					playlist => {
+						this.storageService.fetchPlaylist(playlist.id).subscribe(
+							playlist => {
+								if(!playlist.playlistItems){
+									playlist.playlistItems = [];
+								}
+								this.loadedPlaylists.push(playlist)
+								console.log(playlist)
+							}
+						)
 					}
-				);
+				)
+				this.isFetching = false;
+				console.log(this.loadedPlaylists);
+			}
+		);
 	}
 			
 	onFetchPlaylists() {
