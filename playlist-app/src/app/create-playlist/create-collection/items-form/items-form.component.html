@@ -1,0 +1,334 @@
+       
+<form (ngSubmit)="onSubmit(f)" #f="ngForm">
+    <div class="item">
+        <div class="row">
+            <!-- <h5>Item 1:</h5> -->
+            <div class="col-xs-4">
+                <!-- //dynamic picture -->
+                <div 
+                    class="media-item"
+                    *ngIf="imagePath; else noItem"
+                    style="background-image: url('{{ imagePath }}');">
+
+                </div>
+                <!-- <div *ngIf="value.itemUrl; else noCore"
+                    id="core"
+                    class="media-item"  
+                    (click)="onOpenImage(0)" 
+                    style="background-image: url('{{ playlistItems[0].imagePath }}');">
+                </div> -->
+                <ng-template #noItem>
+                    <div
+                        id="core"
+                        class="media-item">
+                    </div>
+                </ng-template>
+            
+            </div>
+            <div class="col-xs-8">
+                <div class="form-group">
+                    <div class="col-xs-12">
+                        <label for="url">url:</label>
+                            <input 
+                                type="text"
+                                id="tag"
+                                class="form-control"
+                                name="itemUrl"
+                                [(ngModel)]="imagePath"
+                                required>
+                    </div>
+                    <div class="col-xs-8">
+                        <label for="name">name:</label>
+                            <input 
+                                type="text"
+                                id="name"
+                                class="form-control"
+                                name="itemName"
+                                ngModel
+                                required>
+
+                            
+                    </div>
+            
+                    <div class="col-sm-1">
+                        <button 
+                            class="app-control btn" 
+                            type="submit"
+                            [disabled]="!f.valid">
+                            save
+                        </button>
+                    </div> 
+
+                </div>             
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="item">
+        <div class="row">
+            <!-- <h5>Item 1:</h5> -->
+            <div class="col-xs-4">
+                <!-- //dynamic picture -->
+                <div 
+                    class="media-item"
+                    *ngIf="imagePath; else noItem"
+                    style="background-image: url('{{ imagePath }}');">
+
+                </div>
+                <!-- <div *ngIf="value.itemUrl; else noCore"
+                    id="core"
+                    class="media-item"  
+                    (click)="onOpenImage(0)" 
+                    style="background-image: url('{{ playlistItems[0].imagePath }}');">
+                </div> -->
+                <ng-template #noItem>
+                    <div
+                        id="core"
+                        class="media-item">
+                    </div>
+                </ng-template>
+            
+            </div>
+            <div class="col-xs-8">
+                <div class="form-group">
+                    <div class="col-xs-12">
+                        <label for="url">url:</label>
+                            <input 
+                                type="text"
+                                id="tag"
+                                class="form-control"
+                                name="itemUrl"
+                                [(ngModel)]="imagePath"
+                                required>
+                    </div>
+                    <div class="col-xs-8">
+                        <label for="name">name:</label>
+                            <input 
+                                type="text"
+                                id="name"
+                                class="form-control"
+                                name="itemName"
+                                ngModel
+                                required>
+
+                            
+                    </div>
+            
+                    <div class="col-sm-1">
+                        <button 
+                            class="app-control btn" 
+                            type="submit"
+                            [disabled]="!f.valid">
+                            save
+                        </button>
+                    </div> 
+
+                </div>             
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="item">
+        <div class="row">
+            <!-- <h5>Item 1:</h5> -->
+            <div class="col-xs-4">
+                <!-- //dynamic picture -->
+                <div 
+                    class="media-item"
+                    *ngIf="imagePath; else noItem"
+                    style="background-image: url('{{ imagePath }}');">
+
+                </div>
+                <!-- <div *ngIf="value.itemUrl; else noCore"
+                    id="core"
+                    class="media-item"  
+                    (click)="onOpenImage(0)" 
+                    style="background-image: url('{{ playlistItems[0].imagePath }}');">
+                </div> -->
+                <ng-template #noItem>
+                    <div
+                        id="core"
+                        class="media-item">
+                    </div>
+                </ng-template>
+            
+            </div>
+            <div class="col-xs-8">
+                <div class="form-group">
+                    <div class="col-xs-12">
+                        <label for="url">url:</label>
+                            <input 
+                                type="text"
+                                id="tag"
+                                class="form-control"
+                                name="itemUrl"
+                                [(ngModel)]="imagePath"
+                                required>
+                    </div>
+                    <div class="col-xs-8">
+                        <label for="name">name:</label>
+                            <input 
+                                type="text"
+                                id="name"
+                                class="form-control"
+                                name="itemName"
+                                ngModel
+                                required>
+
+                            
+                    </div>
+            
+                    <div class="col-sm-1">
+                        <button 
+                            class="app-control btn" 
+                            type="submit"
+                            [disabled]="!f.valid">
+                            save
+                        </button>
+                    </div> 
+
+                </div>             
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="item">
+        <div class="row">
+            <!-- <h5>Item 1:</h5> -->
+            <div class="col-xs-4">
+                <!-- //dynamic picture -->
+                <div 
+                    class="media-item"
+                    *ngIf="imagePath; else noItem"
+                    style="background-image: url('{{ imagePath }}');">
+
+                </div>
+                <!-- <div *ngIf="value.itemUrl; else noCore"
+                    id="core"
+                    class="media-item"  
+                    (click)="onOpenImage(0)" 
+                    style="background-image: url('{{ playlistItems[0].imagePath }}');">
+                </div> -->
+                <ng-template #noItem>
+                    <div
+                        id="core"
+                        class="media-item">
+                    </div>
+                </ng-template>
+            
+            </div>
+            <div class="col-xs-8">
+                <div class="form-group">
+                    <div class="col-xs-12">
+                        <label for="url">url:</label>
+                            <input 
+                                type="text"
+                                id="tag"
+                                class="form-control"
+                                name="itemUrl"
+                                [(ngModel)]="imagePath"
+                                required>
+                    </div>
+                    <div class="col-xs-8">
+                        <label for="name">name:</label>
+                            <input 
+                                type="text"
+                                id="name"
+                                class="form-control"
+                                name="itemName"
+                                ngModel
+                                required>
+
+                            
+                    </div>
+            
+                    <div class="col-sm-1">
+                        <button 
+                            class="app-control btn" 
+                            type="submit"
+                            [disabled]="!f.valid">
+                            save
+                        </button>
+                    </div> 
+
+                </div>             
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="item">
+        <div class="row">
+            <!-- <h5>Item 1:</h5> -->
+            <div class="col-xs-4">
+                <!-- //dynamic picture -->
+                <div 
+                    class="media-item"
+                    *ngIf="imagePath; else noItem"
+                    style="background-image: url('{{ imagePath }}');">
+
+                </div>
+                <!-- <div *ngIf="value.itemUrl; else noCore"
+                    id="core"
+                    class="media-item"  
+                    (click)="onOpenImage(0)" 
+                    style="background-image: url('{{ playlistItems[0].imagePath }}');">
+                </div> -->
+                <ng-template #noItem>
+                    <div
+                        id="core"
+                        class="media-item">
+                    </div>
+                </ng-template>
+            
+            </div>
+            <div class="col-xs-8">
+                <div class="form-group">
+                    <div class="col-xs-12">
+                        <label for="url">url:</label>
+                            <input 
+                                type="text"
+                                id="tag"
+                                class="form-control"
+                                name="itemUrl"
+                                [(ngModel)]="imagePath"
+                                required>
+                    </div>
+                    <div class="col-xs-8">
+                        <label for="name">name:</label>
+                            <input 
+                                type="text"
+                                id="name"
+                                class="form-control"
+                                name="itemName"
+                                ngModel
+                                required>
+
+                            
+                    </div>
+            
+                    <div class="col-sm-1">
+                        <button 
+                            class="app-control btn" 
+                            type="submit"
+                            [disabled]="!f.valid">
+                            save
+                        </button>
+                    </div> 
+
+                </div>             
+            </div>
+
+        </div>
+
+    </div>
+    
+</form>
+    

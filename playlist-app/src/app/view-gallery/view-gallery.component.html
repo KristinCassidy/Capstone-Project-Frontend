@@ -9,8 +9,19 @@
              
             </div>
             <div class="navbar-right">
-                <button class="btn btn-default" (click)="onFetchPlaylists()">Fetch Playlists</button> 
-                <button class="btn btn-default" (click)="onClearPlaylists()">Clear All</button>
+                <a (click)="onEdit()"
+                    class="navbar-brand"
+                    style="padding-left: 1em; cursor: pointer;" >
+                    <i *ngIf="!edit; else close" class="bi bi-pencil-fill"></i>
+                    <ng-template #close>
+                        <i class="bi bi-x-circle"></i>
+                    </ng-template>
+                </a>  
+                <span *ngIf="edit">
+                    <button class="btn btn-default" (click)="onFetchPlaylists()">Fetch Playlists</button> 
+                    <button class="btn btn-default" (click)="onClearPlaylists()">Clear All</button>
+                </span>
+
             </div>
         </div>
     </nav>

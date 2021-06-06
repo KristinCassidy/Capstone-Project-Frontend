@@ -5,7 +5,6 @@ import { PlaylistService } from '../shared/services/playlist.service';
 import { Playlist } from '../shared/models/playlist.model';
 import { Tag } from '../shared/models/tag.model';
 import { PlaylistItem } from '../shared/models/playlist-item.model';
-import { CreatePlaylistService } from '../shared/services/create-playlist.service';
 
 @Component({
   	selector: 'app-create-playlist',
@@ -14,7 +13,6 @@ import { CreatePlaylistService } from '../shared/services/create-playlist.servic
 })
 export class CreatePlaylistComponent implements OnInit {
   	private currentPlaylist: Playlist;
-  	// mode: string;
   	private playlistStarted: Subscription;
 	private coreAddedSub: Subscription;
 

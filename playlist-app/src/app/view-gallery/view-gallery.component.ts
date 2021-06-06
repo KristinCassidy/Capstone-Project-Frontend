@@ -25,6 +25,8 @@ export class ViewGalleryComponent implements OnInit {
 	item4Url: string;
 	item5Url: string;
 
+	edit: boolean = false;
+
   	constructor(private playlistService: PlaylistService,
 			  	private storageService: DataStorageService,
 				private route: ActivatedRoute,
@@ -35,6 +37,7 @@ export class ViewGalleryComponent implements OnInit {
 		this.route.data.subscribe(
 			(data: Data) => {
 				this.fetchedPlaylists = data['playlists'];
+				console.log(this.fetchedPlaylists)
 				this.fetchedPlaylists.forEach(
 					playlist => {
 						
@@ -81,4 +84,8 @@ export class ViewGalleryComponent implements OnInit {
   	}
 	
 
+
+	  onEdit() {
+		  this.edit = !this.edit;
+	  }
 }

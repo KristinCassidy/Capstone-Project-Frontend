@@ -46,7 +46,8 @@ export class ViewPlaylistComponent implements OnInit, OnDestroy {
 			(data: Data) => {
 				
 				this.playlist = data['playlist'];
-				// console.log(this.playlist);
+				this.playlist.id = this.id;
+				console.log(this.playlist);
 				this.tags = this.playlist.tags;
 				if (this.playlist.playlistItems) {
 					this.playlistItems = this.playlist.playlistItems;
@@ -111,9 +112,16 @@ export class ViewPlaylistComponent implements OnInit, OnDestroy {
 
 	onDelete() {
 		const playlistId: string = this.playlist.id;
+		console.log(playlistId);
 		this.storageService.deletePlaylist(playlistId).subscribe();
+		this.storageService.fetchPlaylists().subscribe(
+			data => {
+				this.playlistService.playlistsChanged.next(data);
+			}
+		)
+		
 		this.router.navigate(['../../view-gallery'], {relativeTo: this.route});
-		this.playlistService.playlistsChanged;
+		
 	}
 
 	onCancel() {

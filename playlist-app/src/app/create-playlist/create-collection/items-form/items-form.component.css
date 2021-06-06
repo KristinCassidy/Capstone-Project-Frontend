@@ -1,0 +1,39 @@
+input, textarea {
+    /* box-shadow: none; */
+   border: none;
+   display: flexbox;
+}
+
+button {
+    position: relative;
+    top: 25px;
+}
+
+/* img {
+    position: relative;
+    display: flexbox;
+    max-height: 200px;
+    margin: 40px;
+    z-index: 10;
+    top:30px;
+}
+.img-preview {
+    display: flexbox;
+} */
+
+.media-item {
+    display: flexbox;
+    background-image: url('/assets/image.png');
+    background-position: center;
+    background-size: cover;
+    width: 10vw;
+    height: 10vw;
+    border: solid white;
+    margin: 20px;
+    cursor: pointer;
+}
+
+.item {
+    margin: 10px;
+    border:white solid 1px;
+}

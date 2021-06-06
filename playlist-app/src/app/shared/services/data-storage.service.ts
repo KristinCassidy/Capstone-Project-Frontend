@@ -112,7 +112,8 @@ export class DataStorageService {
 		this.http
 			.post<{ name: string }>(this.playlistUrl, postData)
 			.subscribe(responseData => {
-				console.log(responseData);
+				this.playlistService.playlistPosted.next(responseData.name);
+				console.log(responseData.name);
 			});
 	};
 	

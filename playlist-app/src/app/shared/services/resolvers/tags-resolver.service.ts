@@ -15,9 +15,9 @@ export class TagsResolver implements Resolve<Tag[]>{
               private storageService: DataStorageService) { }
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-    this.storageService.fetchTags().subscribe(
-      data => console.log(data)
-    )
+    // this.storageService.fetchTags().subscribe(
+    //   data => console.log(data)
+    // )
     return this.storageService.fetchTags();
   }
 }

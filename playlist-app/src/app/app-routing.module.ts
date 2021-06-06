@@ -26,7 +26,7 @@ const routes: Routes = [
 	{ path: 'splash', component: SplashComponent},
 	{ path: 'create-playlist', component: CreatePlaylistComponent, children: [
 		{ path: '', component: CreateCollectionComponent, pathMatch: 'full' },
-		{ path: 'core', component: AddCoreComponent, children: [
+		{ path: 'core/:id', component: AddCoreComponent, children: [
 			{ path: 'video', component: AddVideoComponent},
 			{ path: 'quote', component: AddQuoteComponent },
 			{ path: 'song', component: AddSongComponent},

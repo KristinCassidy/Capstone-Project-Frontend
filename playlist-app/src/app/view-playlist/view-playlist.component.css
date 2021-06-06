@@ -99,3 +99,9 @@ nav {
     background-size: cover;
 
 }
+
+i {
+    padding-left: 1em;
+    opacity: 0.5;
+    cursor: pointer;
+}

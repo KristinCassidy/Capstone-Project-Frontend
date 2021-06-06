@@ -35,6 +35,7 @@ import { PlaylistsResolver } from './shared/services/resolvers/playlists-resolve
 import { ItemFormComponent } from './create-playlist/create-collection/item-form/item-form.component';
 import { ViewItemComponent } from './view-playlist/view-item/view-item.component';
 import { DataStorageService } from './shared/services/data-storage.service';
+import { ItemsFormComponent } from './create-playlist/create-collection/items-form/items-form.component';
 // import { ImageResolver } from './shared/services/resolvers/image-resolver.service';
 
 
@@ -63,6 +64,7 @@ import { DataStorageService } from './shared/services/data-storage.service';
     EditPlaylistComponent,
     ItemFormComponent,
     ViewItemComponent,
+    ItemsFormComponent,
   ],
   imports: [
     BrowserModule,

@@ -12,10 +12,45 @@
 			<div 
 				class="navbar-right"
 				style="padding-right: 1em">
-				<button class="btn" *ngIf="!editMode"(click)="onEdit()">Edit</button> 
-				<button class="btn"(click)="onDelete()">Delete</button>
-				<button *ngIf="editMode" class="btn" (click)="onCancel()">Cancel</button>
+				<button *ngIf="editMode" class="btn"(click)="onDelete()">Delete</button>
+				<span 
+					class="navbar-brand pull-right"
+					style="padding-left: 1em">
+					<i 
+						class="bi bi-pencil-fill"
+						*ngIf="!editMode" 
+						(click)="onEdit()">
+					</i>
+					
+					<i 
+						class="bi bi-x-circle"
+						*ngIf="editMode"
+						(click)="onCancel()">
+					</i>
+					
+				</span> 
+
+				
+				<!-- <button class="btn" *ngIf="!editMode"(click)="onEdit()">Edit</button>  -->
+				
+				<!-- <button *ngIf="editMode" class="btn" (click)="onCancel()">Cancel</button> -->
 			</div>
+
+			<!-- <div class="navbar-right">
+                <a (click)="onEdit()"
+                    class="navbar-brand"
+                    style="padding-left: 1em; cursor: pointer;" >
+                    <i *ngIf="!edit; else close" class="bi bi-pencil-fill"></i>
+                    <ng-template #close>
+                        <i class="bi bi-x-circle"></i>
+                    </ng-template>
+                </a>  
+                <span *ngIf="edit">
+                    <button class="btn btn-default" (click)="onFetchPlaylists()">Fetch Playlists</button> 
+                    <button class="btn btn-default" (click)="onClearPlaylists()">Clear All</button>
+                </span>
+
+            </div> -->
 		</div>
 	</nav>
 	<div class="media">

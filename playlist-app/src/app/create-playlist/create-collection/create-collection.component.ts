@@ -17,6 +17,7 @@ import { DataStorageService } from 'src/app/shared/services/data-storage.service
 
 export class CreateCollectionComponent implements OnInit {
 	createPlaylistForm: FormGroup;
+	id: string;
 	// currentPlaylist: Playlist;
 
   	constructor(private tagService: TagService,
@@ -29,17 +30,17 @@ export class CreateCollectionComponent implements OnInit {
 		this.createPlaylistForm = new FormGroup({
 				'title': new FormControl('', Validators.required),
 				'desc': new FormControl(null),
-				// 'item1': new FormControl(null),
-				// 'item2': new FormControl(null),
-				// 'item3': new FormControl(null),
-				// 'item4': new FormControl(null),
-				// 'item5': new FormControl(null),
+				'item1': new FormControl(null),
+				'item2': new FormControl(null),
+				'item3': new FormControl(null),
+				'item4': new FormControl(null),
+				'item5': new FormControl(null),
 	 	});
-		this.createPlaylistForm.patchValue({
-				'title': 'New Playlist'
+		// this.createPlaylistForm.patchValue({
+				//'title': 'New Playlist'
 				// if 'New Playlist' has already been UseED, it should add +1 to the end
-		});
-		this.storageService.fetchPlaylists();
+		// });
+		// this.storageService.fetchPlaylists();
 	}
 
 	onSubmit() {
@@ -49,19 +50,38 @@ export class CreateCollectionComponent implements OnInit {
 				(this.storageService.createAndStoreTag(tag)));
 		// this.createPlaylistForm.reset();
 		this.onCreate(this.createPlaylistForm);
-		this.router.navigate(['core'], {relativeTo: this.route});
+		this.playlistService.playlistPosted.subscribe(
+			id => {
+				this.id = id
+				console.log(this.id)
+				this.storageService.fetchPlaylist(this.id).subscribe(
+					pl => {
+						console.log(pl);
+						this.router.navigate(['core', this.id], {relativeTo: this.route});
+					}
+				)
+			}
+		)
+		// this.router.navigate(['core', this.id], {relativeTo: this.route});
 
   	}
 
 	onCreate(form: FormGroup) {
 		const value = form.value
 		const tags = this.tagService.getTags();
+		const items = this.addItemsToPl(form);
+
 		const newPlayList = new Playlist( value.title, null, tags, value.desc, []);
 		// this.currentPlaylist = newPlayList;
 		this.playlistService.playlistCreated.next(newPlayList);
 		this.storageService.postPlaylist(newPlayList);
 		  console.log(newPlayList);
-	  }
+	}
+
+	addItemsToPl(form) {
+		const items = form.value
+	}
+	
 
 	//   addTagsToLibrary(newTags: Tag[]) {
 	// 	newTags.forEach( newTag =>

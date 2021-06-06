@@ -85,4 +85,10 @@ export class AddCoreComponent implements OnInit {
 	  this.showModal = null;
   }
 
+//   -------------------------------------------------------------------------------------
+onAddCore()	{
+	
+}
+
+
 }

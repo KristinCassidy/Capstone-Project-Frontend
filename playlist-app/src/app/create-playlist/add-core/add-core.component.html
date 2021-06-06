@@ -2,6 +2,7 @@
 <div class="container-fluid">
     <app-overlay *ngIf="selected"></app-overlay>
     <app-modal *ngIf="showModal" (close)="onModalMenu()"></app-modal>
+    <button (click)="onAddCore()">Add Core</button>
     <div class="core-box"> 
       
         <a  class="add" (click)="onSelected(); onAnimate()">   

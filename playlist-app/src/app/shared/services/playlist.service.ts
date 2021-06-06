@@ -6,13 +6,14 @@ import { PlaylistItem } from "../models/playlist-item.model";
 
 @Injectable({providedIn: 'root'})
 export class PlaylistService {
-	playlistCreated = new Subject<Playlist>();
-	openPlaylist = new Subject<Playlist>();
+	playlistCreated = new Subject<Playlist>(); //create-playlist
+	playlistPosted = new Subject<string>(); //Add-core
+	openPlaylist = new Subject<Playlist>(); //playlist-gallery
 	playlistsChanged = new Subject<Playlist[]>();
 	coreAdded = new Subject<PlaylistItem>();
 	editMode = new Subject<boolean>();
 	mediaAdded = new Subject<Playlist>();
-	openItem = new Subject<string>();
+	openItem = new Subject<string>(); //View-Playlist --> View-Item
 	playlistIndex = new Subject<number>();
 
 	constructor() { }
